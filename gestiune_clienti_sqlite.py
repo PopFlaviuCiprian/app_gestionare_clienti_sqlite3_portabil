@@ -35,7 +35,7 @@ if not API_KEY:
     raise RuntimeError("API KEY lipsă! Verifică fișierul .env")
 """
 
-API_KEY = "p3tze7ux-ft6wflmj-caocdcdc-za3qm51m"
+API_KEY = "aici pui api key"
 ADMIN_PASSWORD = "cipri"  # parolă pentru ștergere client din baza de date
 
 DB_NAME = "baza_date.db"
