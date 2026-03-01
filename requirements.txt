@@ -6,3 +6,4 @@ python-dateutil
 pyinstaller
 cryptography
 shu
+reportlab

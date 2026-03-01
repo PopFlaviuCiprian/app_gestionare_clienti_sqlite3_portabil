@@ -19,6 +19,14 @@ import shutil
 import threading
 import smtplib
 from email.message import EmailMessage
+from reportlab.lib.pagesizes import A4
+from reportlab.pdfgen import canvas
+from reportlab.platypus import SimpleDocTemplate, Table, TableStyle, Paragraph
+from reportlab.lib import colors
+from reportlab.pdfbase import pdfmetrics
+from reportlab.pdfbase.ttfonts import TTFont
+from reportlab.lib.styles import getSampleStyleSheet
+
 
 """
 load_dotenv()  # încarcă variabilele din .env
@@ -27,7 +35,7 @@ if not API_KEY:
     raise RuntimeError("API KEY lipsă! Verifică fișierul .env")
 """
 
-API_KEY = "apy key"
+API_KEY = "p3tze7ux-ft6wflmj-caocdcdc-za3qm51m"
 ADMIN_PASSWORD = "cipri"  # parolă pentru ștergere client din baza de date
 
 DB_NAME = "baza_date.db"
@@ -1065,6 +1073,10 @@ def afiseaza_lista_abonamente(parent, rows, tip):
 
         lbl.bind("<Button-1>", on_click)
 
+    # Butonul de export clienti in pdf
+    btn_export = tk.Button(parent, text="Exportă PDF", command=lambda: exporta_clienti_pdf(rows, tip))
+    btn_export.pack(pady=5)
+
 """
 Functie pentru a aparea in pop-ul cu abonamentele ce expira sau au expirat
 """
@@ -1139,6 +1151,96 @@ def alerta_abonamente_combinate():
     frame_gprs.pack(fill="both", expand=True, padx=10, pady=5)
 
     afiseaza_lista_abonamente(frame_gprs, gprs_rows, "gprs")
+
+# Functie de export in pdf a clientilor cu abonamente pt luna curenta
+
+pdfmetrics.registerFont(TTFont('ArialUnicode', 'arial.ttf'))  # asigură-te că ai arial.ttf în folder sau calea completă
+
+def exporta_clienti_pdf(rows, tip):
+    # Filtrăm doar ce expiră sau a expirat
+    azi = date.today()
+    rows_filtrate = []
+    for r in rows:
+        data_exp = r.get("data_exp")
+        if not data_exp:
+            continue
+
+        if isinstance(data_exp, str):
+            try:
+                data_exp = datetime.fromisoformat(data_exp).date()
+            except:
+                continue
+
+        zile_ramase = (data_exp - azi).days
+        if zile_ramase < 0 or zile_ramase <= 30:  # doar expirat sau expira in 30 zile
+            rows_filtrate.append(r)
+
+    if not rows_filtrate:
+        messagebox.showinfo("Export PDF", "Nu există date de exportat în intervalul de 30 zile!")
+        return
+
+    # Restul codului rămâne identic, dar folosim rows_filtrate
+    file_name = f"export_abonamente_{tip}.pdf"
+    doc = SimpleDocTemplate(
+        file_name,
+        pagesize=A4,
+        rightMargin=15, leftMargin=15, topMargin=20, bottomMargin=20
+    )
+
+    styles = getSampleStyleSheet()
+    styleN = styles["Normal"]
+    styleN.fontName = "ArialUnicode"
+    styleN.fontSize = 8
+    styleN.leading = 10
+
+    header = ["Nr", "Nume Firmă", "CUI", "Seria AMEF", "Tip Abonament", "Data Expirare", "Status"]
+    data = [[Paragraph(col, styleN) for col in header]]
+
+    for idx, r in enumerate(rows_filtrate, start=1):
+        data_exp = r.get("data_exp")
+        if isinstance(data_exp, str):
+            data_exp = datetime.fromisoformat(data_exp).date()
+        zile_ramase = (data_exp - azi).days
+        text_status = "EXPIRAT" if zile_ramase < 0 else f"expiră în {zile_ramase} zile"
+        tip_descriere = "abonament service" if tip == "amef" else "comunicație GPRS"
+
+        row_data = [
+            str(idx),
+            r.get("Nume_Firma", ""),
+            r.get("Cui", ""),
+            r.get("Serie_Amef", ""),
+            tip_descriere,
+            str(data_exp),
+            text_status
+        ]
+        data.append([Paragraph(str(cell), styleN) for cell in row_data])
+
+    # Calcul lățimi coloane
+    page_width, _ = A4
+    total_margin = doc.leftMargin + doc.rightMargin
+    max_width = page_width - total_margin
+    col_widths = [25, 160, 70, 60, 100, 60, 60]
+    sum_widths = sum(col_widths)
+    if sum_widths > max_width:
+        scale = max_width / sum_widths
+        col_widths = [w * scale for w in col_widths]
+
+    table = Table(data, colWidths=col_widths, repeatRows=1)
+    table.setStyle(TableStyle([
+        ('FONTNAME', (0,0), (-1,-1), 'ArialUnicode'),
+        ('FONTSIZE', (0,0), (-1,-1), 8),
+        ('ALIGN', (0,0), (-1,-1), 'LEFT'),
+        ('VALIGN', (0,0), (-1,-1), 'TOP'),
+        ('BACKGROUND', (0,0), (-1,0), colors.lightgrey),
+        ('GRID', (0,0), (-1,-1), 0.5, colors.black),
+        ('ROWBACKGROUNDS', (0,1), (-1,-1), [colors.white, colors.whitesmoke]),
+    ]))
+
+    try:
+        doc.build([table])
+        messagebox.showinfo("Export PDF", f"PDF-ul a fost generat cu succes: {file_name}")
+    except Exception as e:
+        messagebox.showerror("Eroare Export PDF", f"A apărut o eroare la generarea PDF: {e}")
 
 
 # =========================
