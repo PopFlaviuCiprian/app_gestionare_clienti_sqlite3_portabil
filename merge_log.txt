@@ -1,0 +1,82 @@
+[2026-03-01 17:27:37] === START MERGE BAZE DE DATE ===
+[2026-03-01 17:27:37] Adăugat client nou: CUI=RO46440697
+[2026-03-01 17:27:37] Adăugat sediu nou Serie_Amef=DB4090005261 client CUI=RO46440697
+[2026-03-01 17:27:37] Adăugat sediu nou Serie_Amef=DB4090034793 client CUI=RO46440697
+[2026-03-01 18:20:59] === START MERGE BAZE DE DATE ===
+[2026-03-01 18:20:59] Client CUI=RO46440697 deja existent, fără modificări
+[2026-03-01 18:20:59] Adăugat client nou: CUI=44317079
+[2026-03-01 18:21:00] Sediu Serie_Amef=DB4090005261 client CUI=RO46440697 deja existent, fără modificări
+[2026-03-01 18:21:00] Sediu Serie_Amef=DB4090034793 client CUI=RO46440697 deja existent, fără modificări
+[2026-03-01 18:21:00] Adăugat sediu nou Serie_Amef=DB4090034486 client CUI=44317079
+[2026-03-01 18:43:26] === START MERGE BAZE DE DATE ===
+[2026-03-01 18:43:26] Client CUI=RO46440697 deja existent, fără modificări
+[2026-03-01 18:43:26] Client CUI=44317079 deja existent, fără modificări
+[2026-03-01 18:43:26] Sediu Serie_Amef=DB4090005261 client CUI=RO46440697 deja existent, fără modificări
+[2026-03-01 18:43:26] Sediu Serie_Amef=DB4090034793 client CUI=RO46440697 deja existent, fără modificări
+[2026-03-01 18:43:26] Sediu Serie_Amef=DB4090034486 client CUI=44317079 deja existent, fără modificări
+[2026-03-01 18:43:26] Adăugat istoric abonament Serie_Amef=DB4090005261 client CUI=RO46440697
+[2026-03-01 18:43:26] Adăugat istoric abonament Serie_Amef=DB4090034793 client CUI=RO46440697
+[2026-03-01 18:43:26] Adăugat istoric abonament Serie_Amef=DB4090005261 client CUI=RO46440697
+[2026-03-01 18:43:26] Adăugat istoric abonament Serie_Amef=DB4090034793 client CUI=RO46440697
+[2026-03-01 18:43:26] Istoric abonament Serie_Amef=DB4090034793 client CUI=RO46440697 deja existent, fără modificări
+[2026-03-01 18:43:26] Adăugat istoric abonament Serie_Amef=DB4090034486 client CUI=44317079
+[2026-03-01 18:43:26] === MERGE COMPLET FINALIZAT ===
+[2026-03-01 18:59:39] === START MERGE BAZE DE DATE ===
+[2026-03-01 18:59:39] Client CUI=RO46440697 deja existent, fără modificări
+[2026-03-01 18:59:39] Client CUI=44317079 deja existent, fără modificări
+[2026-03-01 18:59:39] Sediu Serie_Amef=DB4090005261 client CUI=RO46440697 deja existent, fără modificări
+[2026-03-01 18:59:39] Sediu Serie_Amef=DB4090034793 client CUI=RO46440697 deja existent, fără modificări
+[2026-03-01 18:59:39] Sediu Serie_Amef=DB4090034486 client CUI=44317079 deja existent, fără modificări
+[2026-03-01 18:59:39] Istoric abonament Serie_Amef=DB4090005261 client CUI=RO46440697 deja existent, fără modificări
+[2026-03-01 18:59:39] Istoric abonament Serie_Amef=DB4090034793 client CUI=RO46440697 deja existent, fără modificări
+[2026-03-01 18:59:39] Istoric abonament Serie_Amef=DB4090005261 client CUI=RO46440697 deja existent, fără modificări
+[2026-03-01 18:59:39] Istoric abonament Serie_Amef=DB4090034793 client CUI=RO46440697 deja existent, fără modificări
+[2026-03-01 18:59:39] Istoric abonament Serie_Amef=DB4090034793 client CUI=RO46440697 deja existent, fără modificări
+[2026-03-01 18:59:39] Istoric abonament Serie_Amef=DB4090034486 client CUI=44317079 deja existent, fără modificări
+[2026-03-01 18:59:39] === MERGE COMPLET FINALIZAT ===
+[2026-03-01 19:02:13] === START MERGE BAZE DE DATE ===
+[2026-03-01 19:02:13] Client CUI=RO46440697 deja existent, fără modificări
+[2026-03-01 19:02:13] Client CUI=44317079 deja existent, fără modificări
+[2026-03-01 19:02:13] Sediu Serie_Amef=DB4090005261 client CUI=RO46440697 deja existent, fără modificări
+[2026-03-01 19:02:13] Sediu Serie_Amef=DB4090034793 client CUI=RO46440697 deja existent, fără modificări
+[2026-03-01 19:02:13] Sediu Serie_Amef=DB4090034486 client CUI=44317079 deja existent, fără modificări
+[2026-03-01 19:02:13] Istoric abonament Serie_Amef=DB4090005261 client CUI=RO46440697 deja existent, fără modificări
+[2026-03-01 19:02:13] Istoric abonament Serie_Amef=DB4090034793 client CUI=RO46440697 deja existent, fără modificări
+[2026-03-01 19:02:13] Istoric abonament Serie_Amef=DB4090005261 client CUI=RO46440697 deja existent, fără modificări
+[2026-03-01 19:02:13] Istoric abonament Serie_Amef=DB4090034793 client CUI=RO46440697 deja existent, fără modificări
+[2026-03-01 19:02:13] Istoric abonament Serie_Amef=DB4090034793 client CUI=RO46440697 deja existent, fără modificări
+[2026-03-01 19:02:13] Istoric abonament Serie_Amef=DB4090034486 client CUI=44317079 deja existent, fără modificări
+[2026-03-01 19:02:13] === MERGE COMPLET FINALIZAT ===
+[2026-03-01 19:07:21] === START MERGE BAZE DE DATE ===
+[2026-03-01 19:07:21] Client CUI=RO46440697 deja existent, fără modificări
+[2026-03-01 19:07:21] Client CUI=44317079 deja existent, fără modificări
+[2026-03-01 19:07:21] Sediu Serie_Amef=DB4090005261 client CUI=RO46440697 deja existent, fără modificări
+[2026-03-01 19:07:21] Sediu Serie_Amef=DB4090034793 client CUI=RO46440697 deja existent, fără modificări
+[2026-03-01 19:07:21] Sediu Serie_Amef=DB4090034486 client CUI=44317079 deja existent, fără modificări
+[2026-03-01 19:07:21] Istoric abonament Serie_Amef=DB4090005261 client CUI=RO46440697 deja existent, fără modificări
+[2026-03-01 19:07:21] Istoric abonament Serie_Amef=DB4090034793 client CUI=RO46440697 deja existent, fără modificări
+[2026-03-01 19:07:21] Istoric abonament Serie_Amef=DB4090005261 client CUI=RO46440697 deja existent, fără modificări
+[2026-03-01 19:07:21] Istoric abonament Serie_Amef=DB4090034793 client CUI=RO46440697 deja existent, fără modificări
+[2026-03-01 19:07:21] Istoric abonament Serie_Amef=DB4090034793 client CUI=RO46440697 deja existent, fără modificări
+[2026-03-01 19:07:21] Istoric abonament Serie_Amef=DB4090034486 client CUI=44317079 deja existent, fără modificări
+[2026-03-01 19:07:21] === MERGE COMPLET FINALIZAT ===
+[2026-03-01 19:16:39] === START MERGE BAZE DE DATE ===
+[2026-03-01 19:16:39] Client CUI=RO46440697 deja existent, fără modificări
+[2026-03-01 19:16:39] Sediu Serie_Amef=DB4090005261 client CUI=RO46440697 deja existent, fără modificări
+[2026-03-01 19:16:39] Sediu Serie_Amef=DB4090034793 client CUI=RO46440697 deja existent, fără modificări
+[2026-03-01 19:16:39] Istoric abonament Serie_Amef=DB4090005261 client CUI=RO46440697 deja existent, fără modificări
+[2026-03-01 19:16:39] Istoric abonament Serie_Amef=DB4090034793 client CUI=RO46440697 deja existent, fără modificări
+[2026-03-01 19:16:39] Istoric abonament Serie_Amef=DB4090005261 client CUI=RO46440697 deja existent, fără modificări
+[2026-03-01 19:16:39] Istoric abonament Serie_Amef=DB4090034793 client CUI=RO46440697 deja existent, fără modificări
+[2026-03-01 19:16:39] Istoric abonament Serie_Amef=DB4090034793 client CUI=RO46440697 deja existent, fără modificări
+[2026-03-01 19:16:39] === MERGE COMPLET FINALIZAT ===
+[2026-03-01 19:23:41] === START MERGE BAZE DE DATE ===
+[2026-03-01 19:23:41] Client CUI=RO46440697 deja existent, fără modificări
+[2026-03-01 19:23:41] Sediu Serie_Amef=DB4090005261 client CUI=RO46440697 deja existent, fără modificări
+[2026-03-01 19:23:41] Sediu Serie_Amef=DB4090034793 client CUI=RO46440697 deja existent, fără modificări
+[2026-03-01 19:23:41] Istoric abonament Serie_Amef=DB4090005261 client CUI=RO46440697 deja existent, fără modificări
+[2026-03-01 19:23:41] Istoric abonament Serie_Amef=DB4090034793 client CUI=RO46440697 deja existent, fără modificări
+[2026-03-01 19:23:41] Istoric abonament Serie_Amef=DB4090005261 client CUI=RO46440697 deja existent, fără modificări
+[2026-03-01 19:23:41] Istoric abonament Serie_Amef=DB4090034793 client CUI=RO46440697 deja existent, fără modificări
+[2026-03-01 19:23:41] Istoric abonament Serie_Amef=DB4090034793 client CUI=RO46440697 deja existent, fără modificări
+[2026-03-01 19:23:41] === MERGE COMPLET FINALIZAT ===

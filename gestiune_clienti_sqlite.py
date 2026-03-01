@@ -14,6 +14,11 @@ from dotenv import load_dotenv
 from tkinter import Toplevel, Label, Entry, Button
 import sqlite3
 from decimal import Decimal
+from tkinter import filedialog
+import shutil
+import threading
+import smtplib
+from email.message import EmailMessage
 
 """
 load_dotenv()  # încarcă variabilele din .env
@@ -22,7 +27,7 @@ if not API_KEY:
     raise RuntimeError("API KEY lipsă! Verifică fișierul .env")
 """
 
-API_KEY = "api key"
+API_KEY = "apy key"
 ADMIN_PASSWORD = "cipri"  # parolă pentru ștergere client din baza de date
 
 DB_NAME = "baza_date.db"
@@ -302,10 +307,15 @@ def merge_sqlite_with_file_log(db_source_path, db_target_path, log_file_path="me
 
         tgt_cursor.execute("""
             SELECT Nr_Crt FROM tabela_sedii_secundare 
-            WHERE Id_Client=? AND Serie_Amef=? AND Nui=?
-        """, (id_client_target, entry["serie_amef"], entry["Nui"]))
+            WHERE Id_Client=? AND Serie_Amef=?
+        """, (id_client_target, entry["serie_amef"]))
+
         target_sediu = tgt_cursor.fetchone()
         id_sediu_target = target_sediu["Nr_Crt"] if target_sediu else None
+
+        if not id_sediu_target:
+            log(f"Sediu lipsă în target pentru Serie_Amef={entry['serie_amef']}")
+            continue
 
         tgt_cursor.execute("""
             SELECT * FROM istoric_abonamente 
@@ -361,8 +371,95 @@ def update_baza_protejat():
     if parola != ADMIN_PASSWORD:
         messagebox.showerror("Eroare", "Parola incorectă!")
         return
-    # dacă parola e corectă, faci merge
-    merge_sqlite_with_file_log("baza_sursa.db", "baza_curenta.db")
+
+    # Alegem baza de date sursa
+    source = filedialog.askopenfilename(
+        title="Selecteaza baza sursa (din care importi datele)",
+        filetypes=[("SQLite DB", "*.db")]
+    )
+    if not source:
+        return
+
+    # Alegem baza de date tinta
+    target = filedialog.askopenfilename(
+        title="Selecteaza baza tinta (baza date master)",
+        filetypes=[("SQLite DB", "*.db")]
+    )
+    if not source:
+        return
+
+    if source == target:
+        messagebox.showerror("Eroare", "Nu poti selecta aceeasi baza")
+        return
+
+    # === BACKUP ===
+    try:
+        backup_file = backup_database(target)
+    except Exception as e:
+        messagebox.showerror("Eroare Backup", str(e))
+        return
+
+    # === Fereastră progres ===
+    progress_win = Toplevel()
+    progress_win.title("Merge în curs...")
+    progress = ttk.Progressbar(progress_win, mode="indeterminate", length=400)
+    progress.pack(padx=20, pady=20)
+    progress["value"] = 0
+
+    def run_merge():
+        try:
+            merge_sqlite_with_file_log(source, target)
+
+            def finish_merge():
+                progress.stop()
+                progress_win.destroy()
+                messagebox.showinfo("Succes", f"Merge finalizat!\nBackup salvat:\n{backup_file}")
+
+                # ---------------- Întrebare trimitere email ----------------
+                if messagebox.askyesno("Email", "Doriți să trimiteți backup-ul pe email?"):
+                    destinatar = simpledialog.askstring("Email destinatar", "Introduceți adresa de email:")
+                    if destinatar:
+                        trimite_backup_email(backup_file, destinatar)
+                        messagebox.showinfo("Email trimis", f"Backup-ul a fost trimis către {destinatar}")
+
+            progress_win.after(0, finish_merge)
+
+        except Exception as e:
+            progress.stop()
+            progress_win.destroy()
+            messagebox.showerror("Eroare", str(e))
+
+    threading.Thread(target=run_merge, daemon=True).start()
+
+
+# Functie pentru backup baza date inainte de merge
+def backup_database(db_path):
+    if not os.path.exists(db_path):
+        raise FileNotFoundError("Baza de date nu exista !")
+
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    backup_name = f"{os.path.splitext(db_path)[0]}_backup_{timestamp}.db"
+    shutil.copy2(db_path, backup_name)
+    return backup_name
+# Final functie backup baz adate
+
+# Functie trimitere backup pe mail
+def trimite_backup_email(backup_path, destinatar):
+    msg = EmailMessage()
+    msg["Subject"] = "Backup baza de date clienti SQLite3"
+    msg["From"] = "instalari.secretdata@gmail.com"
+    msg["To"] = destinatar
+    msg.set_content("Atasat gasiti backup-ul bazei de date.")
+
+    with open(backup_path, "rb") as f:
+        file_data = f.read()
+        file_name = os.path.basename(backup_path)
+    msg.add_attachment(file_data, maintype="application", subtype="octet-stream", filename=file_name)
+
+    with smtplib.SMTP_SSL("smtp.gmail.com", 465) as smtp:
+        smtp.login("instalari.secretdata@gmail.com", "ipns zunb qyxe bqbl")
+        smtp.send_message(msg)
+
 
 
 # =========================
@@ -1921,7 +2018,7 @@ btn_params = [
     ("Abon.SRV+GPRS", lambda: alerta_abonamente_combinate(), "#ffd966"),  # galben
     ("Istoric Abonament", lambda: popup_istoric_abonamente(), "#008080"),  # verde
     ("Resetare câmpuri", lambda: resetare_toate_campurile(), "#cfe2f3"),
-    ("Update + Merge DB (admin)", lambda: update_baza_protejat(), "#f4b183") # Combinarea a 2 baze de date sqlite3
+    ("Merge DB (admin)", lambda: update_baza_protejat(), "#f4b183") # Combinarea a 2 baze de date sqlite3
 
 ]
 for i, (text, cmd, color) in enumerate(btn_params):
@@ -2088,10 +2185,4 @@ footer.grid(row=4, column=0, columnspan=2, sticky="e", padx=10, pady=5)
 
 root.mainloop()
 
-"""
-varianta functionala cu buton prelungire abonamente service si gprs separate, 
-clic dreapta pentru copiere camp sau coloana intreaga, 
-cautare in functie de client, cui, serie casa si nui,
-se populeaza toate campurile la selectare rand din cautare,
-vizualizarea in pop up separat valabilitate abonamente
-"""
+
