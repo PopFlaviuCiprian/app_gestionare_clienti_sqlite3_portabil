@@ -26,7 +26,7 @@ from reportlab.lib import colors
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
 from reportlab.lib.styles import getSampleStyleSheet
-
+from PIL import Image, ImageTk
 
 """
 load_dotenv()  # încarcă variabilele din .env
@@ -39,6 +39,7 @@ API_KEY = "p3tze7ux-ft6wflmj-caocdcdc-za3qm51m"
 ADMIN_PASSWORD = "cipri"  # parolă pentru ștergere client din baza de date
 
 DB_NAME = "baza_date.db"
+
 
 def creeaza_db_si_tabele(db_path):
     """Creează baza de date și tabelele dacă nu există"""
@@ -103,6 +104,7 @@ def creeaza_db_si_tabele(db_path):
         print("!!! Eroare la crearea bazei sau a tabelelor:", e)
         messagebox.showerror("Eroare DB", f"Nu am putut crea baza de date: \n{e}")
 
+
 def conectare_db():
     """Conectează aplicația la baza de date, creează DB dacă nu există"""
     try:
@@ -144,13 +146,18 @@ def export_db():
         initialfile="baza_date.db",
         defaultextension=".db"
     )
+
+
 def import_db():
     filedialog.askopenfilename(filetypes=[("SQLite DB", "*.db")])
+
 
 """
 Functie pentru a uni 2 baze de date sqlite3 cu verificare si actualizare clienti
 si cu creare fisier log cu actualizari
 """
+
+
 def merge_sqlite_with_file_log(db_source_path, db_target_path, log_file_path="merge_log.txt"):
     # funcție simplă de log în fișier
     def log(msg):
@@ -232,19 +239,22 @@ def merge_sqlite_with_file_log(db_source_path, db_target_path, log_file_path="me
         if existing_client:
             updated_fields = []
             updated_values = []
-            for field in ["Nume_Firma","Sediu_Social","Nr_Telefon","Mail","Reg_Comert","Tva","Administrator","Status_Firma"]:
+            for field in ["Nume_Firma", "Sediu_Social", "Nr_Telefon", "Mail", "Reg_Comert", "Tva", "Administrator",
+                          "Status_Firma"]:
                 if client[field] != existing_client[field]:
                     updated_fields.append(f"{field}=?")
                     updated_values.append(client[field])
             if updated_fields:
                 updated_values.append(existing_client["Nr_Crt"])
-                tgt_cursor.execute(f"UPDATE tabela_date_clienti SET {', '.join(updated_fields)} WHERE Nr_Crt=?", updated_values)
+                tgt_cursor.execute(f"UPDATE tabela_date_clienti SET {', '.join(updated_fields)} WHERE Nr_Crt=?",
+                                   updated_values)
                 log(f"Actualizat client CUI={client['Cui']}: {', '.join(updated_fields)}")
             else:
                 log(f"Client CUI={client['Cui']} deja existent, fără modificări")
         else:
-            fields = ["Nume_Firma","Sediu_Social","Cui","Nr_Telefon","Mail","Reg_Comert","Tva","Administrator","Status_Firma"]
-            placeholders = ",".join("?"*len(fields))
+            fields = ["Nume_Firma", "Sediu_Social", "Cui", "Nr_Telefon", "Mail", "Reg_Comert", "Tva", "Administrator",
+                      "Status_Firma"]
+            placeholders = ",".join("?" * len(fields))
             values = [client[f] for f in fields]
             tgt_cursor.execute(f"INSERT INTO tabela_date_clienti ({','.join(fields)}) VALUES ({placeholders})", values)
             log(f"Adăugat client nou: CUI={client['Cui']}")
@@ -275,7 +285,8 @@ def merge_sqlite_with_file_log(db_source_path, db_target_path, log_file_path="me
         if existing_sediu:
             updated_fields = []
             updated_values = []
-            for field in ["Punct_Lucru","Model_Amef","Tip_Abonament","Data_Conect_Anaf","Tehnician","Data_Exp_Abon","Val_Ctr","Data_Exp_Gprs"]:
+            for field in ["Punct_Lucru", "Model_Amef", "Tip_Abonament", "Data_Conect_Anaf", "Tehnician",
+                          "Data_Exp_Abon", "Val_Ctr", "Data_Exp_Gprs"]:
                 val = sediu[field]
                 if isinstance(val, Decimal):
                     val = float(val)
@@ -284,16 +295,19 @@ def merge_sqlite_with_file_log(db_source_path, db_target_path, log_file_path="me
                     updated_values.append(val)
             if updated_fields:
                 updated_values.append(existing_sediu["Nr_Crt"])
-                tgt_cursor.execute(f"UPDATE tabela_sedii_secundare SET {', '.join(updated_fields)} WHERE Nr_Crt=?", updated_values)
+                tgt_cursor.execute(f"UPDATE tabela_sedii_secundare SET {', '.join(updated_fields)} WHERE Nr_Crt=?",
+                                   updated_values)
                 log(f"Actualizat sediu Serie_Amef={sediu['Serie_Amef']} client CUI={cui}: {', '.join(updated_fields)}")
             else:
                 log(f"Sediu Serie_Amef={sediu['Serie_Amef']} client CUI={cui} deja existent, fără modificări")
         else:
-            fields = ["Id_Client","Punct_Lucru","Model_Amef","Serie_Amef","Nui","Tip_Abonament",
-                      "Data_Conect_Anaf","Tehnician","Data_Exp_Abon","Val_Ctr","Data_Exp_Gprs"]
-            values = [id_client_target] + [float(sediu[f]) if isinstance(sediu[f], Decimal) else sediu[f] for f in fields[1:]]
-            placeholders = ",".join("?"*len(fields))
-            tgt_cursor.execute(f"INSERT INTO tabela_sedii_secundare ({','.join(fields)}) VALUES ({placeholders})", values)
+            fields = ["Id_Client", "Punct_Lucru", "Model_Amef", "Serie_Amef", "Nui", "Tip_Abonament",
+                      "Data_Conect_Anaf", "Tehnician", "Data_Exp_Abon", "Val_Ctr", "Data_Exp_Gprs"]
+            values = [id_client_target] + [float(sediu[f]) if isinstance(sediu[f], Decimal) else sediu[f] for f in
+                                           fields[1:]]
+            placeholders = ",".join("?" * len(fields))
+            tgt_cursor.execute(f"INSERT INTO tabela_sedii_secundare ({','.join(fields)}) VALUES ({placeholders})",
+                               values)
             log(f"Adăugat sediu nou Serie_Amef={sediu['Serie_Amef']} client CUI={cui}")
 
     tgt_conn.commit()
@@ -334,20 +348,22 @@ def merge_sqlite_with_file_log(db_source_path, db_target_path, log_file_path="me
         if existing_entry:
             updated_fields = []
             updated_values = []
-            for field in ["data_expirare","observatii"]:
+            for field in ["data_expirare", "observatii"]:
                 if entry[field] != existing_entry[field]:
                     updated_fields.append(f"{field}=?")
                     updated_values.append(entry[field])
             if updated_fields:
                 updated_values.append(existing_entry["Nr_Crt"])
-                tgt_cursor.execute(f"UPDATE istoric_abonamente SET {', '.join(updated_fields)} WHERE Nr_Crt=?", updated_values)
+                tgt_cursor.execute(f"UPDATE istoric_abonamente SET {', '.join(updated_fields)} WHERE Nr_Crt=?",
+                                   updated_values)
                 log(f"Actualizat istoric abonament Serie_Amef={entry['serie_amef']} client CUI={cui}: {', '.join(updated_fields)}")
             else:
                 log(f"Istoric abonament Serie_Amef={entry['serie_amef']} client CUI={cui} deja existent, fără modificări")
         else:
-            fields = ["id_client","id_sediu","serie_amef","tip_abonament","data_start","data_expirare","observatii"]
+            fields = ["id_client", "id_sediu", "serie_amef", "tip_abonament", "data_start", "data_expirare",
+                      "observatii"]
             values = [id_client_target, id_sediu_target] + [entry[f] for f in fields[2:]]
-            placeholders = ",".join("?"*len(fields))
+            placeholders = ",".join("?" * len(fields))
             tgt_cursor.execute(f"INSERT INTO istoric_abonamente ({','.join(fields)}) VALUES ({placeholders})", values)
             log(f"Adăugat istoric abonament Serie_Amef={entry['serie_amef']} client CUI={cui}")
 
@@ -372,6 +388,8 @@ def merge_sqlite_with_file_log(db_source_path, db_target_path, log_file_path="me
             messagebox.showinfo("Succes", f"Update și merge complet realizat!\nVezi detalii în 'merge_log.txt'")
         except Exception as e:
             messagebox.showerror("Eroare", f"A apărut o eroare la merge: {e}")
+
+
 # Final functie merge baze date
 
 def update_baza_protejat():
@@ -449,6 +467,8 @@ def backup_database(db_path):
     backup_name = f"{os.path.splitext(db_path)[0]}_backup_{timestamp}.db"
     shutil.copy2(db_path, backup_name)
     return backup_name
+
+
 # Final functie backup baz adate
 
 # Functie trimitere backup pe mail
@@ -467,7 +487,6 @@ def trimite_backup_email(backup_path, destinatar):
     with smtplib.SMTP_SSL("smtp.gmail.com", 465) as smtp:
         smtp.login("instalari.secretdata@gmail.com", "ipns zunb qyxe bqbl")
         smtp.send_message(msg)
-
 
 
 # =========================
@@ -513,6 +532,7 @@ def cauta_firma_firmeapi(cui):
  tabela_date_clienti, tabela_sedii_secundare si tabela istoric_abonamente
 
 """
+
 
 # Functia asta nu mai e utilizata in cod
 def incarca_dropdown_puncte():
@@ -723,10 +743,13 @@ def salveaza_client():
     finally:
         conn.close()
 
+
 """
 Functie penntru calcularea automata a contractului in functie de situatia clientului
 platitor/neplatitor tva sau deplasare/anual
 """
+
+
 def calculeaza_valoare_contract(tip_abonament, platitor_tva):
     TVA = 0.21  # Aici modifici cand se schimba tva-ul
     tip_abonament = tip_abonament.strip().upper()
@@ -743,6 +766,7 @@ def calculeaza_valoare_contract(tip_abonament, platitor_tva):
         valoare *= (1 + TVA)
     return f"{valoare:.2f}"
 
+
 # Functie pentru actualizare automata a campului UI
 def actualizeaza_valoare_contract(event=None):
     tip = entry_tip_abonament.get()
@@ -752,11 +776,12 @@ def actualizeaza_valoare_contract(event=None):
     entry_val_ctr.insert(0, valoare)
 
 
-
 """
 Functie pentru a sterge un client din baza de date 
 ATENTIE: La stergerea unui client se va sterge toate punctele de lucru si casele de marcat ale clientului
 """
+
+
 def sterge_client():
     parola = simpledialog.askstring("Parola Admin", "Introduceți parola pentru ștergere:", show="*")
     if parola != ADMIN_PASSWORD:
@@ -796,10 +821,13 @@ def sterge_client():
     finally:
         conn.close()
 
+
 """
 Functie pentru a sterge doar punctul de lucru al clientuluiu, daca se inchide punctul de lucru
 Nu se sterge si clientul din baza de date
 """
+
+
 def sterge_punct():
     parola = simpledialog.askstring("Parola Admin", "Introduceți parola pentru ștergere:", show="*")
     if parola != ADMIN_PASSWORD:
@@ -834,6 +862,8 @@ def sterge_punct():
 Zona de cautare a unui client in baza de date
 Functie pentru cautare client in baza de date, dupa cui, nume, serie casa sau nui
 """
+
+
 def cauta_in_treeview():
     query = search_entry.get().strip().lower()
 
@@ -869,7 +899,7 @@ def cauta_in_treeview():
                 s.Val_Ctr,
                 s.Tip_Abonament,
                 s.Data_Exp_Gprs
-    
+
             FROM tabela_date_clienti d
             LEFT JOIN tabela_sedii_secundare s ON d.Nr_Crt = s.Id_Client
         """)
@@ -898,7 +928,7 @@ def cauta_in_treeview():
             # Tag special pentru status firma non-activ
             status = (row["Status_Firma"] or "").strip().lower()
             if status in ["inchis", "suspendat", "inactiv"]:
-                tag_final = "status_inactiv" # Culoarea in tree a firmei inactiva
+                tag_final = "status_inactiv"  # Culoarea in tree a firmei inactiva
             else:
                 tag_amef = calculeaza_tag_abonament(row["Data_Exp_Abon"])
                 tag_gprs = calculeaza_tag_abonament_gprs(row["Data_Exp_Gprs"])
@@ -957,6 +987,8 @@ def combina_taguri(tag_amef, tag_gprs):
 """
 Functie pentru a calcula cat timp mai este pana la expirare
 """
+
+
 def calculeaza_tag_abonament(data_exp):
     if not data_exp:
         return "expirat"
@@ -986,6 +1018,8 @@ def calculeaza_tag_abonament_gprs(data_exp):
 """
 Functie de combinare a abonamentelor pentru un singur pop-up
 """
+
+
 def afiseaza_lista_abonamente(parent, rows, tip):
     azi = date.today()
     luna_curenta = azi.month
@@ -1044,7 +1078,7 @@ def afiseaza_lista_abonamente(parent, rows, tip):
             f"{descriere} | {data_exp} → {text_status}"
         )
 
-        lbl=tk.Label(
+        lbl = tk.Label(
             scroll_frame,
             text=text,
             bg=culoare,
@@ -1072,14 +1106,54 @@ def afiseaza_lista_abonamente(parent, rows, tip):
             print("Selectat:", row)
 
         lbl.bind("<Button-1>", on_click)
-
+    img = Image.open(resource_path("icons/pdf.png"))
+    img = img.resize((20, 20))  # dimensiune modernă
+    icon_pdf = ImageTk.PhotoImage(img)
     # Butonul de export clienti in pdf
-    btn_export = tk.Button(parent, text="Exportă PDF", command=lambda: exporta_clienti_pdf(rows, tip))
+    btn_export = tk.Button(
+        parent,
+        text="Exportă PDF",
+        image=icon_pdf,
+        compound="left",
+        font=("Segoe UI", 10),
+        bg="#f8f9fa",
+        fg="#0d6efd",
+        activebackground="#e9ecef",
+        activeforeground="#212529",
+        bd=1,  # activeaza conttur buton
+        # relief="solid", stil solid la contur buton
+        relief="raised",  # stil contur buton
+        highlightthickness=0,
+        padx=10,
+        pady=6,
+        cursor="hand2",
+        command=lambda: exporta_clienti_pdf(rows, tip))
+    btn_export.image = icon_pdf
     btn_export.pack(pady=5)
+
+    def on_enter(e):
+        btn_export["bg"] = "#e9f2ff"
+
+    def on_leave(e):
+        btn_export["bg"] = "#ffffff"
+
+    btn_export.bind("<Enter>", on_enter)
+    btn_export.bind("<Leave>", on_leave)
+
+
+def resource_path(relative_path):
+    try:
+        base_path = sys._MEIPASS
+    except Exception:
+        base_path = os.path.abspath(".")
+    return os.path.join(base_path, relative_path)
+
 
 """
 Functie pentru a aparea in pop-ul cu abonamentele ce expira sau au expirat
 """
+
+
 def alerta_abonamente_combinate():
     conn = conectare_db()
     cursor = conn.cursor()
@@ -1152,9 +1226,11 @@ def alerta_abonamente_combinate():
 
     afiseaza_lista_abonamente(frame_gprs, gprs_rows, "gprs")
 
+
 # Functie de export in pdf a clientilor cu abonamente pt luna curenta
 
 pdfmetrics.registerFont(TTFont('ArialUnicode', 'arial.ttf'))  # asigură-te că ai arial.ttf în folder sau calea completă
+
 
 def exporta_clienti_pdf(rows, tip):
     # Filtrăm doar ce expiră sau a expirat
@@ -1179,10 +1255,20 @@ def exporta_clienti_pdf(rows, tip):
         messagebox.showinfo("Export PDF", "Nu există date de exportat în intervalul de 30 zile!")
         return
 
-    # Restul codului rămâne identic, dar folosim rows_filtrate
-    file_name = f"export_abonamente_{tip}.pdf"
+    from tkinter import filedialog  # sus în fișier (o singură dată)
+
+    file_path = filedialog.asksaveasfilename(
+        defaultextension=".pdf",
+        filetypes=[("PDF files", "*.pdf")],
+        title="Salvează raportul PDF",
+        initialfile=f"export_abonamente_{tip}.pdf"
+    )
+
+    if not file_path:
+        return  # utilizatorul a apăsat Cancel
+
     doc = SimpleDocTemplate(
-        file_name,
+        file_path,
         pagesize=A4,
         rightMargin=15, leftMargin=15, topMargin=20, bottomMargin=20
     )
@@ -1227,18 +1313,18 @@ def exporta_clienti_pdf(rows, tip):
 
     table = Table(data, colWidths=col_widths, repeatRows=1)
     table.setStyle(TableStyle([
-        ('FONTNAME', (0,0), (-1,-1), 'ArialUnicode'),
-        ('FONTSIZE', (0,0), (-1,-1), 8),
-        ('ALIGN', (0,0), (-1,-1), 'LEFT'),
-        ('VALIGN', (0,0), (-1,-1), 'TOP'),
-        ('BACKGROUND', (0,0), (-1,0), colors.lightgrey),
-        ('GRID', (0,0), (-1,-1), 0.5, colors.black),
-        ('ROWBACKGROUNDS', (0,1), (-1,-1), [colors.white, colors.whitesmoke]),
+        ('FONTNAME', (0, 0), (-1, -1), 'ArialUnicode'),
+        ('FONTSIZE', (0, 0), (-1, -1), 8),
+        ('ALIGN', (0, 0), (-1, -1), 'LEFT'),
+        ('VALIGN', (0, 0), (-1, -1), 'TOP'),
+        ('BACKGROUND', (0, 0), (-1, 0), colors.lightgrey),
+        ('GRID', (0, 0), (-1, -1), 0.5, colors.black),
+        ('ROWBACKGROUNDS', (0, 1), (-1, -1), [colors.white, colors.whitesmoke]),
     ]))
 
     try:
         doc.build([table])
-        messagebox.showinfo("Export PDF", f"PDF-ul a fost generat cu succes: {file_name}")
+        messagebox.showinfo("Export PDF", f"PDF-ul a fost generat cu succes: {file_path}")
     except Exception as e:
         messagebox.showerror("Eroare Export PDF", f"A apărut o eroare la generarea PDF: {e}")
 
@@ -1523,7 +1609,7 @@ def actualizeaza_sediu_secundar(id_sediu, tip_abonament, data_expirare):
 
 # --- Popup pentru prelungire abonament cu deplasare la 3 luni
 def popup_prelungire_abonament_trimestrial(id_client, id_sediu, serie_amef, data_exp_service):
-    popup= tk.Toplevel()
+    popup = tk.Toplevel()
     popup.title("Prelungire abonament cu deplasare")
     popup.geometry("420x380")
     popup.grab_set()
@@ -1543,6 +1629,7 @@ def popup_prelungire_abonament_trimestrial(id_client, id_sediu, serie_amef, data
     def seteaza_data_initiala(*args):
         if tip_var.get() == "SERVICE" and data_exp_service:
             cal.set_date(data_exp_service)
+
     tip_var.trace_add("write", seteaza_data_initiala)
     seteaza_data_initiala()
 
@@ -1592,6 +1679,7 @@ def popup_prelungire_abonament_trimestrial(id_client, id_sediu, serie_amef, data
         command=confirma
     ).pack(pady=15)
 
+
 # Final popup prelungire 3 luni
 
 # Functie pentru prelungire 3 luni de abonament pentru clientii cu deplasare
@@ -1607,6 +1695,8 @@ def adauga_trei_luni(data):
         except ValueError:
             return None  # data invalidă
     return data + relativedelta(months=3)
+
+
 # Final functie prelungire 3 luni
 
 # Inceput functie buton prelungire 3  luni
@@ -1643,6 +1733,8 @@ def buton_prelungire_3_luni():
         serie_amef,
         data_exp_service
     )
+
+
 # final functie buton prelungire 3 luni
 
 
@@ -1738,6 +1830,7 @@ Functie click dublu pe un client din campul de conectare
 Si de aici la dublu click se deschide popup-ul de prelungire al abonamentului de service sau gprs
 """
 
+
 def la_double_click(event):
     selected = tree.selection()
     if not selected:
@@ -1803,6 +1896,8 @@ def adauga_un_an(data):
 
 # Functie pentru copierea datelor cu click dreapta
 right_click_event = None  # Variabila globala pentru click dreapta
+
+
 def copy_selection(mode="cell", event=None):
     """Copiaza in clipboard celula sau randul selectat"""
     selected_items = tree.selection()
@@ -2101,8 +2196,6 @@ cu deplasare sau anual
 entry_tip_abonament.bind("<KeyRelease>", actualizeaza_valoare_contract)
 entry_tva.bind("<KeyRelease>", actualizeaza_valoare_contract)
 
-
-
 # -------------------------
 # FRAME BUTOANE
 # -------------------------
@@ -2114,23 +2207,26 @@ btn_params = [
     ("Salvează client", lambda: salveaza_client(), "#cfe2f3"),
     # ("Modifică date client", lambda: modifica_date_client(), "#cfe2f3"),
     # ("Modifica Tenhician", lambda: modifica_tehnician(), "#cfe2f3"),
-    ("Prelungeste AB. Anual", lambda: buton_prelungire(), "#cfe2f3"),
+    ("Prelungeste 1 AN", lambda: buton_prelungire(), "#cfe2f3"),
     ("Prelungeste 3 luni", lambda: buton_prelungire_3_luni(), "#cfe2f3"),
     ("Verifică TVA (ANAF)", lambda: webbrowser.open_new("https://www.anaf.ro/RegistruTVA/"), "#0000FF"),
-    ("Abon.SRV+GPRS", lambda: alerta_abonamente_combinate(), "#ffd966"),  # galben
+    ("Afiseaza Abonam.", lambda: alerta_abonamente_combinate(), "#ffd966"),  # galben
     ("Istoric Abonament", lambda: popup_istoric_abonamente(), "#008080"),  # verde
     ("Resetare câmpuri", lambda: resetare_toate_campurile(), "#cfe2f3"),
-    ("Merge DB (admin)", lambda: update_baza_protejat(), "#f4b183") # Combinarea a 2 baze de date sqlite3
+    ("Merge DB (admin)", lambda: update_baza_protejat(), "#f4b183")  # Combinarea a 2 baze de date sqlite3
 
 ]
 for i, (text, cmd, color) in enumerate(btn_params):
     tk.Button(frame_butoane, text=text, command=cmd, width=16, bg=color, font=("Arial", 10, "bold")).grid(row=i // 4,
                                                                                                           column=i % 4,
-                                                                                                          pady=5)
+                                                                                                          pady=5,
+                                                                                                          padx=10)
 
 """
 Clasa care creaza hover cu mesajele deasupra butoanelor cand trecem cu mouseul peste ele
 """
+
+
 class ToolTip:
     def __init__(self, widget, text):
         self.widget = widget
@@ -2156,6 +2252,8 @@ class ToolTip:
         if self.tip_window:
             self.tip_window.destroy()
             self.tip_window = None
+
+
 # =========================
 # Butoane + Tooltip
 # =========================
@@ -2237,7 +2335,7 @@ tree.pack(fill="both", expand=True)
 tree.bind("<<TreeviewSelect>>",
           populare_campuri_treeview)  # cu linia asta activam functia de populare campuri cand selectam din cautare
 tree.bind("<Double-1>", la_double_click)
-search_entry.bind("<KeyRelease>", lambda e: cauta_in_treeview()) # cautare live in treeview
+search_entry.bind("<KeyRelease>", lambda e: cauta_in_treeview())  # cautare live in treeview
 
 for col in columns:
     tree.heading(col, text=col)
