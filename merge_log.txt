@@ -80,3 +80,217 @@
 [2026-03-01 19:23:41] Istoric abonament Serie_Amef=DB4090034793 client CUI=RO46440697 deja existent, fără modificări
 [2026-03-01 19:23:41] Istoric abonament Serie_Amef=DB4090034793 client CUI=RO46440697 deja existent, fără modificări
 [2026-03-01 19:23:41] === MERGE COMPLET FINALIZAT ===
+[2026-03-05 20:45:58] === START MERGE BAZE DE DATE ===
+[2026-03-05 20:45:58] Client CUI=18171186 deja existent, fără modificări
+[2026-03-05 20:45:58] Client CUI=43279791 deja existent, fără modificări
+[2026-03-05 20:45:58] Client CUI=RO46769127 deja existent, fără modificări
+[2026-03-05 20:45:58] Client CUI=RO12290706 deja existent, fără modificări
+[2026-03-05 20:45:58] Client CUI=RO32069000 deja existent, fără modificări
+[2026-03-05 20:45:58] Client CUI=18205718 deja existent, fără modificări
+[2026-03-05 20:45:58] Client CUI=RO7377238 deja existent, fără modificări
+[2026-03-05 20:45:58] Client CUI=48989471 deja existent, fără modificări
+[2026-03-05 20:45:58] Client CUI=RO2829170 deja existent, fără modificări
+[2026-03-05 20:45:58] Client CUI=RO6902622 deja existent, fără modificări
+[2026-03-05 20:45:58] Client CUI=RO11879321 deja existent, fără modificări
+[2026-03-05 20:45:58] Client CUI=RO14000817 deja existent, fără modificări
+[2026-03-05 20:45:58] Client CUI=RO4376300 deja existent, fără modificări
+[2026-03-05 20:45:58] Client CUI=30892025 deja existent, fără modificări
+[2026-03-05 20:45:58] Client CUI=RO31292606 deja existent, fără modificări
+[2026-03-05 20:45:58] Client CUI=RO21417214 deja existent, fără modificări
+[2026-03-05 20:45:58] Client CUI=10190930 deja existent, fără modificări
+[2026-03-05 20:45:58] Actualizat client CUI=RO16743338: Mail=?
+[2026-03-05 20:45:58] Client CUI=RO14190479 deja existent, fără modificări
+[2026-03-05 20:45:58] Client CUI=6949153 deja existent, fără modificări
+[2026-03-05 20:45:58] Client CUI=RO15376500 deja existent, fără modificări
+[2026-03-05 20:45:58] Client CUI=RO668981 deja existent, fără modificări
+[2026-03-05 20:45:58] Client CUI=8707989 deja existent, fără modificări
+[2026-03-05 20:45:58] Client CUI=41698815 deja existent, fără modificări
+[2026-03-05 20:45:58] Client CUI=RO20329912 deja existent, fără modificări
+[2026-03-05 20:45:58] Client CUI=40831912 deja existent, fără modificări
+[2026-03-05 20:45:58] Client CUI=10658535 deja existent, fără modificări
+[2026-03-05 20:45:58] Client CUI=RO46440697 deja existent, fără modificări
+[2026-03-05 20:45:58] Client CUI=RO16174780 deja existent, fără modificări
+[2026-03-05 20:45:58] Client CUI=44317079 deja existent, fără modificări
+[2026-03-05 20:45:58] Client CUI=45506173 deja existent, fără modificări
+[2026-03-05 20:45:58] Client CUI=RO45509021 deja existent, fără modificări
+[2026-03-05 20:45:58] Client CUI=RO16259789 deja existent, fără modificări
+[2026-03-05 20:45:58] Client CUI=RO30910555 deja existent, fără modificări
+[2026-03-05 20:45:58] Client CUI=RO14512582 deja existent, fără modificări
+[2026-03-05 20:45:58] Client CUI=RO15380021 deja existent, fără modificări
+[2026-03-05 20:45:58] Client CUI=R10878344 deja existent, fără modificări
+[2026-03-05 20:45:58] Client CUI=RO18560000 deja existent, fără modificări
+[2026-03-05 20:45:58] Client CUI=RO17545010 deja existent, fără modificări
+[2026-03-05 20:45:58] Client CUI=R14112292 deja existent, fără modificări
+[2026-03-05 20:45:58] Client CUI=RO38284228 deja existent, fără modificări
+[2026-03-05 20:45:58] Client CUI=RO38281132 deja existent, fără modificări
+[2026-03-05 20:45:58] Client CUI=RO29473635 deja existent, fără modificări
+[2026-03-05 20:45:58] Client CUI=RO10990657 deja existent, fără modificări
+[2026-03-05 20:45:58] Client CUI=RO662946 deja existent, fără modificări
+[2026-03-05 20:45:58] Client CUI=R13449606 deja existent, fără modificări
+[2026-03-05 20:45:58] Client CUI=3357165 deja existent, fără modificări
+[2026-03-05 20:45:58] Adăugat client nou: CUI=39886477
+[2026-03-05 20:45:58] Adăugat client nou: CUI=RO32966943
+[2026-03-05 20:45:58] Adăugat client nou: CUI=RO10499030
+[2026-03-05 20:45:58] Adăugat client nou: CUI=RO42109314
+[2026-03-05 20:45:58] Adăugat client nou: CUI=RO28208452
+[2026-03-05 20:45:58] Adăugat client nou: CUI=RO6851308
+[2026-03-05 20:45:58] Adăugat client nou: CUI=RO40840449
+[2026-03-05 20:45:58] Adăugat client nou: CUI=RO22574322
+[2026-03-05 20:45:58] Adăugat client nou: CUI=43579900
+[2026-03-05 20:45:58] Adăugat client nou: CUI=RO48937227
+[2026-03-05 20:45:58] Adăugat client nou: CUI=RO18852536
+[2026-03-05 20:45:58] Adăugat client nou: CUI=RO44134411
+[2026-03-05 20:45:58] Adăugat client nou: CUI=RO6971355
+[2026-03-05 20:45:58] Adăugat client nou: CUI=RO48532835
+[2026-03-05 20:45:58] Adăugat client nou: CUI=RO33077647
+[2026-03-05 20:45:58] Adăugat client nou: CUI=RO25860000
+[2026-03-05 20:45:58] Adăugat client nou: CUI=RO43082624
+[2026-03-05 20:45:58] Adăugat client nou: CUI=47697363
+[2026-03-05 20:45:58] Adăugat client nou: CUI=44301889
+[2026-03-05 20:45:58] Sediu Serie_Amef=DB4090017015 client CUI=18171186 deja existent, fără modificări
+[2026-03-05 20:45:58] Sediu Serie_Amef=DB4090016893 client CUI=18171186 deja existent, fără modificări
+[2026-03-05 20:45:58] Sediu Serie_Amef=DB4090016892 client CUI=18171186 deja existent, fără modificări
+[2026-03-05 20:45:58] Sediu Serie_Amef=DB4090016891 client CUI=18171186 deja existent, fără modificări
+[2026-03-05 20:45:58] Sediu Serie_Amef=DB4090016890 client CUI=18171186 deja existent, fără modificări
+[2026-03-05 20:45:58] Sediu Serie_Amef=DB4090016889 client CUI=18171186 deja existent, fără modificări
+[2026-03-05 20:45:58] Sediu Serie_Amef=DB4500018733 client CUI=43279791 deja existent, fără modificări
+[2026-03-05 20:45:58] Sediu Serie_Amef=ZEX067913 client CUI=RO46769127 deja existent, fără modificări
+[2026-03-05 20:45:58] Sediu Serie_Amef=DB4200003270 client CUI=RO12290706 deja existent, fără modificări
+[2026-03-05 20:45:58] Sediu Serie_Amef=DB4400019147 client CUI=RO12290706 deja existent, fără modificări
+[2026-03-05 20:45:58] Sediu Serie_Amef=DB4200120823 client CUI=RO32069000 deja existent, fără modificări
+[2026-03-05 20:45:58] Sediu Serie_Amef=DB4200037828 client CUI=18205718 deja existent, fără modificări
+[2026-03-05 20:45:58] Actualizat sediu Serie_Amef=DB4700004200 client CUI=RO7377238: Punct_Lucru=?
+[2026-03-05 20:45:58] Sediu Serie_Amef=DB4090014991 client CUI=48989471 deja existent, fără modificări
+[2026-03-05 20:45:58] Sediu Serie_Amef=DB4200043528 client CUI=RO2829170 deja existent, fără modificări
+[2026-03-05 20:45:58] Sediu Serie_Amef=DB4200043529 client CUI=RO2829170 deja existent, fără modificări
+[2026-03-05 20:45:58] Sediu Serie_Amef=DB4200043419 client CUI=RO6902622 deja existent, fără modificări
+[2026-03-05 20:45:58] Sediu Serie_Amef=DB4200043421 client CUI=RO11879321 deja existent, fără modificări
+[2026-03-05 20:45:58] Sediu Serie_Amef=VF10004957 client CUI=RO14000817 deja existent, fără modificări
+[2026-03-05 20:45:58] Sediu Serie_Amef=DP10001994 client CUI=RO4376300 deja existent, fără modificări
+[2026-03-05 20:45:58] Sediu Serie_Amef=ZEX014754 client CUI=30892025 deja existent, fără modificări
+[2026-03-05 20:45:58] Sediu Serie_Amef=DB4090035044 client CUI=RO31292606 deja existent, fără modificări
+[2026-03-05 20:45:58] Sediu Serie_Amef=DB4200030997 client CUI=RO21417214 deja existent, fără modificări
+[2026-03-05 20:45:58] Sediu Serie_Amef=DP100040466 client CUI=10190930 deja existent, fără modificări
+[2026-03-05 20:45:58] Sediu Serie_Amef=DB4700001078 client CUI=RO16743338 deja existent, fără modificări
+[2026-03-05 20:45:58] Sediu Serie_Amef=DB4700004188 client CUI=RO16743338 deja existent, fără modificări
+[2026-03-05 20:45:58] Sediu Serie_Amef=CPE8051718290335 client CUI=RO14190479 deja existent, fără modificări
+[2026-03-05 20:45:58] Sediu Serie_Amef=DB4200017553 client CUI=6949153 deja existent, fără modificări
+[2026-03-05 20:45:58] Sediu Serie_Amef=ZEX002525 client CUI=6949153 deja existent, fără modificări
+[2026-03-05 20:45:58] Sediu Serie_Amef=DB4200043591 client CUI=RO15376500 deja existent, fără modificări
+[2026-03-05 20:45:58] Sediu Serie_Amef=VF10005746 client CUI=RO668981 deja existent, fără modificări
+[2026-03-05 20:45:58] Sediu Serie_Amef=M7MLTAA9254 client CUI=8707989 deja existent, fără modificări
+[2026-03-05 20:45:58] Sediu Serie_Amef=M7MLTAB4227 client CUI=41698815 deja existent, fără modificări
+[2026-03-05 20:45:58] Sediu Serie_Amef=DB4090032198 client CUI=RO20329912 deja existent, fără modificări
+[2026-03-05 20:45:58] Sediu Serie_Amef=ZCM010469 client CUI=40831912 deja existent, fără modificări
+[2026-03-05 20:45:58] Sediu Serie_Amef=VF10005868 client CUI=10658535 deja existent, fără modificări
+[2026-03-05 20:45:58] Sediu Serie_Amef=DB4090005261 client CUI=RO46440697 deja existent, fără modificări
+[2026-03-05 20:45:58] Sediu Serie_Amef=DB4090034793 client CUI=RO46440697 deja existent, fără modificări
+[2026-03-05 20:45:58] Sediu Serie_Amef=M7MLTAA2617 client CUI=RO16174780 deja existent, fără modificări
+[2026-03-05 20:45:58] Sediu Serie_Amef=DB4090034486 client CUI=44317079 deja existent, fără modificări
+[2026-03-05 20:45:58] Adăugat sediu nou Serie_Amef=AC20002558 client CUI=45506173
+[2026-03-05 20:45:58] Sediu Serie_Amef=DB4500020117 client CUI=RO45509021 deja existent, fără modificări
+[2026-03-05 20:45:58] Sediu Serie_Amef=DB4200004987 client CUI=RO16259789 deja existent, fără modificări
+[2026-03-05 20:45:58] Sediu Serie_Amef=4090003477 client CUI=RO30910555 deja existent, fără modificări
+[2026-03-05 20:45:58] Sediu Serie_Amef=DB4200043378 client CUI=RO14512582 deja existent, fără modificări
+[2026-03-05 20:45:58] Sediu Serie_Amef=DB4200075087 client CUI=RO15380021 deja existent, fără modificări
+[2026-03-05 20:45:58] Sediu Serie_Amef=DB4200052888 client CUI=R10878344 deja existent, fără modificări
+[2026-03-05 20:45:58] Sediu Serie_Amef=DB4200043575 client CUI=R10878344 deja existent, fără modificări
+[2026-03-05 20:45:58] Sediu Serie_Amef=DB4200052890 client CUI=R10878344 deja existent, fără modificări
+[2026-03-05 20:45:58] Sediu Serie_Amef=DB4200052889 client CUI=R10878344 deja existent, fără modificări
+[2026-03-05 20:45:58] Sediu Serie_Amef=DB4200052891 client CUI=R10878344 deja existent, fără modificări
+[2026-03-05 20:45:58] Sediu Serie_Amef=DB4700011841 client CUI=RO18560000 deja existent, fără modificări
+[2026-03-05 20:45:58] Sediu Serie_Amef=DB4700011276 client CUI=RO18560000 deja existent, fără modificări
+[2026-03-05 20:45:58] Sediu Serie_Amef=DB4200036480 client CUI=RO17545010 deja existent, fără modificări
+[2026-03-05 20:45:58] Sediu Serie_Amef=DB4700001082 client CUI=R14112292 deja existent, fără modificări
+[2026-03-05 20:45:58] Sediu Serie_Amef=ZEX054663 client CUI=R14112292 deja existent, fără modificări
+[2026-03-05 20:45:58] Sediu Serie_Amef=DB4200030686 client CUI=RO38284228 deja existent, fără modificări
+[2026-03-05 20:45:58] Sediu Serie_Amef=DB4200066002 client CUI=RO38281132 deja existent, fără modificări
+[2026-03-05 20:45:58] Sediu Serie_Amef=DB4200026305 client CUI=RO29473635 deja existent, fără modificări
+[2026-03-05 20:45:58] Sediu Serie_Amef=DB4200043416 client CUI=RO10990657 deja existent, fără modificări
+[2026-03-05 20:45:58] Sediu Serie_Amef=DB4200043584 client CUI=RO662946 deja existent, fără modificări
+[2026-03-05 20:45:58] Sediu Serie_Amef=DB4100001175 client CUI=R13449606 deja existent, fără modificări
+[2026-03-05 20:45:58] Sediu Serie_Amef=AC20003341 client CUI=3357165 deja existent, fără modificări
+[2026-03-05 20:45:58] Sediu Serie_Amef=ZCS024481 client CUI=3357165 deja existent, fără modificări
+[2026-03-05 20:45:58] Sediu Serie_Amef=ZCS026688 client CUI=3357165 deja existent, fără modificări
+[2026-03-05 20:45:58] Sediu Serie_Amef=ZCS024482 client CUI=3357165 deja existent, fără modificări
+[2026-03-05 20:45:58] Adăugat sediu nou Serie_Amef=ZEX017269 client CUI=39886477
+[2026-03-05 20:45:58] Adăugat sediu nou Serie_Amef=DB4200037827 client CUI=RO32966943
+[2026-03-05 20:45:58] Adăugat sediu nou Serie_Amef=DB4200037829 client CUI=RO32966943
+[2026-03-05 20:45:58] Adăugat sediu nou Serie_Amef=DB4200019655 client CUI=RO10499030
+[2026-03-05 20:45:58] Adăugat sediu nou Serie_Amef=DB4200097020 client CUI=RO42109314
+[2026-03-05 20:45:58] Adăugat sediu nou Serie_Amef=DB4400002482 client CUI=RO28208452
+[2026-03-05 20:45:58] Adăugat sediu nou Serie_Amef=DB4200065438 client CUI=RO6851308
+[2026-03-05 20:45:58] Adăugat sediu nou Serie_Amef=DB4200065439 client CUI=RO6851308
+[2026-03-05 20:45:58] Adăugat sediu nou Serie_Amef=DB4200097151 client CUI=RO40840449
+[2026-03-05 20:45:58] Adăugat sediu nou Serie_Amef=DB4200126847 client CUI=RO6851308
+[2026-03-05 20:45:58] Adăugat sediu nou Serie_Amef=DB4200043593 client CUI=RO22574322
+[2026-03-05 20:45:58] Adăugat sediu nou Serie_Amef=ZEX056248 client CUI=43579900
+[2026-03-05 20:45:58] Adăugat sediu nou Serie_Amef=DB4700004202 client CUI=RO7377238
+[2026-03-05 20:45:58] Adăugat sediu nou Serie_Amef=DB4700004203 client CUI=RO7377238
+[2026-03-05 20:45:58] Adăugat sediu nou Serie_Amef=DB4090040536 client CUI=RO48937227
+[2026-03-05 20:45:58] Adăugat sediu nou Serie_Amef=DB4200065434 client CUI=RO18852536
+[2026-03-05 20:45:58] Adăugat sediu nou Serie_Amef=DB4500020882 client CUI=RO44134411
+[2026-03-05 20:45:58] Adăugat sediu nou Serie_Amef=DB4200043381 client CUI=RO6971355
+[2026-03-05 20:45:58] Adăugat sediu nou Serie_Amef=ZEX063761 client CUI=RO48532835
+[2026-03-05 20:45:58] Adăugat sediu nou Serie_Amef=M7MLTAA2616 client CUI=RO33077647
+[2026-03-05 20:45:58] Adăugat sediu nou Serie_Amef=M7MLTAA6037 client CUI=RO25860000
+[2026-03-05 20:45:58] Adăugat sediu nou Serie_Amef=VF50001751 client CUI=RO43082624
+[2026-03-05 20:45:58] Adăugat sediu nou Serie_Amef=DB4090009399 client CUI=47697363
+[2026-03-05 20:45:58] Adăugat sediu nou Serie_Amef=DB4090021420 client CUI=44301889
+[2026-03-05 20:45:58] Istoric abonament Serie_Amef=DB4090017015 client CUI=18171186 deja existent, fără modificări
+[2026-03-05 20:45:58] Istoric abonament Serie_Amef=DB4090017015 client CUI=18171186 deja existent, fără modificări
+[2026-03-05 20:45:58] Istoric abonament Serie_Amef=DB4400019147 client CUI=RO12290706 deja existent, fără modificări
+[2026-03-05 20:45:58] Istoric abonament Serie_Amef=DB4400019147 client CUI=RO12290706 deja existent, fără modificări
+[2026-03-05 20:45:58] Istoric abonament Serie_Amef=DB4200120823 client CUI=RO32069000 deja existent, fără modificări
+[2026-03-05 20:45:58] Istoric abonament Serie_Amef=DB4200037828 client CUI=18205718 deja existent, fără modificări
+[2026-03-05 20:45:58] Istoric abonament Serie_Amef=DB4700004200 client CUI=RO7377238 deja existent, fără modificări
+[2026-03-05 20:45:58] Istoric abonament Serie_Amef=ZEX067913 client CUI=RO46769127 deja existent, fără modificări
+[2026-03-05 20:45:58] Istoric abonament Serie_Amef=ZEX067913 client CUI=RO46769127 deja existent, fără modificări
+[2026-03-05 20:45:58] Istoric abonament Serie_Amef=DB4090017015 client CUI=18171186 deja existent, fără modificări
+[2026-03-05 20:45:58] Istoric abonament Serie_Amef=DB4090016893 client CUI=18171186 deja existent, fără modificări
+[2026-03-05 20:45:58] Istoric abonament Serie_Amef=CPE8051718290335 client CUI=RO14190479 deja existent, fără modificări
+[2026-03-05 20:45:58] Istoric abonament Serie_Amef=DB4200017553 client CUI=6949153 deja existent, fără modificări
+[2026-03-05 20:45:58] Istoric abonament Serie_Amef=ZEX002525 client CUI=6949153 deja existent, fără modificări
+[2026-03-05 20:45:58] Istoric abonament Serie_Amef=DB4200043591 client CUI=RO15376500 deja existent, fără modificări
+[2026-03-05 20:45:58] Istoric abonament Serie_Amef=M7MLTAA9254 client CUI=8707989 deja existent, fără modificări
+[2026-03-05 20:45:58] Istoric abonament Serie_Amef=DB4090032198 client CUI=RO20329912 deja existent, fără modificări
+[2026-03-05 20:45:58] Istoric abonament Serie_Amef=DB4700001078 client CUI=RO16743338 deja existent, fără modificări
+[2026-03-05 20:45:58] Istoric abonament Serie_Amef=DB4700004188 client CUI=RO16743338 deja existent, fără modificări
+[2026-03-05 20:45:58] Istoric abonament Serie_Amef=DB4090016893 client CUI=18171186 deja existent, fără modificări
+[2026-03-05 20:45:58] Istoric abonament Serie_Amef=DB4090016892 client CUI=18171186 deja existent, fără modificări
+[2026-03-05 20:45:58] Istoric abonament Serie_Amef=DB4090016891 client CUI=18171186 deja existent, fără modificări
+[2026-03-05 20:45:58] Istoric abonament Serie_Amef=DB4090016890 client CUI=18171186 deja existent, fără modificări
+[2026-03-05 20:45:58] Istoric abonament Serie_Amef=DB4090016889 client CUI=18171186 deja existent, fără modificări
+[2026-03-05 20:45:58] Istoric abonament Serie_Amef=VF10005868 client CUI=10658535 deja existent, fără modificări
+[2026-03-05 20:45:58] Istoric abonament Serie_Amef=VF10005868 client CUI=10658535 deja existent, fără modificări
+[2026-03-05 20:45:58] Istoric abonament Serie_Amef=ZCM010469 client CUI=40831912 deja existent, fără modificări
+[2026-03-05 20:45:58] Istoric abonament Serie_Amef=M7MLTAA2617 client CUI=RO16174780 deja existent, fără modificări
+[2026-03-05 20:45:58] Istoric abonament Serie_Amef=DB4090005261 client CUI=RO46440697 deja existent, fără modificări
+[2026-03-05 20:45:58] Istoric abonament Serie_Amef=DB4090034793 client CUI=RO46440697 deja existent, fără modificări
+[2026-03-05 20:45:58] Istoric abonament Serie_Amef=DB4090005261 client CUI=RO46440697 deja existent, fără modificări
+[2026-03-05 20:45:58] Istoric abonament Serie_Amef=DB4090034793 client CUI=RO46440697 deja existent, fără modificări
+[2026-03-05 20:45:58] Istoric abonament Serie_Amef=DB4090034486 client CUI=44317079 deja existent, fără modificări
+[2026-03-05 20:45:58] Istoric abonament Serie_Amef=DB4500020117 client CUI=RO45509021 deja existent, fără modificări
+[2026-03-05 20:45:58] Istoric abonament Serie_Amef=DB4500020117 client CUI=RO45509021 deja existent, fără modificări
+[2026-03-05 20:45:58] Istoric abonament Serie_Amef=AC20002558 client CUI=45506173 deja existent, fără modificări
+[2026-03-05 20:45:58] Istoric abonament Serie_Amef=AC20002558 client CUI=45506173 deja existent, fără modificări
+[2026-03-05 20:45:58] Istoric abonament Serie_Amef=AC20003341 client CUI=3357165 deja existent, fără modificări
+[2026-03-05 20:45:58] Istoric abonament Serie_Amef=AC20003341 client CUI=3357165 deja existent, fără modificări
+[2026-03-05 20:45:58] Adăugat istoric abonament Serie_Amef=DB4200097151 client CUI=RO40840449
+[2026-03-05 20:45:58] Adăugat istoric abonament Serie_Amef=DB4200097151 client CUI=RO40840449
+[2026-03-05 20:45:58] Adăugat istoric abonament Serie_Amef=ZEX056248 client CUI=43579900
+[2026-03-05 20:45:58] Adăugat istoric abonament Serie_Amef=DB4090040536 client CUI=RO48937227
+[2026-03-05 20:45:58] Adăugat istoric abonament Serie_Amef=DB4200065434 client CUI=RO18852536
+[2026-03-05 20:45:58] Adăugat istoric abonament Serie_Amef=DB4200043381 client CUI=RO6971355
+[2026-03-05 20:45:58] Adăugat istoric abonament Serie_Amef=ZEX063761 client CUI=RO48532835
+[2026-03-05 20:45:58] Adăugat istoric abonament Serie_Amef=ZEX063761 client CUI=RO48532835
+[2026-03-05 20:45:58] Adăugat istoric abonament Serie_Amef=M7MLTAA2616 client CUI=RO33077647
+[2026-03-05 20:45:58] Adăugat istoric abonament Serie_Amef=M7MLTAA6037 client CUI=RO25860000
+[2026-03-05 20:45:58] Adăugat istoric abonament Serie_Amef=VF50001751 client CUI=RO43082624
+[2026-03-05 20:45:58] Istoric abonament Serie_Amef=AC20002558 client CUI=45506173 deja existent, fără modificări
+[2026-03-05 20:45:58] Istoric abonament Serie_Amef=AC20002558 client CUI=45506173 deja existent, fără modificări
+[2026-03-05 20:45:58] Adăugat istoric abonament Serie_Amef=DB4090009399 client CUI=47697363
+[2026-03-05 20:45:58] Adăugat istoric abonament Serie_Amef=DB4090009399 client CUI=47697363
+[2026-03-05 20:45:58] Adăugat istoric abonament Serie_Amef=DB4090021420 client CUI=44301889
+[2026-03-05 20:45:58] Adăugat istoric abonament Serie_Amef=DB4090021420 client CUI=44301889
+[2026-03-05 20:45:58] === MERGE COMPLET FINALIZAT ===
