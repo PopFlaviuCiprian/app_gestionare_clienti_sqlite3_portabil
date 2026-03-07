@@ -14,7 +14,6 @@ from dotenv import load_dotenv
 from tkinter import Toplevel, Label, Entry, Button
 import sqlite3
 from decimal import Decimal
-from tkinter import filedialog
 import shutil
 import threading
 import smtplib
@@ -27,6 +26,12 @@ from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
 from reportlab.lib.styles import getSampleStyleSheet
 from PIL import Image, ImageTk
+import pandas as pd
+from docxtpl import DocxTemplate
+import openpyxl
+from docx2pdf import convert
+from docx import Document
+from docx2pdf import convert
 
 """
 load_dotenv()  # încarcă variabilele din .env
@@ -35,7 +40,7 @@ if not API_KEY:
     raise RuntimeError("API KEY lipsă! Verifică fișierul .env")
 """
 
-API_KEY = "api aici"
+API_KEY = "p3tze7ux-ft6wflmj-caocdcdc-za3qm51m"  # aici pui cheia api generata altfel ai eroare firma negasita
 ADMIN_PASSWORD = "cipri"  # parolă pentru ștergere client din baza de date
 
 DB_NAME = "baza_date.db"
@@ -2122,6 +2127,206 @@ def sterge_selectie_istoric(tree):
     finally:
         conn.close()
 
+'''
+Zona functiilor pentru generarea  documentelor pdf
+declaratie instalare, pv defisca;izare, fisa service, contract service, etc
+'''
+def get_client_selectat():
+    selected = tree.selection()
+    item = tree.item(selected[0])
+    valori = item["values"]
+    id_client = valori[0]
+    serie_amef = valori[1] # coloana cu serie amef
+
+    if not selected:
+        messagebox.showwarning("Selectează client", "Selectează un client.")
+        return None
+
+    item = tree.item(selected[0])
+    valori = item["values"]
+
+    return valori[0]  # ID client
+
+def get_date_client(id_client):
+
+    conn = conectare_db()
+    conn.row_factory = sqlite3.Row
+    cursor = conn.cursor()
+
+    cursor.execute("""
+        SELECT 
+            Administrator,
+            Nume_Firma,
+            Sediu_Social            
+        FROM tabela_date_clienti
+        WHERE Nr_Crt = ?
+    """, (id_client,))
+
+    row = cursor.fetchone()
+    conn.close()
+
+    if not row:
+        return None
+
+    return dict(row)
+
+def get_amef_client(id_client, serie_amef):
+
+    conn = conectare_db()
+    conn.row_factory = sqlite3.Row
+    cursor = conn.cursor()
+
+    # normalizează serie_amef
+    serie_amef = str(serie_amef).strip().upper()
+    print("ID client:", id_client)
+    print("Serie AMEF selectată:", repr(serie_amef))
+
+    cursor.execute("""
+        SELECT Punct_Lucru, Serie_Amef, Model_Amef, Nui, Tehnician
+        FROM tabela_sedii_secundare
+        WHERE Id_Client = ? AND UPPER(TRIM(Serie_Amef)) = ?
+    """, (id_client, serie_amef))
+
+    row = cursor.fetchone()
+    conn.close()
+
+    if not row:
+        return None
+
+    return dict(row)
+
+def citeste_excel_modele():
+
+    df = pd.read_excel("mapping_model_amef.xlsx")
+    df.columns = df.columns.str.strip().str.upper()
+
+    modele = {}
+
+    for _, row in df.iterrows():
+        model = str(row["MODEL_AMEF"]).strip().upper()
+        modele[model] = {
+            "AVIZ_DISTRIBUTIE": row.get("AVIZ_DISTRIBUTIE", ""),
+            "DATA_AVIZ": row.get("DATA_AVIZ", "")
+        }
+    return modele
+
+def citeste_excel_tehnicieni():
+    df = pd.read_excel("mapping_tehnician.xlsx")
+    df.columns = df.columns.str.strip().str.upper()
+
+    tehnicieni = {}
+    for _, row in df.iterrows():
+        nume = str(row["NUME"]).strip()
+        tehnicieni[nume] = {
+            "SIGILIU": row.get("SIGILIU", ""),
+            "LEGITIMATIE": row.get("LEGITIMATIE", "")
+        }
+    return tehnicieni
+
+
+def genereaza_declaratie():
+    # --- Selectie rând din Treeview ---
+    selected = tree.selection()
+    if not selected:
+        messagebox.showwarning("Selectează client/serie", "Selectează un rând.")
+        return
+
+    item = tree.item(selected[0])
+    valori = item["values"]
+
+    # Presupunem coloanele: 0=Nr_Crt client, 1=Serie_Amef, 2=Model, ...
+    id_client = valori[0]
+    serie_amef = str(valori[12]).strip() # coloana serie amef din treeview
+
+    # Preluare date din DB
+    client = get_date_client(id_client)
+    amef = get_amef_client(id_client, serie_amef)
+
+    if not client or not amef:
+        messagebox.showerror("Eroare", "Nu s-au găsit date pentru client/serie selectata.")
+        return
+
+    # 2️⃣ citire Excel model amef
+    modele_excel = citeste_excel_modele()
+    tehnicieni_excel = citeste_excel_tehnicieni()
+
+    # Mapare amef
+    model_db = amef["Model_Amef"].strip().upper()
+    aviz = modele_excel.get(model_db, {}).get("AVIZ_DISTRIBUTIE", "")
+    data_aviz = modele_excel.get(model_db, {}).get("DATA_AVIZ", "")
+
+    # Mapare Tehnician
+    nume_tehnician = amef.get("Tehnician", "").strip().upper()
+    sigiliu_tehnician = ""
+    legitimatie_tehnician = ""
+
+    # normalizează cheile din Excel
+    tehnicieni_excel_norm = {k.strip().upper(): v for k, v in tehnicieni_excel.items()}
+
+
+    if nume_tehnician in tehnicieni_excel_norm:
+        sigiliu_tehnician = tehnicieni_excel_norm[nume_tehnician]["SIGILIU"]
+        legitimatie_tehnician = tehnicieni_excel_norm[nume_tehnician]["LEGITIMATIE"]
+    else:
+        print(f"Tehnician {nume_tehnician} nu a fost găsit în Excel")
+
+    # --- Dicționar pentru template ---
+    date = {
+        "{Administrator}": client["Administrator"],
+        "{Nume_Firma}": client["Nume_Firma"],
+        "{Sediu_Social}": client["Sediu_Social"],
+        "{Punct_Lucru}": amef["Punct_Lucru"],
+        "{Serie_Amef}": amef["Serie_Amef"],
+        "{Model_Amef}": amef["Model_Amef"],
+        "{Nui}": amef["Nui"],
+        "{Aviz_Distributie}": aviz,
+        "{Data_Aviz}": data_aviz,
+        "{Sigiliu}": sigiliu_tehnician,
+        "{Tehnician}": nume_tehnician,
+        "{Legitimatie}": legitimatie_tehnician
+    }
+
+    # --- Înlocuire placeholder în paragrafe și tabele ---
+    doc = Document("template/declaratie_instalare.docx")
+    # Paragrafe
+    for p in doc.paragraphs:
+        for key, value in date.items():
+            if key in p.text:
+                p.text = p.text.replace(key, str(value))
+
+    # Tabele
+    for table in doc.tables:
+        for row in table.rows:
+            for cell in row.cells:
+                for key, value in date.items():
+                    if key in cell.text:
+                        cell.text = cell.text.replace(key, str(value))
+
+    # --- Dialog pentru a alege calea de salvare ---
+    file_path = filedialog.asksaveasfilename(
+        defaultextension=".docx",
+        filetypes=[("Document Word", "*.docx")],
+        initialfile=f"declaratie_{id_client}_{serie_amef}.docx",
+        title="Salvează declarația"
+    )
+
+    if not file_path:  # utilizatorul a apasat Cancel
+        return
+
+    # --- Salvare docx ---
+    doc.save(file_path)
+
+    # --- Optional: convertire PDF dacă ai funcția convert ---
+    pdf_path = file_path.replace(".docx", ".pdf")
+    convert(file_path, pdf_path)
+
+    # nume_docx = f"declaratie_{id_client}.docx"
+    # nume_pdf = f"declaratie_{id_client}.pdf"
+    #
+    # doc.save(nume_docx)
+    # convert(nume_docx, nume_pdf)
+
+    messagebox.showinfo("Succes", "Declarația a fost generată.")
 
 # =========================
 # User Interface setup
@@ -2199,34 +2404,10 @@ entry_tva.bind("<KeyRelease>", actualizeaza_valoare_contract)
 # -------------------------
 # FRAME BUTOANE
 # -------------------------
-frame_butoane = tk.Frame(root)
-frame_butoane.grid(row=1, column=0, columnspan=3, pady=10)
-
-btn_params = [
-    ("Caută cu API", lambda: cauta_firma(), "#d4f0d0"),
-    ("Salvează client", lambda: salveaza_client(), "#cfe2f3"),
-    # ("Modifică date client", lambda: modifica_date_client(), "#cfe2f3"),
-    # ("Modifica Tenhician", lambda: modifica_tehnician(), "#cfe2f3"),
-    ("Prelungeste 1 AN", lambda: buton_prelungire(), "#cfe2f3"),
-    ("Prelungeste 3 luni", lambda: buton_prelungire_3_luni(), "#cfe2f3"),
-    ("Verifică TVA (ANAF)", lambda: webbrowser.open_new("https://www.anaf.ro/RegistruTVA/"), "#0000FF"),
-    ("Afiseaza Abonam.", lambda: alerta_abonamente_combinate(), "#ffd966"),  # galben
-    ("Istoric Abonament", lambda: popup_istoric_abonamente(), "#008080"),  # verde
-    ("Resetare câmpuri", lambda: resetare_toate_campurile(), "#cfe2f3"),
-    ("Merge DB (admin)", lambda: update_baza_protejat(), "#f4b183")  # Combinarea a 2 baze de date sqlite3
-
-]
-for i, (text, cmd, color) in enumerate(btn_params):
-    tk.Button(frame_butoane, text=text, command=cmd, width=16, bg=color, font=("Arial", 10, "bold")).grid(row=i // 4,
-                                                                                                          column=i % 4,
-                                                                                                          pady=5,
-                                                                                                          padx=10)
 
 """
 Clasa care creaza hover cu mesajele deasupra butoanelor cand trecem cu mouseul peste ele
 """
-
-
 class ToolTip:
     def __init__(self, widget, text):
         self.widget = widget
@@ -2254,26 +2435,38 @@ class ToolTip:
             self.tip_window = None
 
 
-# =========================
-# Butoane + Tooltip
-# =========================
-btn_descriptions = [
-    "Caută firma folosind API-ul ANAF",
-    "Salvează clientul în baza de date locală",
-    "Prelungește abonamentul curent cu 1 AN",
-    "Prelungește abonamentul curent cu 3 luni",
-    "Deschide site-ul ANAF pentru verificare TVA",
-    "Afișează alerta cu expirarea abonamentelor",
-    "Afișează istoricul abonamentelor Service si Gprs",
-    "Resetează toate câmpurile din formular",
-    "Combina si actualizeaza 2 baze de date"
-]
+frame_butoane = tk.Frame(root)
+frame_butoane.grid(row=1, column=0, columnspan=3, pady=10)
 
-# Creăm butoanele și atașăm tooltip
-for i, (text, cmd, color) in enumerate(btn_params):
-    btn = tk.Button(frame_butoane, text=text, command=cmd, width=16, bg=color, font=("Arial", 10, "bold"))
-    btn.grid(row=i // 4, column=i % 4, pady=5)
-    ToolTip(btn, btn_descriptions[i])
+btn_params = [
+    ("Caută cu API", lambda: cauta_firma(), "#d4f0d0", "Caută firma folosind API-ul ANAF"),
+    ("Salvează client", lambda: salveaza_client(), "#cfe2f3", "Salvează clientul în baza de date locală"),
+    ("Prelungeste 1 AN", lambda: buton_prelungire(), "#cfe2f3", "Prelungește abonamentul curent cu 1 an"),
+    ("Prelungeste 3 luni", lambda: buton_prelungire_3_luni(), "#cfe2f3", "Prelungește abonamentul curent cu 3 luni"),
+    ("Verifică TVA (ANAF)", lambda: webbrowser.open_new("https://www.anaf.ro/RegistruTVA/"), "#0000FF", "Deschide site-ul ANAF pentru verificare TVA"),
+    ("Afiseaza Abonam.", lambda: alerta_abonamente_combinate(), "#ffd966", "Afișează alerta cu expirarea abonamentelor"),
+    ("Istoric Abonament", lambda: popup_istoric_abonamente(), "#008080", "Afișează istoricul abonamentelor Service și GPRS"),
+    ("Resetare câmpuri", lambda: resetare_toate_campurile(), "#cfe2f3", "Resetează toate câmpurile din formular"),
+    ("Merge DB (admin)", lambda: update_baza_protejat(), "#f4b183", "Combină și actualizează 2 baze de date"),
+    ("Declarație instalare", lambda: genereaza_declaratie(), "#d9ead3", "Generează declarație de instalare PDF")
+    # ("Proces verbal defiscalizare", lambda: genereaza_document("proces_verbal_defiscalizare"), "#fce5cd", "Generează proces verbal de defiscalizare PDF"),
+    # ("Fișă intervenție", lambda: genereaza_document("fisa_interventie"), "#cfe2f3", "Generează fișă de service PDF"),
+    # ("Contract service", lambda: genereaza_document("contract_service"), "#ead1dc", "Generează contract de service PDF"),
+]
+for i, (text, cmd, color, descriere) in enumerate(btn_params):
+    btn = tk.Button(
+        frame_butoane,
+        text=text,
+        command=cmd,
+        width=16,
+        bg=color,
+        font=("Arial", 10, "bold")
+    )
+
+    btn.grid(row=i // 4, column=i % 4, pady=5, padx=10)
+
+    ToolTip(btn, descriere)
+
 
 # -------------------------
 # FRAME TREE + SEARCH (sub butoane)

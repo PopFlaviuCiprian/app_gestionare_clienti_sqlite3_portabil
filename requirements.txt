@@ -7,3 +7,8 @@ pyinstaller
 cryptography
 shu
 reportlab
+pypdf
+pandas
+docxtpl
+openpyxl
+docx2pdf
