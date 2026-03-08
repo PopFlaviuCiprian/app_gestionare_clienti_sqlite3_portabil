@@ -2157,7 +2157,8 @@ def get_date_client(id_client):
         SELECT 
             Administrator,
             Nume_Firma,
-            Sediu_Social            
+            Sediu_Social,
+            Cui          
         FROM tabela_date_clienti
         WHERE Nr_Crt = ?
     """, (id_client,))
@@ -2263,6 +2264,7 @@ def genereaza_declaratie():
     # normalizează cheile din Excel
     tehnicieni_excel_norm = {k.strip().upper(): v for k, v in tehnicieni_excel.items()}
 
+    data_azi = datetime.today().strftime("%d.%m.%Y")
 
     if nume_tehnician in tehnicieni_excel_norm:
         sigiliu_tehnician = tehnicieni_excel_norm[nume_tehnician]["SIGILIU"]
@@ -2275,6 +2277,7 @@ def genereaza_declaratie():
         "{Administrator}": client["Administrator"],
         "{Nume_Firma}": client["Nume_Firma"],
         "{Sediu_Social}": client["Sediu_Social"],
+        "{Cui}": client["Cui"],
         "{Punct_Lucru}": amef["Punct_Lucru"],
         "{Serie_Amef}": amef["Serie_Amef"],
         "{Model_Amef}": amef["Model_Amef"],
@@ -2283,7 +2286,8 @@ def genereaza_declaratie():
         "{Data_Aviz}": data_aviz,
         "{Sigiliu}": sigiliu_tehnician,
         "{Tehnician}": nume_tehnician,
-        "{Legitimatie}": legitimatie_tehnician
+        "{Legitimatie}": legitimatie_tehnician,
+        "{Data}": data_azi
     }
 
     # --- Înlocuire placeholder în paragrafe și tabele ---
@@ -2448,7 +2452,7 @@ btn_params = [
     ("Istoric Abonament", lambda: popup_istoric_abonamente(), "#008080", "Afișează istoricul abonamentelor Service și GPRS"),
     ("Resetare câmpuri", lambda: resetare_toate_campurile(), "#cfe2f3", "Resetează toate câmpurile din formular"),
     ("Merge DB (admin)", lambda: update_baza_protejat(), "#f4b183", "Combină și actualizează 2 baze de date"),
-    ("Declarație instalare", lambda: genereaza_declaratie(), "#d9ead3", "Generează declarație de instalare PDF")
+    ("Genereaza DI", lambda: genereaza_declaratie(), "#d9ead3", "Generează declarație de instalare PDF")
     # ("Proces verbal defiscalizare", lambda: genereaza_document("proces_verbal_defiscalizare"), "#fce5cd", "Generează proces verbal de defiscalizare PDF"),
     # ("Fișă intervenție", lambda: genereaza_document("fisa_interventie"), "#cfe2f3", "Generează fișă de service PDF"),
     # ("Contract service", lambda: genereaza_document("contract_service"), "#ead1dc", "Generează contract de service PDF"),
