@@ -12,3 +12,10 @@ pandas
 docxtpl
 openpyxl
 docx2pdf
+jinja2
+xlrd
+pytz
+babel
+pillow
+pywin32
+docx

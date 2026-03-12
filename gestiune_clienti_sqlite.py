@@ -32,6 +32,7 @@ import openpyxl
 from docx import Document
 from docx2pdf import convert
 import re
+import win32com.client
 
 
 """
@@ -2132,6 +2133,36 @@ def sterge_selectie_istoric(tree):
 Zona functiilor pentru generarea  documentelor pdf
 declaratie instalare, pv defisca;izare, fisa service, contract service, etc
 '''
+
+def convert_docx_to_pdf(docx_path, pdf_path):
+
+    try:
+        import os
+        import win32com.client
+        os.system("taskkill /f /im WINWORD.EXE >nul 2>&1")
+
+        word = win32com.client.DispatchEx("Word.Application")
+        word.Visible = False
+
+        doc = word.Documents.Open(os.path.abspath(docx_path))
+        doc.SaveAs(os.path.abspath(pdf_path), FileFormat=17)
+        doc.Close(False)
+
+        word.Quit()
+
+    except Exception as e:
+        print("Eroare conversie PDF:", e)
+
+
+def resource_path(relative_path):
+    """Returnează calea corectă și în exe și în python"""
+    try:
+        base_path = sys._MEIPASS
+    except Exception:
+        base_path = os.path.abspath(".")
+
+    return os.path.join(base_path, relative_path)
+
 def nume_fisier_valid(text):
     text = str(text)
     text = re.sub(r'[\\/*?:"<>|]', "", text)  # elimina caractere interzise
@@ -2206,7 +2237,7 @@ def get_amef_client(id_client, serie_amef):
 
 def citeste_excel_modele():
 
-    df = pd.read_excel("mapping_model_amef.xlsx")
+    df = pd.read_excel(resource_path("mapping_model_amef.xlsx"))
     df.columns = df.columns.str.strip().str.upper()
 
     modele = {}
@@ -2220,7 +2251,7 @@ def citeste_excel_modele():
     return modele
 
 def citeste_excel_tehnicieni():
-    df = pd.read_excel("mapping_tehnician.xlsx")
+    df = pd.read_excel(resource_path("mapping_tehnician.xlsx"))
     df.columns = df.columns.str.strip().str.upper()
 
     tehnicieni = {}
@@ -2234,390 +2265,546 @@ def citeste_excel_tehnicieni():
 
 # Functie pentru generarea declaratiei de instalare in pdf si docx
 def genereaza_declaratie():
-    # --- Selectie rând din Treeview ---
-    selected = tree.selection()
-    if not selected:
-        messagebox.showwarning("Selectează client/serie", "Selectează un rând.")
-        return
+    progress = None
+    progress_win = None
+    try:
+        # --- Selectie rând din Treeview ---
+        selected = tree.selection()
+        if not selected:
+            messagebox.showwarning("Selectează client/serie", "Selectează un rând.")
+            return
 
-    item = tree.item(selected[0])
-    valori = item["values"]
+        item = tree.item(selected[0])
+        valori = item["values"]
 
-    # Presupunem coloanele: 0=Nr_Crt client, 1=Serie_Amef, 2=Model, ...
-    id_client = valori[0]
-    serie_amef = str(valori[12]).strip() # coloana serie amef din treeview
+        # Presupunem coloanele: 0=Nr_Crt client, 1=Serie_Amef, 2=Model, ...
+        id_client = valori[0]
+        serie_amef = str(valori[12]).strip() # coloana serie amef din treeview
 
-    # Preluare date din DB
-    client = get_date_client(id_client)
-    amef = get_amef_client(id_client, serie_amef)
+        # Preluare date din DB
+        client = get_date_client(id_client)
+        amef = get_amef_client(id_client, serie_amef)
 
-    if not client or not amef:
-        messagebox.showerror("Eroare", "Nu s-au găsit date pentru client/serie selectata.")
-        return
-    nume_firma = nume_fisier_valid(client["Nume_Firma"])
+        if not client or not amef:
+            messagebox.showerror("Eroare", "Nu s-au găsit date pentru client/serie selectata.")
+            return
+        nume_firma = nume_fisier_valid(client["Nume_Firma"])
 
 
-    # 2️⃣ citire Excel model amef
-    modele_excel = citeste_excel_modele()
-    tehnicieni_excel = citeste_excel_tehnicieni()
+        # 2️⃣ citire Excel model amef
+        modele_excel = citeste_excel_modele()
+        tehnicieni_excel = citeste_excel_tehnicieni()
 
-    # Mapare amef
-    model_db = amef["Model_Amef"].strip().upper()
-    aviz = modele_excel.get(model_db, {}).get("AVIZ_DISTRIBUTIE", "")
-    data_aviz = modele_excel.get(model_db, {}).get("DATA_AVIZ", "")
-    if data_aviz:
-        if isinstance(data_aviz, datetime):
-            data_aviz = data_aviz.strftime("%d-%m-%Y")
+        # Mapare amef
+        model_db = amef["Model_Amef"].strip().upper()
+        aviz = modele_excel.get(model_db, {}).get("AVIZ_DISTRIBUTIE", "")
+        data_aviz = modele_excel.get(model_db, {}).get("DATA_AVIZ", "")
+        if data_aviz:
+            if isinstance(data_aviz, datetime):
+                data_aviz = data_aviz.strftime("%d-%m-%Y")
 
+            else:
+                try:
+                    data_aviz = datetime.strptime(str(data_aviz), "%m/%d/%Y").strftime("%d-%m-%Y")
+                except:
+                    pass
+
+        # Mapare Tehnician
+        nume_tehnician = amef.get("Tehnician", "").strip().upper()
+        sigiliu_tehnician = ""
+        legitimatie_tehnician = ""
+
+        # normalizează cheile din Excel
+        tehnicieni_excel_norm = {k.strip().upper(): v for k, v in tehnicieni_excel.items()}
+
+        data_azi = datetime.today().strftime("%d.%m.%Y")
+
+        # Data creata pentru campul data achizitionarii amef
+        data_achizitionare = (datetime.today() - timedelta(days=3)).strftime("%d.%m.%Y")
+
+        if nume_tehnician in tehnicieni_excel_norm:
+            sigiliu_tehnician = tehnicieni_excel_norm[nume_tehnician]["SIGILIU"]
+            legitimatie_tehnician = tehnicieni_excel_norm[nume_tehnician]["LEGITIMATIE"]
         else:
-            try:
-                data_aviz = datetime.strptime(str(data_aviz), "%m/%d/%Y").strftime("%d-%m-%Y")
-            except:
-                pass
+            print(f"Tehnician {nume_tehnician} nu a fost găsit în Excel")
 
-    # Mapare Tehnician
-    nume_tehnician = amef.get("Tehnician", "").strip().upper()
-    sigiliu_tehnician = ""
-    legitimatie_tehnician = ""
+        # --- Dicționar pentru template ---
+        date = {
+            "{Administrator}": client["Administrator"],
+            "{Nume_Firma}": client["Nume_Firma"],
+            "{Sediu_Social}": client["Sediu_Social"],
+            "{Cui}": client["Cui"],
+            "{Punct_Lucru}": amef["Punct_Lucru"],
+            "{Serie_Amef}": amef["Serie_Amef"],
+            "{Model_Amef}": amef["Model_Amef"],
+            "{Nui}": amef["Nui"],
+            "{Aviz_Distributie}": aviz,
+            "{Data_Aviz}": data_aviz,
+            "{Sigiliu}": sigiliu_tehnician,
+            "{Tehnician}": nume_tehnician,
+            "{Legitimatie}": legitimatie_tehnician,
+            "{Data}": data_azi,
+            "{Data_Achizitionare}": data_achizitionare
+        }
 
-    # normalizează cheile din Excel
-    tehnicieni_excel_norm = {k.strip().upper(): v for k, v in tehnicieni_excel.items()}
+        def replace_text_in_paragraph(paragraph, data):
 
-    data_azi = datetime.today().strftime("%d.%m.%Y")
+            full_text = "".join(run.text for run in paragraph.runs)
 
-    # Data creata pentru campul data achizitionarii amef
-    data_achizitionare = (datetime.today() - timedelta(days=3)).strftime("%d.%m.%Y")
+            replaced = False
 
-    if nume_tehnician in tehnicieni_excel_norm:
-        sigiliu_tehnician = tehnicieni_excel_norm[nume_tehnician]["SIGILIU"]
-        legitimatie_tehnician = tehnicieni_excel_norm[nume_tehnician]["LEGITIMATIE"]
-    else:
-        print(f"Tehnician {nume_tehnician} nu a fost găsit în Excel")
+            for key, value in data.items():
+                if key in full_text:
+                    full_text = full_text.replace(key, str(value))
+                    replaced = True
 
-    # --- Dicționar pentru template ---
-    date = {
-        "{Administrator}": client["Administrator"],
-        "{Nume_Firma}": client["Nume_Firma"],
-        "{Sediu_Social}": client["Sediu_Social"],
-        "{Cui}": client["Cui"],
-        "{Punct_Lucru}": amef["Punct_Lucru"],
-        "{Serie_Amef}": amef["Serie_Amef"],
-        "{Model_Amef}": amef["Model_Amef"],
-        "{Nui}": amef["Nui"],
-        "{Aviz_Distributie}": aviz,
-        "{Data_Aviz}": data_aviz,
-        "{Sigiliu}": sigiliu_tehnician,
-        "{Tehnician}": nume_tehnician,
-        "{Legitimatie}": legitimatie_tehnician,
-        "{Data}": data_azi,
-        "{Data_Achizitionare}": data_achizitionare
-    }
+            if replaced:
+                for run in paragraph.runs:
+                    run.text = ""
 
-    def replace_text_in_paragraph(paragraph, data):
+                paragraph.runs[0].text = full_text
 
-        full_text = "".join(run.text for run in paragraph.runs)
+        template_path = resource_path("template/declaratie_instalare.docx")
 
-        replaced = False
+        if not os.path.exists(template_path):
+            messagebox.showerror(
+                "Eroare",
+                f"Template lipsă:\n{template_path}"
+            )
+            return
 
-        for key, value in data.items():
-            if key in full_text:
-                full_text = full_text.replace(key, str(value))
-                replaced = True
+        doc = Document(template_path)
+        # Paragrafe
+        for p in doc.paragraphs:
+            replace_text_in_paragraph(p, date)
 
-        if replaced:
-            for run in paragraph.runs:
-                run.text = ""
+        # -------------------------
+        # Tabele
+        # -------------------------
+        for table in doc.tables:
+            for row in table.rows:
+                for cell in row.cells:
+                    for p in cell.paragraphs:
+                        replace_text_in_paragraph(p, date)
 
-            paragraph.runs[0].text = full_text
+        # --- Dialog pentru a alege calea de salvare ---
+        file_path = filedialog.asksaveasfilename(
+            defaultextension=".docx",
+            filetypes=[("Document Word", "*.docx")],
+            initialfile=f"Declaratie_instalare_{nume_firma}_{id_client}_{serie_amef}.docx",
+            title="Salvează declarația"
+        )
 
-    # --- Înlocuire placeholder în paragrafe și tabele ---
-    doc = Document("template/declaratie_instalare.docx")
-    # Paragrafe
-    for p in doc.paragraphs:
-        replace_text_in_paragraph(p, date)
+        if not file_path:  # utilizatorul a apasat Cancel
+            return
 
-    # -------------------------
-    # Tabele
-    # -------------------------
-    for table in doc.tables:
-        for row in table.rows:
-            for cell in row.cells:
-                for p in cell.paragraphs:
-                    replace_text_in_paragraph(p, date)
+        progress_win = tk.Toplevel(root)
+        progress_win.title("Se generează...")
+        progress_win.geometry("300x80")
+        progress_win.resizable(False, False)
 
-    # -------------------------
-    # Tabele
-    # -------------------------
-    for table in doc.tables:
-        for row in table.rows:
-            for cell in row.cells:
-                for p in cell.paragraphs:
-                    replace_text_in_paragraph(p, date)
+        label = tk.Label(
+            progress_win,
+            text="Se generează declarația..."
+        )
+        label.pack(pady=5)
 
-    # --- Dialog pentru a alege calea de salvare ---
-    file_path = filedialog.asksaveasfilename(
-        defaultextension=".docx",
-        filetypes=[("Document Word", "*.docx")],
-        initialfile=f"Declaratie_instalare_{nume_firma}_{id_client}_{serie_amef}.docx",
-        title="Salvează declarația"
-    )
+        progress = ttk.Progressbar(
+            progress_win,
+            mode="indeterminate"
+        )
 
-    if not file_path:  # utilizatorul a apasat Cancel
-        return
+        progress.pack(pady=5, padx=10, fill="x")
 
-    # --- Salvare docx ---
-    doc.save(file_path)
+        progress.start()
+        progress_win.update()
 
-    # --- Optional: convertire PDF dacă ai funcția convert ---
-    pdf_path = file_path.replace(".docx", ".pdf")
-    convert(file_path, pdf_path)
+        # --- Salvare docx ---
+        doc.save(file_path)
 
-    messagebox.showinfo("Succes", "Declarația a fost generată.")
+        # --- Optional: convertire PDF dacă ai funcția convert ---
+        pdf_path = file_path.replace(".docx", ".pdf")
+        try:
+            convert_docx_to_pdf(file_path, pdf_path)
+
+            if os.path.exists(pdf_path):
+                messagebox.showinfo(
+                    "Succes",
+                    "Declaratia a fost generata in PDF si Doc"
+                )
+            else:
+                messagebox.showwarning(
+                    "PDF",
+                    "DOCX creat, PDF nu"
+                )
+
+        except Exception as e:
+            messagebox.showerror(
+                "Eroare PDF",
+                str(e)
+            )
+
+        except Exception as e:
+            messagebox.showerror(
+                "Eroare generală",
+                str(e)
+            )
+
+    finally:
+        if progress:
+            progress.stop()
+            progress.destroy()
+        if progress_win:
+            progress_win.destroy()
+
+# Final functie declaratie instalare
 
 """
 Functie pentru generare pv defiscalizare din template
 """
 def genereaza_pv_defiscalizare():
-    # --- Selectie rând din Treeview ---
-    selected = tree.selection()
-    if not selected:
-        messagebox.showwarning("Selectează client/serie", "Selectează un rând.")
-        return
-
-    item = tree.item(selected[0])
-    valori = item["values"]
-
-    # Presupunem coloanele: 0=Nr_Crt client, 1=Serie_Amef, 2=Model, ...
-    id_client = valori[0]
-    serie_amef = str(valori[12]).strip() # coloana serie amef din treeview
-
-    # Preluare date din DB
-    client = get_date_client(id_client)
-    amef = get_amef_client(id_client, serie_amef)
-    if not client or not amef:
-        messagebox.showerror("Eroare", "Nu s-au găsit date pentru client/serie selectata.")
-        return
-    nume_firma = nume_fisier_valid(client["Nume_Firma"])
-
-    # 2️⃣ citire Excel model amef
-    modele_excel = citeste_excel_modele()
-    tehnicieni_excel = citeste_excel_tehnicieni()
-
-    # Mapare amef
-    model_db = amef["Model_Amef"].strip().upper()
-    aviz = modele_excel.get(model_db, {}).get("AVIZ_DISTRIBUTIE", "")
-    data_aviz = modele_excel.get(model_db, {}).get("DATA_AVIZ", "")
-    if data_aviz:
-
-        if isinstance(data_aviz, datetime):
-            data_aviz = data_aviz.strftime("%d-%m-%Y")
-
-        else:
-            try:
-                data_aviz = datetime.strptime(str(data_aviz), "%m/%d/%Y").strftime("%d-%m-%Y")
-            except:
-                pass
-
-    # Mapare Tehnician
-    nume_tehnician = amef.get("Tehnician", "").strip().upper()
-    sigiliu_tehnician = ""
-    legitimatie_tehnician = ""
-
-    # normalizează cheile din Excel
-    tehnicieni_excel_norm = {k.strip().upper(): v for k, v in tehnicieni_excel.items()}
-
-    data_azi = datetime.today().strftime("%d.%m.%Y")
-
-    if nume_tehnician in tehnicieni_excel_norm:
-        sigiliu_tehnician = tehnicieni_excel_norm[nume_tehnician]["SIGILIU"]
-        legitimatie_tehnician = tehnicieni_excel_norm[nume_tehnician]["LEGITIMATIE"]
-    else:
-        print(f"Tehnician {nume_tehnician} nu a fost găsit în Excel")
-
-    # --- Dicționar pentru template ---
-    date = {
-        "{Administrator}": client["Administrator"],
-        "{Nume_Firma}": client["Nume_Firma"],
-        "{Sediu_Social}": client["Sediu_Social"],
-        "{Cui}": client["Cui"],
-        "{Punct_Lucru}": amef["Punct_Lucru"],
-        "{Serie_Amef}": amef["Serie_Amef"],
-        "{Model_Amef}": amef["Model_Amef"],
-        "{Nui}": amef["Nui"],
-        "{Aviz_Distributie}": aviz,
-        "{Data_Aviz}": data_aviz,
-        "{Sigiliu}": sigiliu_tehnician,
-        "{Tehnician}": nume_tehnician,
-        "{Legitimatie}": legitimatie_tehnician,
-        "{Data}": data_azi
-    }
-
-    def replace_text_in_paragraph(paragraph, data):
-
-        full_text = "".join(run.text for run in paragraph.runs)
-
-        replaced = False
-
-        for key, value in data.items():
-            if key in full_text:
-                full_text = full_text.replace(key, str(value))
-                replaced = True
-
-        if replaced:
-            for run in paragraph.runs:
-                run.text = ""
-
-            paragraph.runs[0].text = full_text
-
-
-    # --- Înlocuire placeholder în paragrafe și tabele ---
-    doc = Document("template/pv_defiscalizare.docx")
-    # Paragrafe
-    for p in doc.paragraphs:
-        replace_text_in_paragraph(p, date)
-
-    # -------------------------
-    # Tabele
-    # -------------------------
-    for table in doc.tables:
-        for row in table.rows:
-            for cell in row.cells:
-                for p in cell.paragraphs:
-                    replace_text_in_paragraph(p, date)
-
-    # --- Dialog pentru a alege calea de salvare ---
-    file_path = filedialog.asksaveasfilename(
-        defaultextension=".docx",
-        filetypes=[("Document Word", "*.docx")],
-        initialfile=f"Pv_Defiscalizare_{nume_firma}_{id_client}_{serie_amef}.docx",
-        title="Salvează PV-ul"
-    )
-
-    if not file_path:  # utilizatorul a apasat Cancel
-        return
-
-    # --- Salvare docx ---
-    doc.save(file_path)
-
-    # --- Optional: convertire PDF dacă ai funcția convert ---
-    pdf_path = file_path.replace(".docx", ".pdf")
-    convert(file_path, pdf_path)
+    progress = None
+    progress_win = None
     try:
-        os.system("taskkill /f /im WINWORD.EXE >nul 2>&1")
+        # --- Selectie rând din Treeview ---
+        selected = tree.selection()
+        if not selected:
+            messagebox.showwarning("Selectează client/serie", "Selectează un rând.")
+            return
 
-        convert(file_path, pdf_path)
+        item = tree.item(selected[0])
+        valori = item["values"]
 
-    except Exception as e:
-        print(e)
+        # Presupunem coloanele: 0=Nr_Crt client, 1=Serie_Amef, 2=Model, ...
+        id_client = valori[0]
+        serie_amef = str(valori[12]).strip() # coloana serie amef din treeview
 
-    messagebox.showinfo("Succes", "Declarația a fost generată.")
+        # Preluare date din DB
+        client = get_date_client(id_client)
+        amef = get_amef_client(id_client, serie_amef)
+        if not client or not amef:
+            messagebox.showerror("Eroare", "Nu s-au găsit date pentru client/serie selectata.")
+            return
+        nume_firma = nume_fisier_valid(client["Nume_Firma"])
+
+        # 2️⃣ citire Excel model amef
+        modele_excel = citeste_excel_modele()
+        tehnicieni_excel = citeste_excel_tehnicieni()
+
+        # Mapare amef
+        model_db = amef["Model_Amef"].strip().upper()
+        aviz = modele_excel.get(model_db, {}).get("AVIZ_DISTRIBUTIE", "")
+        data_aviz = modele_excel.get(model_db, {}).get("DATA_AVIZ", "")
+        if data_aviz:
+
+            if isinstance(data_aviz, datetime):
+                data_aviz = data_aviz.strftime("%d-%m-%Y")
+
+            else:
+                try:
+                    data_aviz = datetime.strptime(str(data_aviz), "%m/%d/%Y").strftime("%d-%m-%Y")
+                except:
+                    pass
+
+        # Mapare Tehnician
+        nume_tehnician = amef.get("Tehnician", "").strip().upper()
+        sigiliu_tehnician = ""
+        legitimatie_tehnician = ""
+
+        # normalizează cheile din Excel
+        tehnicieni_excel_norm = {k.strip().upper(): v for k, v in tehnicieni_excel.items()}
+
+        data_azi = datetime.today().strftime("%d.%m.%Y")
+
+        if nume_tehnician in tehnicieni_excel_norm:
+            sigiliu_tehnician = tehnicieni_excel_norm[nume_tehnician]["SIGILIU"]
+            legitimatie_tehnician = tehnicieni_excel_norm[nume_tehnician]["LEGITIMATIE"]
+        else:
+            print(f"Tehnician {nume_tehnician} nu a fost găsit în Excel")
+
+        # --- Dicționar pentru template ---
+        date = {
+            "{Administrator}": client["Administrator"],
+            "{Nume_Firma}": client["Nume_Firma"],
+            "{Sediu_Social}": client["Sediu_Social"],
+            "{Cui}": client["Cui"],
+            "{Punct_Lucru}": amef["Punct_Lucru"],
+            "{Serie_Amef}": amef["Serie_Amef"],
+            "{Model_Amef}": amef["Model_Amef"],
+            "{Nui}": amef["Nui"],
+            "{Aviz_Distributie}": aviz,
+            "{Data_Aviz}": data_aviz,
+            "{Sigiliu}": sigiliu_tehnician,
+            "{Tehnician}": nume_tehnician,
+            "{Legitimatie}": legitimatie_tehnician,
+            "{Data}": data_azi
+        }
+
+        def replace_text_in_paragraph(paragraph, data):
+
+            full_text = "".join(run.text for run in paragraph.runs)
+
+            replaced = False
+
+            for key, value in data.items():
+                if key in full_text:
+                    full_text = full_text.replace(key, str(value))
+                    replaced = True
+
+            if replaced:
+                for run in paragraph.runs:
+                    run.text = ""
+
+                paragraph.runs[0].text = full_text
+
+
+        # --- Înlocuire placeholder în paragrafe și tabele ---
+        doc = Document(resource_path("template/pv_defiscalizare.docx"))
+        # Paragrafe
+        for p in doc.paragraphs:
+            replace_text_in_paragraph(p, date)
+
+        # -------------------------
+        # Tabele
+        # -------------------------
+        for table in doc.tables:
+            for row in table.rows:
+                for cell in row.cells:
+                    for p in cell.paragraphs:
+                        replace_text_in_paragraph(p, date)
+
+        # --- Dialog pentru a alege calea de salvare ---
+        file_path = filedialog.asksaveasfilename(
+            defaultextension=".docx",
+            filetypes=[("Document Word", "*.docx")],
+            initialfile=f"Pv_Defiscalizare_{nume_firma}_{id_client}_{serie_amef}.docx",
+            title="Salvează PV-ul"
+        )
+
+        if not file_path:  # utilizatorul a apasat Cancel
+            return
+        progress_win = tk.Toplevel(root)
+        progress_win.title("Se generează...")
+        progress_win.geometry("300x80")
+        progress_win.resizable(False, False)
+
+        label = tk.Label(
+            progress_win,
+            text="Se generează declarația..."
+        )
+        label.pack(pady=5)
+
+        progress = ttk.Progressbar(
+            progress_win,
+            mode="indeterminate"
+        )
+
+        progress.pack(pady=5, padx=10, fill="x")
+
+        progress.start()
+        progress_win.update()
+
+        # --- Salvare docx ---
+        doc.save(file_path)
+
+        # --- Optional: convertire PDF dacă ai funcția convert ---
+        pdf_path = file_path.replace(".docx", ".pdf")
+        try:
+            convert_docx_to_pdf(file_path, pdf_path)
+            if os.path.exists(pdf_path):
+                messagebox.showinfo(
+                    "Succes",
+                    "PV defiscalizare generatat cu succes in PDF si Doc"
+                )
+            else:
+                messagebox.showwarning(
+                    "PDF",
+                    "DOCX creat, PDF nu"
+                )
+        # try:
+        #     os.system("taskkill /f /im WINWORD.EXE >nul 2>&1")
+
+        except Exception as e:
+            messagebox.showerror(
+                "Eroare PDF",
+                str(e)
+            )
+
+
+        except Exception as e:
+            messagebox.showerror(
+                "Eroare generală",
+                str(e)
+            )
+
+    finally:
+        if progress:
+            progress.stop()
+            progress.destroy()
+        if progress_win:
+            progress_win.destroy()
+
+
 # Final functie generare pv defiscalizare din template
 
 """
 Functie pentru generare fisa reparatie
 """
 def genereaza_fisa_reparatie():
-    # --- Selectie rând din Treeview ---
-    selected = tree.selection()
-    if not selected:
-        messagebox.showwarning("Selectează client/serie", "Selectează un rând.")
-        return
+    progress = None
+    progress_win = None
+    try:
+        # --- Selectie rând din Treeview ---
+        selected = tree.selection()
+        if not selected:
+            messagebox.showwarning("Selectează client/serie", "Selectează un rând.")
+            return
 
-    item = tree.item(selected[0])
-    valori = item["values"]
+        item = tree.item(selected[0])
+        valori = item["values"]
 
-    # Presupunem coloanele: 0=Nr_Crt client, 1=Serie_Amef, 2=Model, ...
-    id_client = valori[0]
-    serie_amef = str(valori[12]).strip() # coloana serie amef din treeview
+        # Presupunem coloanele: 0=Nr_Crt client, 1=Serie_Amef, 2=Model, ...
+        id_client = valori[0]
+        serie_amef = str(valori[12]).strip() # coloana serie amef din treeview
 
-    # Preluare date din DB
-    client = get_date_client(id_client)
-    amef = get_amef_client(id_client, serie_amef)
+        # Preluare date din DB
+        client = get_date_client(id_client)
+        amef = get_amef_client(id_client, serie_amef)
 
-    if not client or not amef:
-        messagebox.showerror("Eroare", "Nu s-au găsit date pentru client/serie selectata.")
-        return
-    nume_firma = nume_fisier_valid(client["Nume_Firma"])
+        if not client or not amef:
+            messagebox.showerror("Eroare", "Nu s-au găsit date pentru client/serie selectata.")
+            return
+        nume_firma = nume_fisier_valid(client["Nume_Firma"])
 
-    # Mapare amef
-    model_db = amef["Model_Amef"].strip().upper()
+        # Mapare amef
+        model_db = amef["Model_Amef"].strip().upper()
 
-    data_azi = datetime.today().strftime("%d.%m.%Y")
+        data_azi = datetime.today().strftime("%d.%m.%Y")
 
-    # --- Dicționar pentru template ---
-    date = {
-        "{Administrator}": client["Administrator"],
-        "{Nume_Firma}": client["Nume_Firma"],
-        "{Sediu_Social}": client["Sediu_Social"],
-        "{Cui}": client["Cui"],
-        "{Nr_Telefon}": client["Nr_Telefon"],
-        "{Punct_Lucru}": amef["Punct_Lucru"],
-        "{Serie_Amef}": amef["Serie_Amef"],
-        "{Model_Amef}": amef["Model_Amef"],
-        "{Nui}": amef["Nui"],
-        "{Data}": data_azi,
-    }
+        # --- Dicționar pentru template ---
+        date = {
+            "{Administrator}": client["Administrator"],
+            "{Nume_Firma}": client["Nume_Firma"],
+            "{Sediu_Social}": client["Sediu_Social"],
+            "{Cui}": client["Cui"],
+            "{Nr_Telefon}": client["Nr_Telefon"],
+            "{Punct_Lucru}": amef["Punct_Lucru"],
+            "{Serie_Amef}": amef["Serie_Amef"],
+            "{Model_Amef}": amef["Model_Amef"],
+            "{Nui}": amef["Nui"],
+            "{Data}": data_azi,
+        }
 
-    def replace_text_in_paragraph(paragraph, data):
+        def replace_text_in_paragraph(paragraph, data):
 
-        full_text = "".join(run.text for run in paragraph.runs)
+            full_text = "".join(run.text for run in paragraph.runs)
 
-        replaced = False
+            replaced = False
 
-        for key, value in data.items():
-            if key in full_text:
-                full_text = full_text.replace(key, str(value))
-                replaced = True
+            for key, value in data.items():
+                if key in full_text:
+                    full_text = full_text.replace(key, str(value))
+                    replaced = True
 
-        if replaced:
-            for run in paragraph.runs:
-                run.text = ""
+            if replaced:
+                for run in paragraph.runs:
+                    run.text = ""
 
-            paragraph.runs[0].text = full_text
+                paragraph.runs[0].text = full_text
 
-    # --- Înlocuire placeholder în paragrafe și tabele ---
-    doc = Document("template/fisa_service.docx")
-    # Paragrafe
-    for p in doc.paragraphs:
-        replace_text_in_paragraph(p, date)
+        # --- Înlocuire placeholder în paragrafe și tabele ---
+        doc = Document(resource_path("template/fisa_service.docx"))
+        # Paragrafe
+        for p in doc.paragraphs:
+            replace_text_in_paragraph(p, date)
 
-    # -------------------------
-    # Tabele
-    # -------------------------
-    for table in doc.tables:
-        for row in table.rows:
-            for cell in row.cells:
-                for p in cell.paragraphs:
-                    replace_text_in_paragraph(p, date)
+        # -------------------------
+        # Tabele
+        # -------------------------
+        for table in doc.tables:
+            for row in table.rows:
+                for cell in row.cells:
+                    for p in cell.paragraphs:
+                        replace_text_in_paragraph(p, date)
 
-    # -------------------------
-    # Tabele
-    # -------------------------
-    for table in doc.tables:
-        for row in table.rows:
-            for cell in row.cells:
-                for p in cell.paragraphs:
-                    replace_text_in_paragraph(p, date)
+        # -------------------------
+        # Tabele
+        # -------------------------
+        for table in doc.tables:
+            for row in table.rows:
+                for cell in row.cells:
+                    for p in cell.paragraphs:
+                        replace_text_in_paragraph(p, date)
 
-    # --- Dialog pentru a alege calea de salvare ---
-    file_path = filedialog.asksaveasfilename(
-        defaultextension=".docx",
-        filetypes=[("Document Word", "*.docx")],
-        initialfile=f"Fisa_Service_{nume_firma}_{id_client}_{serie_amef}.docx",
-        title="Salvează declarația"
-    )
+        # --- Dialog pentru a alege calea de salvare ---
+        file_path = filedialog.asksaveasfilename(
+            defaultextension=".docx",
+            filetypes=[("Document Word", "*.docx")],
+            initialfile=f"Fisa_Service_{nume_firma}_{id_client}_{serie_amef}.docx",
+            title="Salvează fisa reparatie"
+        )
 
-    if not file_path:  # utilizatorul a apasat Cancel
-        return
+        if not file_path:  # utilizatorul a apasat Cancel
+            return
 
-    # --- Salvare docx ---
-    doc.save(file_path)
+        progress_win = tk.Toplevel(root)
+        progress_win.title("Se generează...")
+        progress_win.geometry("300x80")
+        progress_win.resizable(False, False)
 
-    # --- Optional: convertire PDF dacă ai funcția convert ---
-    pdf_path = file_path.replace(".docx", ".pdf")
-    convert(file_path, pdf_path)
+        label = tk.Label(
+            progress_win,
+            text="Se generează declarația..."
+        )
+        label.pack(pady=5)
 
-    messagebox.showinfo("Succes", "Fisa service generată.")
+        progress = ttk.Progressbar(
+            progress_win,
+            mode="indeterminate"
+        )
+
+        progress.pack(pady=5, padx=10, fill="x")
+
+        progress.start()
+        progress_win.update()
+
+        # --- Salvare docx ---
+        doc.save(file_path)
+
+        # --- Optional: convertire PDF dacă ai funcția convert ---
+        pdf_path = file_path.replace(".docx", ".pdf")
+        try:
+            convert_docx_to_pdf(file_path, pdf_path)
+            if os.path.exists(pdf_path):
+                messagebox.showinfo(
+                    "Succes",
+                    "Fisa Service fost generata in PDF si Doc"
+                )
+            else:
+                messagebox.showwarning(
+                    "PDF",
+                    "DOCX creat, PDF nu"
+                )
+
+        except Exception as e:
+            messagebox.showerror(
+                "Eroare PDF",
+                str(e)
+            )
+
+        except Exception as e:
+            messagebox.showerror(
+                "Eroare generală",
+                str(e)
+            )
+
+    finally:
+        if progress:
+            progress.stop()
+            progress.destroy()
+        if progress_win:
+            progress_win.destroy()
+
 
 
 # Final functie generare fisa reparatie
