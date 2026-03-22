@@ -33,7 +33,7 @@ from docx import Document
 from docx2pdf import convert
 import re
 import win32com.client
-
+import string
 
 """
 load_dotenv()  # încarcă variabilele din .env
@@ -77,8 +77,8 @@ def creeaza_db_si_tabele(db_path):
             Id_Client INTEGER,
             Punct_Lucru TEXT,
             Model_Amef TEXT,
-            Serie_Amef TEXT,
-            Nui TEXT,
+            Serie_Amef TEXT UNIQUE,
+            Nui TEXT UNIQUE,
             Tip_Abonament TEXT,
             Data_Conect_Anaf TEXT,
             Tehnician TEXT,
@@ -87,6 +87,16 @@ def creeaza_db_si_tabele(db_path):
             Data_Exp_Gprs TEXT,
             FOREIGN KEY(Id_Client) REFERENCES tabela_date_clienti(Nr_Crt)
         )
+        """)
+
+        cursor.execute("""
+        CREATE UNIQUE INDEX IF NOT EXISTS idx_serie_amef
+        ON tabela_sedii_secundare(Serie_Amef)
+        """)
+
+        cursor.execute("""
+        CREATE UNIQUE INDEX IF NOT EXISTS idx_nui
+        ON tabela_sedii_secundare(Nui)
         """)
 
         # Tabela istoric abonamente
@@ -474,11 +484,10 @@ def backup_database(db_path):
     backup_name = f"{os.path.splitext(db_path)[0]}_backup_{timestamp}.db"
     shutil.copy2(db_path, backup_name)
     return backup_name
-
-
 # Final functie backup baz adate
 
-# Functie trimitere backup pe mail
+
+# Functie trimitere backup baza date pe mail
 def trimite_backup_email(backup_path, destinatar):
     msg = EmailMessage()
     msg["Subject"] = "Backup baza de date clienti SQLite3"
@@ -558,8 +567,33 @@ def incarca_dropdown_puncte():
 
 # Functie pentru golirea tuturor campurilor din interfata
 def resetare_toate_campurile():
-    for e in entries.values():
-        e.delete(0, tk.END)
+    for dic in (entries_client, entries_sediu):
+        for widget in dic.values():
+            # Entry
+            try:
+                widget.delete(0, tk.END)
+            except:
+                pass
+            # Combobox readonly
+            try:
+                if isinstance(widget, ttk.Combobox):
+                    state_orig = widget.cget("state")
+                    widget.config(state="normal")
+                    widget.set("")
+                    widget.config(state=state_orig)
+            except:
+                pass
+            # DateEntry
+            try:
+                widget.set_date("")
+            except:
+                pass
+
+        # Variabile live pentru NUI și Serie AMEF
+    entry_nui_var.set("")
+    entry_serie_amef_var.set("")
+
+    entry_cui.focus()
 
 
 # functie de resetare a campului de cautare client
@@ -576,53 +610,53 @@ o pastrez, am dezactivat butonul atasat functiei
 """
 
 
-def modifica_date_client():
-    cui = entry_cui.get().strip()
-    serie_amef = entry_serie_amef.get().strip()
-
-    if not cui:
-        messagebox.showwarning("Eroare", "Introduceți CUI-ul clientului")
-        return
-
-    conn = conectare_db()
-    cursor = conn.cursor()
-
-    cursor.execute("""
-            SELECT d.Nume_Firma, d.Cui, d.Reg_Comert, d.Tva, d.Sediu_Social,
-                   s.Punct_Lucru, s.Model_Amef, s.Serie_Amef, s.Nui,
-                   s.Tehnician, s.Data_Conect_Anaf, s.Data_Exp_Abon, s.Val_Ctr, s.Data_Exp_Gprs
-            FROM tabela_date_clienti d
-            LEFT JOIN tabela_sedii_secundare s ON d.Nr_Crt = s.Id_Client
-            WHERE d.Cui=? AND s.Serie_Amef=?
-        """, (cui, serie_amef))
-    result = cursor.fetchone()
-    conn.close()
-
-    if not result:
-        messagebox.showinfo("Info", "Nu s-a găsit clientul sau punctul de lucru")
-        return
-
-    # Populare câmpuri
-    mapping = {
-        "Nume firmă": result["Nume_Firma"],
-        "CUI Client": result["Cui"],
-        "Nr. Registrul Comertului": result["Reg_Comert"],
-        "Plătitor TVA": result["Tva"],
-        "Adresă sediu": result["Sediu_Social"],
-        "Punct de lucru": result["Punct_Lucru"],
-        "Model Amef": result["Model_Amef"],
-        "Serie Amef": result["Serie_Amef"],
-        "Nui Amef": result["Nui"],
-        "Tehnician Service": result["Tehnician"],
-        "Data conectare Anaf": result["Data_Conect_Anaf"],
-        "Data expirare abonament": result["Data_Exp_Abon"],
-        "Valoare contract - RON": result["Val_Ctr"],
-        "Data expirare gprs": result["Data_Exp_Gprs"]
-    }
-
-    for label, value in mapping.items():
-        entries[label].delete(0, tk.END)
-        entries[label].insert(0, value)
+# def modifica_date_client():
+#     cui = entry_cui.get().strip()
+#     serie_amef = entry_serie_amef.get().strip()
+#
+#     if not cui:
+#         messagebox.showwarning("Eroare", "Introduceți CUI-ul clientului")
+#         return
+#
+#     conn = conectare_db()
+#     cursor = conn.cursor()
+#
+#     cursor.execute("""
+#             SELECT d.Nume_Firma, d.Cui, d.Reg_Comert, d.Tva, d.Sediu_Social,
+#                    s.Punct_Lucru, s.Model_Amef, s.Serie_Amef, s.Nui,
+#                    s.Tehnician, s.Data_Conect_Anaf, s.Data_Exp_Abon, s.Val_Ctr, s.Data_Exp_Gprs
+#             FROM tabela_date_clienti d
+#             LEFT JOIN tabela_sedii_secundare s ON d.Nr_Crt = s.Id_Client
+#             WHERE d.Cui=? AND s.Serie_Amef=?
+#         """, (cui, serie_amef))
+#     result = cursor.fetchone()
+#     conn.close()
+#
+#     if not result:
+#         messagebox.showinfo("Info", "Nu s-a găsit clientul sau punctul de lucru")
+#         return
+#
+#     # Populare câmpuri
+#     mapping = {
+#         "Nume firmă": result["Nume_Firma"],
+#         "CUI Client": result["Cui"],
+#         "Nr. Registrul Comertului": result["Reg_Comert"],
+#         "Plătitor TVA": result["Tva"],
+#         "Adresă sediu": result["Sediu_Social"],
+#         "Punct de lucru": result["Punct_Lucru"],
+#         "Model Amef": result["Model_Amef"],
+#         "Serie Amef": result["Serie_Amef"],
+#         "Nui Amef": result["Nui"],
+#         "Tehnician Service": result["Tehnician"],
+#         "Data conectare Anaf": result["Data_Conect_Anaf"],
+#         "Data expirare abonament": result["Data_Exp_Abon"],
+#         "Valoare contract - RON": result["Val_Ctr"],
+#         "Data expirare gprs": result["Data_Exp_Gprs"]
+#     }
+#
+#     for label, value in mapping.items():
+#         entries[label].delete(0, tk.END)
+#         entries[label].insert(0, value)
 
 
 def cauta_firma():
@@ -647,6 +681,56 @@ def cauta_firma():
 La salvarea data expirare service si data expirare gprs , cu aceasta functie nu se salveaza in istoric abonamente 
 decat cu butonul de prelungire abonament
 """
+
+# functie dde verificare unicitate serie amef si nui amef
+def verifica_serie_nui_unice(serie, nui, nr_crt_sediu=None):
+    conn = conectare_db()
+    cursor = conn.cursor()
+
+    cursor.execute("""
+        SELECT s.Nr_Crt, d.Nume_Firma, s.Serie_Amef, s.Nui
+        FROM tabela_sedii_secundare s
+        JOIN tabela_date_clienti d
+        ON d.Nr_Crt = s.Id_Client
+        WHERE (s.Serie_Amef=? OR s.Nui=?)
+    """, (serie, nui))
+    rows = cursor.fetchall()
+    conn.close()
+
+    for r in rows:
+        # permite editarea la acelasi client
+        if nr_crt_sediu and r["Nr_Crt"] == nr_crt_sediu:
+            continue
+        return  r
+    return None
+
+# Validare NUI: doar cifre, max 10, paste blocat dacă depășește
+def validare_nui(text_nou):
+    if text_nou == "":
+        return True
+    if not text_nou.isdigit():
+        return False
+    if len(text_nou) > 10:
+        return False
+    return True
+
+# Validare Serie AMEF: litere + cifre, uppercase automat, fără spații și caractere speciale, max 20 caractere
+def validare_serie_amef(text_nou):
+    if text_nou == "":
+        return True
+
+    # elimină spații și caractere speciale
+    valid_chars = string.ascii_letters + string.digits
+    filtrat = "".join(c for c in text_nou if c in valid_chars).upper()
+
+    # dacă lungimea depășește 20, taie
+    if len(filtrat) > 20:
+        filtrat = filtrat[:20]
+
+    # actualizează Entry cu text curățat
+    entry_serie_amef_var.set(filtrat)
+
+    return True
 
 
 def salveaza_client():
@@ -679,6 +763,16 @@ def salveaza_client():
     if not data["serie_amef"]:
         messagebox.showwarning("Eroare", "Seria AMEF este obligatorie!")
         return
+
+    if data["nui"]:
+        # aici verificam daca NUI este din 10 cifre
+        if not data["nui"].isdigit() or len(data["nui"]) !=10:
+            messagebox.showerror(
+                "Eroare NUI",
+                "NUI trebuie sa contina exact 10 cifre"
+            )
+            return
+
     conn = conectare_db()
     if not conn:
         return
@@ -715,21 +809,57 @@ def salveaza_client():
             messagebox.showinfo("Succes", f"Client nou adăugat (Nr_Crt={id_client})")
 
         # punct de lucru
-        cursor.execute("SELECT 1 FROM tabela_sedii_secundare WHERE Id_Client=? AND Serie_Amef=?",
+        cursor.execute("SELECT Nr_Crt FROM tabela_sedii_secundare WHERE Id_Client=? AND Serie_Amef=?",
                        (id_client, data["serie_amef"]))
-        if cursor.fetchone():
+        row_sediu = cursor.fetchone()
+        nr_crt_sediu = None
+        if row_sediu:
+            nr_crt_sediu = row_sediu["Nr_Crt"]
+
+        # ==============================
+        # verificare duplicat serie / nui
+        # ==============================
+
+        rez = verifica_serie_nui_unice(
+            data["serie_amef"],
+            data["nui"],
+            nr_crt_sediu
+        )
+
+        if rez:
+            messagebox.showerror(
+                "Duplicat",
+                f"Seria sau NUI există deja!\n\n"
+                f"Firma: {rez['Nume_Firma']}\n"
+                f"Serie: {rez['Serie_Amef']}\n"
+                f"NUI: {rez['Nui']}"
+            )
+
+            conn.close()
+            return
+
+        # ==============================
+        # UPDATE sau INSERT sediu
+        # ==============================
+
+        if row_sediu:
+
             cursor.execute("""
                 UPDATE tabela_sedii_secundare
                 SET Punct_Lucru=?, Model_Amef=?, Nui=?, Tip_Abonament=?,
                     Data_Conect_Anaf=?, Tehnician=?, Data_Exp_Abon=?,
                     Val_Ctr=?, Data_Exp_Gprs=?
-                WHERE Id_Client=? AND Serie_Amef=?
+                WHERE Nr_Crt=?
             """, (
                 data["punct_lucru"], data["model_amef"], data["nui"], data["tip_abonament"],
                 data["data_conect"], data["tehnician"], data["data_exp"],
-                data["val_ctr"], data["data_exp_gprs"], id_client, data["serie_amef"]
+                data["val_ctr"], data["data_exp_gprs"], nr_crt_sediu
             ))
-            messagebox.showinfo("Succes", f"Punct de lucru {data['serie_amef']} actualizat")
+
+            messagebox.showinfo(
+                "Succes",
+                f"Punct de lucru {data['serie_amef']} actualizat"
+            )
         else:
             cursor.execute("""
                 INSERT INTO tabela_sedii_secundare
@@ -933,8 +1063,8 @@ def cauta_in_treeview():
         ):
 
             # Tag special pentru status firma non-activ
-            status = (row["Status_Firma"] or "").strip().lower()
-            if status in ["inchis", "suspendat", "inactiv"]:
+            status = (row["Status_Firma"] or "").strip().upper()
+            if status in ["INCHIS", "SUSPENDAT", "INACTIV-RENUNTAT"]:
                 tag_final = "status_inactiv"  # Culoarea in tree a firmei inactiva
             else:
                 tag_amef = calculeaza_tag_abonament(row["Data_Exp_Abon"])
@@ -1025,8 +1155,6 @@ def calculeaza_tag_abonament_gprs(data_exp):
 """
 Functie de combinare a abonamentelor pentru un singur pop-up
 """
-
-
 def afiseaza_lista_abonamente(parent, rows, tip):
     azi = date.today()
     luna_curenta = azi.month
@@ -1186,7 +1314,8 @@ def alerta_abonamente_combinate():
 
     for r in rows:
         # filtram doar clientii activi
-        if r["Status_Firma"] in ["Inchis", "Suspendat", "Inactiv"]:
+        status = (r["Status_Firma"] or "").strip().upper()
+        if r["Status_Firma"] in ["INCHIS", "SUSPENDAT", "INACTIV-RENUNTAT"]:
             continue
 
         if r["Data_Exp_Abon"]:
@@ -1371,10 +1500,35 @@ def populare_campuri_treeview(event):
         "Data expirare Gprs": values[19],  # Data expirarii comunicatie GPRS
     }
 
+    def populate_widget(widget, val, var=None):
+        """Populează un widget indiferent de tip (Entry, Combobox, DateEntry)"""
+        if isinstance(widget, ttk.Combobox):
+            state_orig = widget.cget("state")
+            widget.config(state="normal")
+            widget.set(val)
+            widget.config(state=state_orig)
+        elif isinstance(widget, DateEntry):
+            try:
+                widget.set_date(val)
+            except:
+                widget.set_date("")
+        elif var is not None:
+            var.set(val)  # Folosește StringVar direct pentru Serie Amef / NUI
+        else:
+            widget.delete(0, tk.END)
+            widget.insert(0, val)
+
+    # Populează atât frame-ul client, cât și sediu
     for label, val in mapping.items():
-        if label in entries:
-            entries[label].delete(0, tk.END)
-            entries[label].insert(0, val)
+        if label in entries_client:
+            populate_widget(entries_client[label], val)
+        if label in entries_sediu:
+            var = None
+            if label == "Serie Amef":
+                var = entry_serie_amef_var
+            elif label == "Nui Amef":
+                var = entry_nui_var
+            populate_widget(entries_sediu[label], val, var)
 
 
 """
@@ -2805,8 +2959,6 @@ def genereaza_fisa_reparatie():
         if progress_win:
             progress_win.destroy()
 
-
-
 # Final functie generare fisa reparatie
 
 
@@ -2817,8 +2969,27 @@ root = tk.Tk()
 root.title("Gestionare Client și Sediu")
 root.geometry("1400x700")
 
+window_width = 1400
+window_height = 700
+# dimensiunea ecranului
+screen_width = root.winfo_screenwidth()
+screen_height = root.winfo_screenheight()
+
+# Ajustăm dimensiunea ferestrei dacă e mai mare decât ecranul
+if window_width > screen_width:
+    window_width = screen_width - 50  # micim cu 50px pentru margin
+if window_height > screen_height:
+    window_height = screen_height - 50
+# Calculăm coordonatele pentru a centra
+x = int((screen_width / 2) - (window_width / 2))
+y = int((screen_height / 2) - (window_height / 2))
+
+# Setăm geometria finală
+root.geometry(f"{window_width}x{window_height}+{x}+{y}")
+
 color_client = "#d0e1f9"
 color_sediu = "#f9f1d0"
+
 
 # -------------------------
 # FRAME CLIENT (stânga)
@@ -2828,21 +2999,51 @@ frame_client.grid(row=0, column=0, sticky="nsew", padx=10, pady=5)
 
 client_labels = ["CUI Client", "Nume firmă", "Adresă sediu", "Registrul Comertului",
                  "Plătitor TVA", "Administrator Firma", "Status Firma", "Numar Telefon", "Adresa mail"]
-entries = {}
+entries_client = {}
 
 for i, label in enumerate(client_labels):
     tk.Label(frame_client, text=label, bg=color_client, font=("Arial", 10)).grid(row=i, column=0, sticky="w", padx=5,
                                                                                  pady=2)
-    e = tk.Entry(frame_client, width=40)
+    # e = tk.Entry(frame_client, width=40)
+    # e.grid(row=i, column=1, sticky="w", padx=5, pady=2)
+    # Dropdown pt TVA
+    if label == "Plătitor TVA":
+        e = ttk.Combobox(frame_client, values=["DA", "NU"], state="readonly", width=37)
+        # e.set("NU")
+
+    # Dropdown Status Firma
+    elif label == "Status Firma":
+        e = ttk.Combobox(
+            frame_client,
+            values=["ACTIV", "INCHIS", "SUSPENDAT", "INACTIV-RENUNTAT"],
+            state="readonly",
+            width=37
+        )
+        # e.set("ACTIV")
+
+    else:
+        e = tk.Entry(frame_client, width=40)
+
     e.grid(row=i, column=1, sticky="w", padx=5, pady=2)
-    entries[label] = e
+    entries_client[label] = e
 
 (entry_cui, entry_nume, entry_adresa, entry_reg_comert,
  entry_tva, entry_administrator, entry_status_firma,
- entry_telefon, entry_mail) = [entries[label] for label in client_labels]
+ entry_telefon, entry_mail) = [entries_client[label] for label in client_labels]
+
+
+# -------------------------------
+# Înregistrare validatecommand
+# -------------------------------
+vcmd_nui = (root.register(validare_nui), "%P")
+vcmd_serie = (root.register(validare_serie_amef), "%P")
+
+# variabile asociate entry-urilor pentru validare live
+entry_serie_amef_var = tk.StringVar()
+entry_nui_var = tk.StringVar()
 
 # -------------------------
-# FRAME SEDIU/AMEF (dreapta)
+# FRAME PUNCT LUCRU/AMEF (dreapta)
 # -------------------------
 frame_sediu = tk.LabelFrame(root, text="Sediu Secundar / AMEF", bg=color_sediu, padx=10, pady=10,
                             font=("Arial", 12, "bold"))
@@ -2851,6 +3052,8 @@ frame_sediu.grid(row=0, column=1, sticky="nsew", padx=10, pady=5)
 sediu_labels = ["Punct de lucru", "Model Amef", "Serie Amef", "Nui Amef",
                 "Data conectare Anaf", "Tehnician Service", "Data expirare abonament",
                 "Valoare contract - RON", "Tip Abonament", "Data expirare Gprs"]
+
+entries_sediu = {}
 
 for i, label in enumerate(sediu_labels):
     tk.Label(
@@ -2866,22 +3069,107 @@ for i, label in enumerate(sediu_labels):
             width=37,
             date_pattern="yyyy-mm-dd"  # compatibil MySQL
         )
+
+    # DROPDOWN MODEL AMEF
+    elif label == "Model Amef":
+        e = ttk.Combobox(
+            frame_sediu,
+            values=[
+                "DATECS DP25 MX",
+                "DATECS DP25",
+                "DATECS WP50 MX",
+                "DATECS WP50",
+                "DATECS DP05 MX",
+                "DATECS DP05",
+                "DATECS DP150",
+                "DATECS FP700",
+                "DATECS FP800",
+                "DAISY EXPERT SX",
+                "DAISY COMPACT M",
+                "DAISY COMPACT S",
+                "TREMOL M20 EXCEL MASTER",
+                "TREMOL M20 - VALMED",
+                "TREMOL M20 ADPOS M",
+                "TREMOL ACTIVA MINI",
+                "TREMOL FP17-T810",
+                "TREMOL S-ACTIVA",
+                "ACTIVA GALAXY",
+                "SUCCES M7",
+                "CUSTOM BIG PLUS",
+                "PARTNER 200",
+                "PARTNER 600",
+                "ZIT B20",
+                "ZIT B30"
+            ],
+            state="readonly",
+            width=37
+        )
+
+    # DROPDOWN TIP ABONAMENT
+    elif label == "Tip Abonament":
+
+        e = ttk.Combobox(
+            frame_sediu,
+            values=[
+                "ANUAL",
+                "DEPLASARE-INTERN",
+                "DEPLASARE-EXTERN"
+            ],
+            state="readonly",
+            width=37
+        )
+        # e.set("ANUAL")
+
+    # DROPDOWN TEHNICIAN SERVICE
+    elif label == "Tehnician Service":
+
+        e = ttk.Combobox(
+            frame_sediu,
+            values=[
+                "POP CIPRIAN",
+                "GRECU DAN"
+            ],
+            state="readonly",
+            width=37
+        )
+        # e.set("POP CIPRIAN")
+
+    # ENTRY pentru Serie AMEF și NUI cu validare live
+
+    elif label == "Serie Amef":
+        e = tk.Entry(
+            frame_sediu,
+            textvariable=entry_serie_amef_var,
+            width=40,
+            validate="key",
+            validatecommand=vcmd_serie
+        )
+
+    elif label == "Nui Amef":
+        e = tk.Entry(
+            frame_sediu,
+            textvariable=entry_nui_var,
+            width=40,
+            validate="key",
+            validatecommand=vcmd_nui
+        )
+
     else:
         e = tk.Entry(frame_sediu, width=40)
 
     e.grid(row=i, column=1, sticky="w", padx=5, pady=2)
-    entries[label] = e
+    entries_sediu[label] = e
 
 (entry_punct_lucru, entry_model_amef, entry_serie_amef, entry_nui,
  entry_conectare_anaf, entry_tehnician, entry_data_exp, entry_val_ctr,
- entry_tip_abonament, entry_data_exp_gprs) = [entries[label] for label in sediu_labels]
+ entry_tip_abonament, entry_data_exp_gprs) = [entries_sediu[label] for label in sediu_labels]
 
 """
 Pentru populare automata in functie de tip client platitor tva sau nu 
 cu deplasare sau anual
 """
-entry_tip_abonament.bind("<KeyRelease>", actualizeaza_valoare_contract)
-entry_tva.bind("<KeyRelease>", actualizeaza_valoare_contract)
+entry_tip_abonament.bind("<<ComboboxSelected>>", actualizeaza_valoare_contract)
+entry_tva.bind("<<ComboboxSelected>>", actualizeaza_valoare_contract)
 
 # -------------------------
 # FRAME BUTOANE
