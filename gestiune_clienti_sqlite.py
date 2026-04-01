@@ -677,7 +677,7 @@ def cauta_firma():
 
 
 """
-# Functie pentru introducerea clientilor in baza de date dar se si poate modifica datele cliewntului, 
+# Functie pentru introducerea clientilor in baza de date dar se si poate modifica datele clientului, 
 La salvarea data expirare service si data expirare gprs , cu aceasta functie nu se salveaza in istoric abonamente 
 decat cu butonul de prelungire abonament
 """
@@ -960,7 +960,7 @@ def sterge_client():
 
 
 """
-Functie pentru a sterge doar punctul de lucru al clientuluiu, daca se inchide punctul de lucru
+Functie pentru a sterge doar punctul de lucru al clientului, daca se inchide punctul de lucru
 Nu se sterge si clientul din baza de date
 """
 
@@ -1156,10 +1156,13 @@ def calculeaza_tag_abonament_gprs(data_exp):
 Functie de combinare a abonamentelor pentru un singur pop-up
 """
 def afiseaza_lista_abonamente(parent, rows, tip):
-    azi = date.today()
-    luna_curenta = azi.month
-    anul_curent = azi.year
+    rows_filtrate = rows.copy()
 
+    azi = date.today()
+
+    # =========================
+    # CANVAS + SCROLL
+    # =========================
     canvas = tk.Canvas(parent)
     scrollbar = tk.Scrollbar(parent, orient="vertical", command=canvas.yview)
     scroll_frame = tk.Frame(canvas)
@@ -1173,78 +1176,139 @@ def afiseaza_lista_abonamente(parent, rows, tip):
     canvas.configure(yscrollcommand=scrollbar.set)
 
     canvas.pack(side="left", fill="both", expand=True)
+    scrollbar.pack(side="right", fill="y")
 
+    # =========================
+    # SEARCH BAR
+    # =========================
+    search_frame = tk.Frame(parent)
+    search_frame.pack(fill="x", pady=5)
+
+    tk.Label(search_frame, text="Filtrează după tehnician:", font=("Arial", 10)).pack(side="left", padx=5)
+
+
+
+    # =========================
+    # SCROLL MOUSE
+    # =========================
     def on_mousewheel(event):
         canvas.yview_scroll(int(-1 * (event.delta / 120)), "units")
 
     canvas.bind("<Enter>", lambda e: canvas.bind_all("<MouseWheel>", on_mousewheel))
     canvas.bind("<Leave>", lambda e: canvas.unbind_all("<MouseWheel>"))
-    scrollbar.pack(side="right", fill="y")
 
     selected_label = {"widget": None, "bg": None}
 
-    for r in rows:
-        data_exp = r["data_exp"]
-        if not data_exp:
-            continue
+    # =========================
+    # AFISARE LISTA
+    # =========================
+    def afiseaza_rows(lista):
+        for widget in scroll_frame.winfo_children():
+            widget.destroy()
 
-        if isinstance(data_exp, str):
-            try:
-                data_exp = datetime.fromisoformat(data_exp).date()
-            except ValueError:
+        for r in lista:
+            data_exp = r["data_exp"]
+            if not data_exp:
                 continue
 
-        zile_ramase = (data_exp - azi).days
+            if isinstance(data_exp, str):
+                try:
+                    data_exp = datetime.fromisoformat(data_exp).date()
+                except ValueError:
+                    continue
 
-        if zile_ramase < 0:
-            text_status = "EXPIRAT"
-            culoare = "#f28c8c"
-        elif 0 <= zile_ramase <= 30:
-            text_status = f"expiră în {zile_ramase} zile"
-            culoare = "#fff3b0"
+            zile_ramase = (data_exp - azi).days
+
+            if zile_ramase < 0:
+                text_status = "EXPIRAT"
+                culoare = "#f28c8c"
+            elif 0 <= zile_ramase <= 30:
+                text_status = f"expiră în {zile_ramase} zile"
+                culoare = "#fff3b0"
+            else:
+                continue
+
+            descriere = "abonament service" if tip == "amef" else "comunicație GPRS"
+
+            text = (
+                f"{r['Nume_Firma']} (CUI: {r['Cui']}) | "
+                f"Seria: {r['Serie_Amef']} | "
+                f"{descriere} | {data_exp} → {text_status} | "
+                f"Tehnician: {r.get('Tehnician','')}"
+            )
+
+            lbl = tk.Label(
+                scroll_frame,
+                text=text,
+                bg=culoare,
+                anchor="w",
+                justify="left",
+                font=("Arial", 10),
+                pady=5
+            )
+            lbl.pack(fill="x", pady=2)
+
+            # SELECTARE CLICK
+            def on_click(event, label=lbl, bg=culoare, row=r):
+                if selected_label["widget"]:
+                    selected_label["widget"].configure(bg=selected_label["bg"])
+
+                label.configure(bg="#9ecbff")
+                selected_label["widget"] = label
+                selected_label["bg"] = bg
+
+                print("Selectat:", row)
+
+            lbl.bind("<Button-1>", on_click)
+
+    # =========================
+    # FILTRARE
+    # =========================
+    def filtreaza(event=None):
+        selected = combo_tehnician.get().lower()
+
+        if selected == "":
+            lista_filtrata = rows
         else:
-            continue
+            lista_filtrata = [
+                r for r in rows
+                if selected == (r.get("Tehnician", "") or "").lower()
+            ]
 
-        descriere = "abonament service" if tip == "amef" else "comunicație GPRS"
+        afiseaza_rows(lista_filtrata)
 
-        text = (
-            f"{r['Nume_Firma']} (CUI: {r['Cui']}) | "
-            f"Seria: {r['Serie_Amef']} | "
-            f"{descriere} | {data_exp} → {text_status}"
-        )
+        nonlocal rows_filtrate
+        rows_filtrate = lista_filtrata
 
-        lbl = tk.Label(
-            scroll_frame,
-            text=text,
-            bg=culoare,
-            anchor="w",
-            justify="left",
-            font=("Arial", 10),
-            pady=5
-        )
-        lbl.pack(fill="x", pady=2)
+    # afișare inițială
+    afiseaza_rows(rows)
 
-        # =============================
-        # SELECTARE LA CLICK
-        # =============================
-        def on_click(event, label=lbl, bg=culoare, row=r):
-            # reset selecție veche
-            if selected_label["widget"]:
-                selected_label["widget"].configure(bg=selected_label["bg"])
+    search_var = tk.StringVar()
+    combo_tehnician = ttk.Combobox(
+        search_frame,
+        textvariable=search_var,
+        width=30,
+        state="readonly"
+    )
 
-            # setează selecție nouă
-            label.configure(bg="#9ecbff")
-            selected_label["widget"] = label
-            selected_label["bg"] = bg
+    combo_tehnician["values"] = [
+        "",  # <- important: fără selecție = toate
+        "POP CIPRIAN",
+        "GRECU DAN"
+    ]
 
-            # DEBUG / FOLOSIRE MAI DEPARTE
-            print("Selectat:", row)
+    combo_tehnician.current(0)
+    combo_tehnician.pack(side="left", padx=5)
+    combo_tehnician.bind("<<ComboboxSelected>>", filtreaza)
+    combo_tehnician.set("")
 
-        lbl.bind("<Button-1>", on_click)
+    # =========================
+    # BUTON EXPORT PDF
+    # =========================
     img = Image.open(resource_path("icons/pdf.png"))
-    img = img.resize((20, 20))  # dimensiune modernă
+    img = img.resize((20, 20))
     icon_pdf = ImageTk.PhotoImage(img)
-    # Butonul de export clienti in pdf
+
     btn_export = tk.Button(
         parent,
         text="Exportă PDF",
@@ -1255,14 +1319,14 @@ def afiseaza_lista_abonamente(parent, rows, tip):
         fg="#0d6efd",
         activebackground="#e9ecef",
         activeforeground="#212529",
-        bd=1,  # activeaza conttur buton
-        # relief="solid", stil solid la contur buton
-        relief="raised",  # stil contur buton
+        bd=1,
+        relief="raised",
         highlightthickness=0,
         padx=10,
         pady=6,
         cursor="hand2",
-        command=lambda: exporta_clienti_pdf(rows, tip))
+        command=lambda: exporta_clienti_pdf(rows_filtrate, tip)  # IMPORTANT
+    )
     btn_export.image = icon_pdf
     btn_export.pack(pady=5)
 
@@ -1300,7 +1364,8 @@ def alerta_abonamente_combinate():
             d.Status_Firma,
             s.Serie_Amef,
             s.Data_Exp_Abon,
-            s.Data_Exp_Gprs
+            s.Data_Exp_Gprs,
+            s.Tehnician
         FROM tabela_date_clienti d
         LEFT JOIN tabela_sedii_secundare s ON d.Nr_Crt = s.Id_Client
     """)
@@ -1323,20 +1388,23 @@ def alerta_abonamente_combinate():
                 "Nume_Firma": r["Nume_Firma"],
                 "Cui": r["Cui"],
                 "Serie_Amef": r["Serie_Amef"],
-                "data_exp": r["Data_Exp_Abon"]
+                "data_exp": r["Data_Exp_Abon"],
+                "Tehnician": r["Tehnician"]
             })
         if r["Data_Exp_Gprs"]:
             gprs_rows.append({
                 "Nume_Firma": r["Nume_Firma"],
                 "Cui": r["Cui"],
                 "Serie_Amef": r["Serie_Amef"],
-                "data_exp": r["Data_Exp_Gprs"]
+                "data_exp": r["Data_Exp_Gprs"],
+                "Tehnician": r["Tehnician"]
             })
 
     # fereastra popup
     popup = tk.Toplevel()
     popup.title("Alerte Abonamente")
-    popup.geometry("900x600")
+    popup.geometry("1400x700")
+    popup.state("zoomed")
 
     # ---------------- AMEF (sus) ----------------
     frame_amef = tk.LabelFrame(
@@ -1415,7 +1483,7 @@ def exporta_clienti_pdf(rows, tip):
     styleN.fontSize = 8
     styleN.leading = 10
 
-    header = ["Nr", "Nume Firmă", "CUI", "Seria AMEF", "Tip Abonament", "Data Expirare", "Status"]
+    header = ["Nr", "Nume Firmă", "CUI", "Seria AMEF", "Tehnician", "Tip Abonament", "Data Expirare", "Status"]
     data = [[Paragraph(col, styleN) for col in header]]
 
     for idx, r in enumerate(rows_filtrate, start=1):
@@ -1431,6 +1499,7 @@ def exporta_clienti_pdf(rows, tip):
             r.get("Nume_Firma", ""),
             r.get("Cui", ""),
             r.get("Serie_Amef", ""),
+            r.get("Tehnician", "N/A"),
             tip_descriere,
             str(data_exp),
             text_status
@@ -1441,7 +1510,7 @@ def exporta_clienti_pdf(rows, tip):
     page_width, _ = A4
     total_margin = doc.leftMargin + doc.rightMargin
     max_width = page_width - total_margin
-    col_widths = [25, 160, 70, 60, 100, 60, 60]
+    col_widths = [25, 140, 60, 60, 100, 100, 60, 60]
     sum_widths = sum(col_widths)
     if sum_widths > max_width:
         scale = max_width / sum_widths
@@ -2090,7 +2159,7 @@ def copy_selection(mode="cell", event=None):
 def popup_istoric_abonamente():
     popup = tk.Toplevel(root)
     popup.title("Istoric abonamente")
-    popup.geometry("950x500")
+    popup.geometry("1000x700")
     popup.grab_set()
 
     # ---------------- CAUTARE ----------------
@@ -2968,6 +3037,7 @@ def genereaza_fisa_reparatie():
 root = tk.Tk()
 root.title("Gestionare Client și Sediu")
 root.geometry("1400x700")
+
 
 window_width = 1400
 window_height = 700

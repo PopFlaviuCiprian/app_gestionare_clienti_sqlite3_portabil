@@ -2,11 +2,11 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 ; Non-commercial use only
 
-#define MyAppName "Gestiune Clienti v2"
+#define MyAppName "Gestiune Clienti v3"
 #define MyAppVersion "1.5"
 #define MyAppPublisher "Pop Ciprian"
 #define MyAppURL "https://www.example.com/"
-#define MyAppExeName "Gestiune_clienti_sqlite_portabil_v2.exe"
+#define MyAppExeName "Gestiune_clienti_sqlite_portabil_v3.exe"
 #define MyAppAssocName MyAppName + " File"
 #define MyAppAssocExt ".exe"
 #define MyAppAssocKey StringChange(MyAppAssocName, " ", "") + MyAppAssocExt
@@ -49,7 +49,7 @@ Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{
 
 [Files]
 
-Source: "D:\Gestionare_clienti_cu SQLite\pythonProject1\dist\Gestiune_clienti_sqlite_portabil_v2\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "D:\Gestionare_clienti_cu SQLite\pythonProject1\dist\Gestiune_clienti_sqlite_portabil_v3\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
 
 Source: "D:\Gestionare_clienti_cu SQLite\pythonProject1\template\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
 Source: "D:\Gestionare_clienti_cu SQLite\pythonProject1\icons\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
