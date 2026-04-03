@@ -34,6 +34,8 @@ from docx2pdf import convert
 import re
 import win32com.client
 import string
+from docx.shared import Inches
+
 
 """
 load_dotenv()  # încarcă variabilele din .env
@@ -2386,6 +2388,15 @@ def resource_path(relative_path):
 
     return os.path.join(base_path, relative_path)
 
+def insereaza_semnatura(doc, semnatura_path):
+    for p in doc.paragraphs:
+        if "{Semnatura}" in p.text:
+            p.text = p.text.replace("{Semnatura}", "")
+
+            if semnatura_path and os.path.exists(resource_path(semnatura_path)):
+                run = p.add_run()
+                run.add_picture(resource_path(semnatura_path), width=Inches(2))
+
 def nume_fisier_valid(text):
     text = str(text)
     text = re.sub(r'[\\/*?:"<>|]', "", text)  # elimina caractere interzise
@@ -2482,7 +2493,8 @@ def citeste_excel_tehnicieni():
         nume = str(row["NUME"]).strip()
         tehnicieni[nume] = {
             "SIGILIU": row.get("SIGILIU", ""),
-            "LEGITIMATIE": row.get("LEGITIMATIE", "")
+            "LEGITIMATIE": row.get("LEGITIMATIE", ""),
+            "SEMNATURA": row.get("SEMNATURA", "")
         }
     return tehnicieni
 
@@ -2548,6 +2560,7 @@ def genereaza_declaratie():
         if nume_tehnician in tehnicieni_excel_norm:
             sigiliu_tehnician = tehnicieni_excel_norm[nume_tehnician]["SIGILIU"]
             legitimatie_tehnician = tehnicieni_excel_norm[nume_tehnician]["LEGITIMATIE"]
+            semnatura_tehnician = tehnicieni_excel_norm[nume_tehnician].get("SEMNATURA", "")
         else:
             print(f"Tehnician {nume_tehnician} nu a fost găsit în Excel")
 
@@ -2609,6 +2622,9 @@ def genereaza_declaratie():
                 for cell in row.cells:
                     for p in cell.paragraphs:
                         replace_text_in_paragraph(p, date)
+
+        semnatura_path = tehnicieni_excel_norm.get(nume_tehnician, {}).get("SEMNATURA", "")
+        insereaza_semnatura(doc, semnatura_path)
 
         # --- Dialog pentru a alege calea de salvare ---
         file_path = filedialog.asksaveasfilename(
@@ -2742,6 +2758,7 @@ def genereaza_pv_defiscalizare():
         if nume_tehnician in tehnicieni_excel_norm:
             sigiliu_tehnician = tehnicieni_excel_norm[nume_tehnician]["SIGILIU"]
             legitimatie_tehnician = tehnicieni_excel_norm[nume_tehnician]["LEGITIMATIE"]
+            semnatura_tehnician = tehnicieni_excel_norm[nume_tehnician].get("SEMNATURA", "")
         else:
             print(f"Tehnician {nume_tehnician} nu a fost găsit în Excel")
 
@@ -2761,6 +2778,7 @@ def genereaza_pv_defiscalizare():
             "{Tehnician}": nume_tehnician,
             "{Legitimatie}": legitimatie_tehnician,
             "{Data}": data_azi
+
         }
 
         def replace_text_in_paragraph(paragraph, data):
@@ -2796,6 +2814,9 @@ def genereaza_pv_defiscalizare():
                     for p in cell.paragraphs:
                         replace_text_in_paragraph(p, date)
 
+        semnatura_path = tehnicieni_excel_norm.get(nume_tehnician, {}).get("SEMNATURA", "")
+        insereaza_semnatura(doc, semnatura_path)
+
         # --- Dialog pentru a alege calea de salvare ---
         file_path = filedialog.asksaveasfilename(
             defaultextension=".docx",
@@ -2813,7 +2834,7 @@ def genereaza_pv_defiscalizare():
 
         label = tk.Label(
             progress_win,
-            text="Se generează declarația..."
+            text="Se generează PV defiscalizare..."
         )
         label.pack(pady=5)
 
@@ -2904,6 +2925,20 @@ def genereaza_fisa_reparatie():
 
         data_azi = datetime.today().strftime("%d.%m.%Y")
 
+        tehnicieni_excel = citeste_excel_tehnicieni()
+
+        nume_tehnician = amef.get("Tehnician", "").strip().upper()
+
+        tehnicieni_excel_norm = {k.strip().upper(): v for k, v in tehnicieni_excel.items()}
+
+        semnatura_tehnician = ""
+
+        if nume_tehnician in tehnicieni_excel_norm:
+            semnatura_tehnician = tehnicieni_excel_norm[nume_tehnician].get("SEMNATURA", "")
+        else:
+            print(f"Tehnician {nume_tehnician} nu a fost găsit în Excel")
+
+
         # --- Dicționar pentru template ---
         date = {
             "{Administrator}": client["Administrator"],
@@ -2941,14 +2976,6 @@ def genereaza_fisa_reparatie():
         for p in doc.paragraphs:
             replace_text_in_paragraph(p, date)
 
-        # -------------------------
-        # Tabele
-        # -------------------------
-        for table in doc.tables:
-            for row in table.rows:
-                for cell in row.cells:
-                    for p in cell.paragraphs:
-                        replace_text_in_paragraph(p, date)
 
         # -------------------------
         # Tabele
@@ -2958,6 +2985,9 @@ def genereaza_fisa_reparatie():
                 for cell in row.cells:
                     for p in cell.paragraphs:
                         replace_text_in_paragraph(p, date)
+
+        insereaza_semnatura(doc, semnatura_tehnician)
+
 
         # --- Dialog pentru a alege calea de salvare ---
         file_path = filedialog.asksaveasfilename(

@@ -36,7 +36,7 @@ ChangesAssociations=yes
 DisableProgramGroupPage=yes
 ; Uncomment the following line to run in non administrative install mode (install for current user only).
 ;PrivilegesRequired=lowest
-OutputBaseFilename=gestionare
+OutputBaseFilename=App gestionare clienti
 SetupIconFile=D:\Gestionare_clienti_cu SQLite\pythonProject1\icon.ico
 SolidCompression=yes
 WizardStyle=modern dynamic

@@ -5,7 +5,7 @@ a = Analysis(
     ['gestiune_clienti_sqlite.py'],
     pathex=[],
     binaries=[],
-    datas=[('baza_date.db', '.'), ('mapping_tehnician.xlsx', '.'), ('mapping_model_amef.xlsx', '.'), ('template', 'template'), ('icons', 'icons')],
+    datas=[('baza_date.db', '.'), ('mapping_tehnician.xlsx', '.'), ('mapping_model_amef.xlsx', '.'), ('template', 'template'), ('semnaturi', 'semnaturi'), ('icons', 'icons')],
     hiddenimports=['tkcalendar', 'python_dotenv', 'dateutil', 'cryptography', 'reportlab', 'pypdf', 'pandas', 'docxtpl', 'openpyxl', 'jinja2', 'xlrd', 'pytz', 'babel', 'babel.numbers', 'babel.localedata', 'babel.dates', 'PIL', 'win32com', 'win32com.client', 'pywin32'],
     hookspath=[],
     hooksconfig={},
