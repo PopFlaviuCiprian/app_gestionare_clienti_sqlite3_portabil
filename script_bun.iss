@@ -2,11 +2,11 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 ; Non-commercial use only
 
-#define MyAppName "Gestiune Clienti v3"
+#define MyAppName "Gestiune Clienti v4"
 #define MyAppVersion "1.5"
 #define MyAppPublisher "Pop Ciprian"
 #define MyAppURL "https://www.example.com/"
-#define MyAppExeName "Gestiune_clienti_sqlite_portabil_v3.exe"
+#define MyAppExeName "Gestiune_clienti_sqlite_portabil_v4.exe"
 #define MyAppAssocName MyAppName + " File"
 #define MyAppAssocExt ".exe"
 #define MyAppAssocKey StringChange(MyAppAssocName, " ", "") + MyAppAssocExt
@@ -36,7 +36,7 @@ ChangesAssociations=yes
 DisableProgramGroupPage=yes
 ; Uncomment the following line to run in non administrative install mode (install for current user only).
 ;PrivilegesRequired=lowest
-OutputBaseFilename=App gestionare clienti
+OutputBaseFilename=App gestionare clienti v4
 SetupIconFile=D:\Gestionare_clienti_cu SQLite\pythonProject1\icon.ico
 SolidCompression=yes
 WizardStyle=modern dynamic
@@ -49,7 +49,7 @@ Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{
 
 [Files]
 
-Source: "D:\Gestionare_clienti_cu SQLite\pythonProject1\dist\Gestiune_clienti_sqlite_portabil_v3\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "D:\Gestionare_clienti_cu SQLite\pythonProject1\dist\Gestiune_clienti_sqlite_portabil_v4\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
 
 Source: "D:\Gestionare_clienti_cu SQLite\pythonProject1\template\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
 Source: "D:\Gestionare_clienti_cu SQLite\pythonProject1\icons\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs

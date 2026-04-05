@@ -2397,6 +2397,17 @@ def insereaza_semnatura(doc, semnatura_path):
                 run = p.add_run()
                 run.add_picture(resource_path(semnatura_path), width=Inches(2))
 
+    # 🔥 Tabele (ASTA ÎȚI LIPSEȘTE)
+    for table in doc.tables:
+        for row in table.rows:
+            for cell in row.cells:
+                for p in cell.paragraphs:
+                    if "{Semnatura}" in p.text:
+                        p.text = p.text.replace("{Semnatura}", "")
+                        if semnatura_path:
+                            run = p.add_run()
+                            run.add_picture(resource_path(semnatura_path), width=Inches(1.2))
+
 def nume_fisier_valid(text):
     text = str(text)
     text = re.sub(r'[\\/*?:"<>|]', "", text)  # elimina caractere interzise
@@ -3060,6 +3071,209 @@ def genereaza_fisa_reparatie():
 
 # Final functie generare fisa reparatie
 
+"""
+Functie pentru generarea dosarului de asistenta tehnica
+Un fel de carte interventie digitala
+"""
+def genereaza_dosar_asistenta():
+    progress = None
+    progress_win = None
+    try:
+        # --- Selectie rând din Treeview ---
+        selected = tree.selection()
+        if not selected:
+            messagebox.showwarning("Selectează client/serie", "Selectează un rând.")
+            return
+
+        item = tree.item(selected[0])
+        valori = item["values"]
+
+        # Presupunem coloanele: 0=Nr_Crt client, 1=Serie_Amef, 2=Model, ...
+        id_client = valori[0]
+        serie_amef = str(valori[12]).strip()  # coloana serie amef din treeview
+
+        # Preluare date din DB
+        client = get_date_client(id_client)
+        amef = get_amef_client(id_client, serie_amef)
+
+        if not client or not amef:
+            messagebox.showerror("Eroare", "Nu s-au găsit date pentru client/serie selectata.")
+            return
+        nume_firma = nume_fisier_valid(client["Nume_Firma"])
+
+        # 2️⃣ citire Excel model amef
+        modele_excel = citeste_excel_modele()
+        tehnicieni_excel = citeste_excel_tehnicieni()
+
+        # Mapare amef
+        model_db = amef["Model_Amef"].strip().upper()
+        aviz = modele_excel.get(model_db, {}).get("AVIZ_DISTRIBUTIE", "")
+        data_aviz = modele_excel.get(model_db, {}).get("DATA_AVIZ", "")
+        if data_aviz:
+            if isinstance(data_aviz, datetime):
+                data_aviz = data_aviz.strftime("%d-%m-%Y")
+
+            else:
+                try:
+                    data_aviz = datetime.strptime(str(data_aviz), "%m/%d/%Y").strftime("%d-%m-%Y")
+                except:
+                    pass
+
+        # Mapare Tehnician
+        nume_tehnician = amef.get("Tehnician", "").strip().upper()
+        sigiliu_tehnician = ""
+        legitimatie_tehnician = ""
+
+        # normalizează cheile din Excel
+        tehnicieni_excel_norm = {k.strip().upper(): v for k, v in tehnicieni_excel.items()}
+
+        data_azi = datetime.today().strftime("%d.%m.%Y")
+
+        # Data creata pentru campul data achizitionarii amef
+        data_achizitionare = (datetime.today() - timedelta(days=3)).strftime("%d.%m.%Y")
+
+        if nume_tehnician in tehnicieni_excel_norm:
+            sigiliu_tehnician = tehnicieni_excel_norm[nume_tehnician]["SIGILIU"]
+            legitimatie_tehnician = tehnicieni_excel_norm[nume_tehnician]["LEGITIMATIE"]
+            semnatura_tehnician = tehnicieni_excel_norm[nume_tehnician].get("SEMNATURA", "")
+        else:
+            print(f"Tehnician {nume_tehnician} nu a fost găsit în Excel")
+
+        # --- Dicționar pentru template ---
+        date = {
+            "{Administrator}": client["Administrator"],
+            "{Nume_Firma}": client["Nume_Firma"],
+            "{Sediu_Social}": client["Sediu_Social"],
+            "{Cui}": client["Cui"],
+            "{Punct_Lucru}": amef["Punct_Lucru"],
+            "{Serie_Amef}": amef["Serie_Amef"],
+            "{Model_Amef}": amef["Model_Amef"],
+            "{Nui}": amef["Nui"],
+            "{Aviz_Distributie}": aviz,
+            "{Data_Aviz}": data_aviz,
+            "{Sigiliu}": sigiliu_tehnician,
+            "{Tehnician}": nume_tehnician,
+            "{Legitimatie}": legitimatie_tehnician,
+            "{Data}": data_azi,
+            "{Data_Achizitionare}": data_achizitionare
+        }
+
+        def replace_text_in_paragraph(paragraph, data):
+
+            full_text = "".join(run.text for run in paragraph.runs)
+
+            replaced = False
+
+            for key, value in data.items():
+                if key in full_text:
+                    full_text = full_text.replace(key, str(value))
+                    replaced = True
+
+            if replaced:
+                for run in paragraph.runs:
+                    run.text = ""
+
+                paragraph.runs[0].text = full_text
+
+        template_path = resource_path("template/dosar_asistenta.docx")
+
+        if not os.path.exists(template_path):
+            messagebox.showerror(
+                "Eroare",
+                f"Template lipsă:\n{template_path}"
+            )
+            return
+
+        doc = Document(template_path)
+        # Paragrafe
+        for p in doc.paragraphs:
+            replace_text_in_paragraph(p, date)
+
+        # -------------------------
+        # Tabele
+        # -------------------------
+        for table in doc.tables:
+            for row in table.rows:
+                for cell in row.cells:
+                    for p in cell.paragraphs:
+                        replace_text_in_paragraph(p, date)
+
+        semnatura_path = tehnicieni_excel_norm.get(nume_tehnician, {}).get("SEMNATURA", "")
+        insereaza_semnatura(doc, semnatura_path)
+
+        # --- Dialog pentru a alege calea de salvare ---
+        file_path = filedialog.asksaveasfilename(
+            defaultextension=".docx",
+            filetypes=[("Document Word", "*.docx")],
+            initialfile=f"Dosar_asistenta_{nume_firma}_{id_client}_{serie_amef}.docx",
+            title="Salvează dosar asistenta"
+        )
+
+        if not file_path:  # utilizatorul a apasat Cancel
+            return
+
+        progress_win = tk.Toplevel(root)
+        progress_win.title("Se generează...")
+        progress_win.geometry("300x80")
+        progress_win.resizable(False, False)
+
+        label = tk.Label(
+            progress_win,
+            text="Se generează declarația..."
+        )
+        label.pack(pady=5)
+
+        progress = ttk.Progressbar(
+            progress_win,
+            mode="indeterminate"
+        )
+
+        progress.pack(pady=5, padx=10, fill="x")
+
+        progress.start()
+        progress_win.update()
+
+        # --- Salvare docx ---
+        doc.save(file_path)
+
+        # --- Optional: convertire PDF dacă ai funcția convert ---
+        pdf_path = file_path.replace(".docx", ".pdf")
+        try:
+            convert_docx_to_pdf(file_path, pdf_path)
+
+            if os.path.exists(pdf_path):
+                messagebox.showinfo(
+                    "Succes",
+                    "Dosarul de asistenta a fost generat in PDF si Doc"
+                )
+            else:
+                messagebox.showwarning(
+                    "PDF",
+                    "DOCX creat, PDF nu"
+                )
+
+        except Exception as e:
+            messagebox.showerror(
+                "Eroare PDF",
+                str(e)
+            )
+
+        except Exception as e:
+            messagebox.showerror(
+                "Eroare generală",
+                str(e)
+            )
+
+    finally:
+        if progress:
+            progress.stop()
+            progress.destroy()
+        if progress_win:
+            progress_win.destroy()
+
+"""
+Finalul functie pentru dosar asistenta
+"""
 
 # =========================
 # User Interface setup
@@ -3320,8 +3534,8 @@ btn_params = [
     ("Merge DB (admin)", lambda: update_baza_protejat(), "#f4b183", "Combină și actualizează 2 baze de date"),
     ("Genereaza DI", lambda: genereaza_declaratie(), "#d9ead3", "Generează declarație de instalare PDF"),
     ("Genereaza PV", lambda: genereaza_pv_defiscalizare(), "#d9ead3", "Generează PV defiscalizare in PDF"),
-    ("Fisa Service", lambda: genereaza_fisa_reparatie(), "#d9ead3", "Generează fisa reparatie in PDF")
-    # ("Proces verbal defiscalizare", lambda: genereaza_document("proces_verbal_defiscalizare"), "#fce5cd", "Generează proces verbal de defiscalizare PDF"),
+    ("Fisa Service", lambda: genereaza_fisa_reparatie(), "#d9ead3", "Generează fisa reparatie in PDF"),
+    ("Dosar Asistenta", lambda: genereaza_dosar_asistenta(), "#fce5cd", "Genereaza dosar asistenta tehnica in Pdf"),
     # ("Fișă intervenție", lambda: genereaza_document("fisa_interventie"), "#cfe2f3", "Generează fișă de service PDF"),
     # ("Contract service", lambda: genereaza_document("contract_service"), "#ead1dc", "Generează contract de service PDF"),
 ]
