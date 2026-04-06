@@ -1977,3 +1977,877 @@
 [2026-04-06 17:56:33] Adăugat istoric abonament Serie_Amef=DB4090041985 client CUI=21167592
 [2026-04-06 17:56:33] Adăugat istoric abonament Serie_Amef=DB4200037824 client CUI=11359108
 [2026-04-06 17:56:33] === MERGE COMPLET FINALIZAT ===
+[2026-04-06 19:04:16] === START MERGE BAZE DE DATE ===
+[2026-04-06 19:04:16] Client CUI=18171186 deja existent, fără modificări
+[2026-04-06 19:04:16] Client CUI=43279791 deja existent, fără modificări
+[2026-04-06 19:04:16] Client CUI=RO46769127 deja existent, fără modificări
+[2026-04-06 19:04:16] Client CUI=RO12290706 deja existent, fără modificări
+[2026-04-06 19:04:16] Client CUI=RO32069000 deja existent, fără modificări
+[2026-04-06 19:04:16] Client CUI=18205718 deja existent, fără modificări
+[2026-04-06 19:04:16] Client CUI=RO7377238 deja existent, fără modificări
+[2026-04-06 19:04:16] Client CUI=48989471 deja existent, fără modificări
+[2026-04-06 19:04:16] Client CUI=RO2829170 deja existent, fără modificări
+[2026-04-06 19:04:16] Client CUI=RO6902622 deja existent, fără modificări
+[2026-04-06 19:04:16] Client CUI=RO11879321 deja existent, fără modificări
+[2026-04-06 19:04:16] Client CUI=RO14000817 deja existent, fără modificări
+[2026-04-06 19:04:16] Client CUI=RO4376300 deja existent, fără modificări
+[2026-04-06 19:04:16] Client CUI=30892025 deja existent, fără modificări
+[2026-04-06 19:04:16] Client CUI=RO31292606 deja existent, fără modificări
+[2026-04-06 19:04:16] Client CUI=RO21417214 deja existent, fără modificări
+[2026-04-06 19:04:16] Client CUI=10190930 deja existent, fără modificări
+[2026-04-06 19:04:16] Client CUI=RO16743338 deja existent, fără modificări
+[2026-04-06 19:04:16] Client CUI=RO14190479 deja existent, fără modificări
+[2026-04-06 19:04:16] Client CUI=6949153 deja existent, fără modificări
+[2026-04-06 19:04:16] Client CUI=RO15376500 deja existent, fără modificări
+[2026-04-06 19:04:16] Client CUI=RO668981 deja existent, fără modificări
+[2026-04-06 19:04:16] Client CUI=8707989 deja existent, fără modificări
+[2026-04-06 19:04:16] Client CUI=41698815 deja existent, fără modificări
+[2026-04-06 19:04:16] Client CUI=RO20329912 deja existent, fără modificări
+[2026-04-06 19:04:16] Client CUI=40831912 deja existent, fără modificări
+[2026-04-06 19:04:16] Client CUI=10658535 deja existent, fără modificări
+[2026-04-06 19:04:16] Client CUI=RO46440697 deja existent, fără modificări
+[2026-04-06 19:04:16] Client CUI=RO16174780 deja existent, fără modificări
+[2026-04-06 19:04:16] Client CUI=44317079 deja existent, fără modificări
+[2026-04-06 19:04:16] Client CUI=45506173 deja existent, fără modificări
+[2026-04-06 19:04:16] Client CUI=RO45509021 deja existent, fără modificări
+[2026-04-06 19:04:16] Client CUI=RO16259789 deja existent, fără modificări
+[2026-04-06 19:04:16] Client CUI=RO30910555 deja existent, fără modificări
+[2026-04-06 19:04:16] Client CUI=RO14512582 deja existent, fără modificări
+[2026-04-06 19:04:16] Client CUI=RO15380021 deja existent, fără modificări
+[2026-04-06 19:04:16] Client CUI=R10878344 deja existent, fără modificări
+[2026-04-06 19:04:16] Client CUI=RO18560000 deja existent, fără modificări
+[2026-04-06 19:04:16] Client CUI=RO17545010 deja existent, fără modificări
+[2026-04-06 19:04:16] Client CUI=R14112292 deja existent, fără modificări
+[2026-04-06 19:04:16] Client CUI=RO38284228 deja existent, fără modificări
+[2026-04-06 19:04:16] Client CUI=RO38281132 deja existent, fără modificări
+[2026-04-06 19:04:16] Client CUI=RO29473635 deja existent, fără modificări
+[2026-04-06 19:04:16] Client CUI=RO10990657 deja existent, fără modificări
+[2026-04-06 19:04:16] Client CUI=RO662946 deja existent, fără modificări
+[2026-04-06 19:04:16] Client CUI=R13449606 deja existent, fără modificări
+[2026-04-06 19:04:16] Client CUI=3357165 deja existent, fără modificări
+[2026-04-06 19:04:16] Client CUI=39886477 deja existent, fără modificări
+[2026-04-06 19:04:16] Client CUI=RO32966943 deja existent, fără modificări
+[2026-04-06 19:04:16] Client CUI=RO10499030 deja existent, fără modificări
+[2026-04-06 19:04:16] Client CUI=RO42109314 deja existent, fără modificări
+[2026-04-06 19:04:16] Client CUI=RO28208452 deja existent, fără modificări
+[2026-04-06 19:04:16] Client CUI=RO6851308 deja existent, fără modificări
+[2026-04-06 19:04:16] Client CUI=RO40840449 deja existent, fără modificări
+[2026-04-06 19:04:16] Client CUI=RO22574322 deja existent, fără modificări
+[2026-04-06 19:04:16] Client CUI=43579900 deja existent, fără modificări
+[2026-04-06 19:04:16] Client CUI=RO48937227 deja existent, fără modificări
+[2026-04-06 19:04:16] Client CUI=RO18852536 deja existent, fără modificări
+[2026-04-06 19:04:16] Client CUI=RO44134411 deja existent, fără modificări
+[2026-04-06 19:04:16] Client CUI=RO6971355 deja existent, fără modificări
+[2026-04-06 19:04:16] Client CUI=RO48532835 deja existent, fără modificări
+[2026-04-06 19:04:16] Client CUI=RO33077647 deja existent, fără modificări
+[2026-04-06 19:04:16] Client CUI=RO25860000 deja existent, fără modificări
+[2026-04-06 19:04:16] Client CUI=RO43082624 deja existent, fără modificări
+[2026-04-06 19:04:16] Client CUI=47697363 deja existent, fără modificări
+[2026-04-06 19:04:16] Client CUI=44301889 deja existent, fără modificări
+[2026-04-06 19:04:16] Client CUI=RO34235125 deja existent, fără modificări
+[2026-04-06 19:04:16] Client CUI=RO14617406 deja existent, fără modificări
+[2026-04-06 19:04:16] Client CUI=28798728 deja existent, fără modificări
+[2026-04-06 19:04:16] Client CUI=28449612 deja existent, fără modificări
+[2026-04-06 19:04:16] Client CUI=42289665 deja existent, fără modificări
+[2026-04-06 19:04:16] Client CUI=51247235 deja existent, fără modificări
+[2026-04-06 19:04:16] Client CUI=51256071 deja existent, fără modificări
+[2026-04-06 19:04:16] Client CUI=50780522 deja existent, fără modificări
+[2026-04-06 19:04:16] Client CUI=RO44686580 deja existent, fără modificări
+[2026-04-06 19:04:16] Client CUI=41816392 deja existent, fără modificări
+[2026-04-06 19:04:16] Client CUI=RO42117333 deja existent, fără modificări
+[2026-04-06 19:04:16] Client CUI=49752375 deja existent, fără modificări
+[2026-04-06 19:04:16] Client CUI=42453333 deja existent, fără modificări
+[2026-04-06 19:04:16] Client CUI=43181792 deja existent, fără modificări
+[2026-04-06 19:04:16] Client CUI=RO36803442 deja existent, fără modificări
+[2026-04-06 19:04:16] Client CUI=43266791 deja existent, fără modificări
+[2026-04-06 19:04:16] Client CUI=RO43567387 deja existent, fără modificări
+[2026-04-06 19:04:16] Client CUI=RO37660537 deja existent, fără modificări
+[2026-04-06 19:04:16] Client CUI=RO45214969 deja existent, fără modificări
+[2026-04-06 19:04:16] Client CUI=45982487 deja existent, fără modificări
+[2026-04-06 19:04:16] Client CUI=RO30803567 deja existent, fără modificări
+[2026-04-06 19:04:16] Client CUI=42555651 deja existent, fără modificări
+[2026-04-06 19:04:16] Client CUI=17557007 deja existent, fără modificări
+[2026-04-06 19:04:16] Client CUI=RO5776011 deja existent, fără modificări
+[2026-04-06 19:04:16] Client CUI=RO33327379 deja existent, fără modificări
+[2026-04-06 19:04:16] Client CUI=41951224 deja existent, fără modificări
+[2026-04-06 19:04:16] Client CUI=RO21098689 deja existent, fără modificări
+[2026-04-06 19:04:16] Client CUI=RO23919632 deja existent, fără modificări
+[2026-04-06 19:04:16] Client CUI=RO5490132 deja existent, fără modificări
+[2026-04-06 19:04:16] Client CUI=RO7484994 deja existent, fără modificări
+[2026-04-06 19:04:16] Client CUI=38635833 deja existent, fără modificări
+[2026-04-06 19:04:16] Client CUI=R14929360 deja existent, fără modificări
+[2026-04-06 19:04:16] Client CUI=RO669251 deja existent, fără modificări
+[2026-04-06 19:04:16] Client CUI=RO25264547 deja existent, fără modificări
+[2026-04-06 19:04:16] Client CUI=RO664033 deja existent, fără modificări
+[2026-04-06 19:04:16] Client CUI=RO646533 deja existent, fără modificări
+[2026-04-06 19:04:16] Client CUI=RO663941 deja existent, fără modificări
+[2026-04-06 19:04:16] Client CUI=26327295 deja existent, fără modificări
+[2026-04-06 19:04:16] Client CUI=RO31223622 deja existent, fără modificări
+[2026-04-06 19:04:16] Client CUI=RO5320103 deja existent, fără modificări
+[2026-04-06 19:04:16] Client CUI=19695197 deja existent, fără modificări
+[2026-04-06 19:04:16] Client CUI=RO23489004 deja existent, fără modificări
+[2026-04-06 19:04:16] Client CUI=33381157 deja existent, fără modificări
+[2026-04-06 19:04:16] Client CUI=RO23175486 deja existent, fără modificări
+[2026-04-06 19:04:16] Client CUI=RO41709558 deja existent, fără modificări
+[2026-04-06 19:04:16] Client CUI=RO41194249 deja existent, fără modificări
+[2026-04-06 19:04:16] Client CUI=RO32853260 deja existent, fără modificări
+[2026-04-06 19:04:16] Client CUI=RO6043531 deja existent, fără modificări
+[2026-04-06 19:04:16] Client CUI=RO46103845 deja existent, fără modificări
+[2026-04-06 19:04:16] Client CUI=42060580 deja existent, fără modificări
+[2026-04-06 19:04:16] Client CUI=RO32980956 deja existent, fără modificări
+[2026-04-06 19:04:16] Client CUI=RO17249520 deja existent, fără modificări
+[2026-04-06 19:04:16] Client CUI=47042274 deja existent, fără modificări
+[2026-04-06 19:04:16] Client CUI=RO10340271 deja existent, fără modificări
+[2026-04-06 19:04:16] Client CUI=RO15268789 deja existent, fără modificări
+[2026-04-06 19:04:16] Client CUI=RO2830183 deja existent, fără modificări
+[2026-04-06 19:04:16] Client CUI=RO23669528 deja existent, fără modificări
+[2026-04-06 19:04:16] Client CUI=37173167 deja existent, fără modificări
+[2026-04-06 19:04:16] Client CUI=35734182 deja existent, fără modificări
+[2026-04-06 19:04:16] Client CUI=49984413 deja existent, fără modificări
+[2026-04-06 19:04:16] Client CUI=RO15004787 deja existent, fără modificări
+[2026-04-06 19:04:16] Client CUI=48944739 deja existent, fără modificări
+[2026-04-06 19:04:16] Client CUI=34109984 deja existent, fără modificări
+[2026-04-06 19:04:16] Client CUI=37316992 deja existent, fără modificări
+[2026-04-06 19:04:16] Client CUI=49611864 deja existent, fără modificări
+[2026-04-06 19:04:16] Client CUI=30177200 deja existent, fără modificări
+[2026-04-06 19:04:16] Client CUI=47102449 deja existent, fără modificări
+[2026-04-06 19:04:16] Client CUI=38059951 deja existent, fără modificări
+[2026-04-06 19:04:16] Client CUI=48753631 deja existent, fără modificări
+[2026-04-06 19:04:16] Adăugat client nou: CUI=10580150
+[2026-04-06 19:04:16] Adăugat client nou: CUI=26454191
+[2026-04-06 19:04:16] Adăugat client nou: CUI=43063827
+[2026-04-06 19:04:16] Adăugat client nou: CUI=32594475
+[2026-04-06 19:04:16] Adăugat client nou: CUI=21708116
+[2026-04-06 19:04:16] Adăugat client nou: CUI=42669613
+[2026-04-06 19:04:16] Adăugat client nou: CUI=54285624
+[2026-04-06 19:04:16] Adăugat client nou: CUI=21167592
+[2026-04-06 19:04:16] Adăugat client nou: CUI=11359108
+[2026-04-06 19:04:16] Data_Exp_Abon protejat: 2026-06-24 → 2026-06-24 00:00:00
+[2026-04-06 19:04:16] Data_Exp_Gprs protejat: 2026-12-21 → 2026-12-21 00:00:00
+[2026-04-06 19:04:16] Actualizat sediu Serie_Amef=DB4090017015 client CUI=18171186: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:16] Data_Exp_Abon protejat: 2026-06-24 → 2026-06-24 00:00:00
+[2026-04-06 19:04:16] Data_Exp_Gprs protejat: 2026-12-21 → 2026-12-21 00:00:00
+[2026-04-06 19:04:16] Actualizat sediu Serie_Amef=DB4090016893 client CUI=18171186: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:16] Data_Exp_Abon protejat: 2026-06-24 → 2026-06-24 00:00:00
+[2026-04-06 19:04:16] Data_Exp_Gprs protejat: 2026-12-21 → 2026-12-21 00:00:00
+[2026-04-06 19:04:16] Actualizat sediu Serie_Amef=DB4090016892 client CUI=18171186: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:16] Data_Exp_Abon protejat: 2026-06-24 → 2026-06-24 00:00:00
+[2026-04-06 19:04:16] Data_Exp_Gprs protejat: 2026-12-21 → 2026-12-21 00:00:00
+[2026-04-06 19:04:16] Actualizat sediu Serie_Amef=DB4090016891 client CUI=18171186: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:16] Data_Exp_Abon protejat: 2026-06-24 → 2026-06-24 00:00:00
+[2026-04-06 19:04:16] Data_Exp_Gprs protejat: 2026-12-21 → 2026-12-21 00:00:00
+[2026-04-06 19:04:16] Actualizat sediu Serie_Amef=DB4090016890 client CUI=18171186: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:16] Data_Exp_Abon protejat: 2026-06-24 → 2026-06-24 00:00:00
+[2026-04-06 19:04:16] Data_Exp_Gprs protejat: 2026-12-21 → 2026-12-21 00:00:00
+[2026-04-06 19:04:16] Actualizat sediu Serie_Amef=DB4090016889 client CUI=18171186: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:16] Data_Exp_Abon protejat: 2027-12-10 → 2027-12-10 00:00:00
+[2026-04-06 19:04:16] Data_Exp_Gprs protejat: 2027-02-11 → 2027-02-11 00:00:00
+[2026-04-06 19:04:16] Actualizat sediu Serie_Amef=DB4500018733 client CUI=43279791: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:16] Data_Exp_Abon protejat: 2026-05-06 → 2026-05-06 00:00:00
+[2026-04-06 19:04:16] Data_Exp_Gprs protejat: 2027-02-06 → 2027-02-06 00:00:00
+[2026-04-06 19:04:16] Actualizat sediu Serie_Amef=ZEX067913 client CUI=RO46769127: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:16] Data_Exp_Abon protejat: 2026-08-19 → 2026-08-19 00:00:00
+[2026-04-06 19:04:16] Data_Exp_Gprs protejat: 2027-08-19 → 2027-08-19 00:00:00
+[2026-04-06 19:04:16] Actualizat sediu Serie_Amef=DB4200003270 client CUI=RO12290706: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:16] Data_Exp_Abon protejat: 2026-08-19 → 2026-08-19 00:00:00
+[2026-04-06 19:04:16] Data_Exp_Gprs protejat: 2026-08-19 → 2026-08-19 00:00:00
+[2026-04-06 19:04:16] Actualizat sediu Serie_Amef=DB4400019147 client CUI=RO12290706: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:16] Data_Exp_Abon protejat: 2026-06-18 → 2026-06-18 00:00:00
+[2026-04-06 19:04:16] Data_Exp_Gprs protejat: 2026-08-18 → 2026-08-18 00:00:00
+[2026-04-06 19:04:16] Actualizat sediu Serie_Amef=DB4200120823 client CUI=RO32069000: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:16] Data_Exp_Abon protejat: 2026-05-20 → 2026-05-20 00:00:00
+[2026-04-06 19:04:16] Data_Exp_Gprs protejat: 2026-08-18 → 2026-08-18 00:00:00
+[2026-04-06 19:04:16] Actualizat sediu Serie_Amef=DB4200037828 client CUI=18205718: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:16] Data_Exp_Abon protejat: 2026-06-25 → 2026-06-25 00:00:00
+[2026-04-06 19:04:16] Data_Exp_Gprs protejat: 2026-08-18 → 2026-08-18 00:00:00
+[2026-04-06 19:04:16] Actualizat sediu Serie_Amef=DB4700004200 client CUI=RO7377238: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:16] Data_Exp_Abon protejat: 2026-05-25 → 2026-05-25 00:00:00
+[2026-04-06 19:04:16] Data_Exp_Gprs protejat: 2026-11-20 → 2026-11-20 00:00:00
+[2026-04-06 19:04:16] Actualizat sediu Serie_Amef=DB4090014991 client CUI=48989471: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:16] Data_Exp_Abon protejat: 2026-05-25 → 2026-05-25 00:00:00
+[2026-04-06 19:04:16] Data_Exp_Gprs protejat: 2050-02-20 → 2050-02-20 00:00:00
+[2026-04-06 19:04:16] Actualizat sediu Serie_Amef=DB4200043528 client CUI=RO2829170: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:16] Data_Exp_Abon protejat: 2026-05-25 → 2026-05-25 00:00:00
+[2026-04-06 19:04:16] Data_Exp_Gprs protejat: 2050-02-20 → 2050-02-20 00:00:00
+[2026-04-06 19:04:16] Actualizat sediu Serie_Amef=DB4200043529 client CUI=RO2829170: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:16] Data_Exp_Abon protejat: 2026-05-25 → 2026-05-25 00:00:00
+[2026-04-06 19:04:16] Data_Exp_Gprs protejat: 2026-08-17 → 2026-08-17 00:00:00
+[2026-04-06 19:04:16] Actualizat sediu Serie_Amef=DB4200043419 client CUI=RO6902622: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:16] Data_Exp_Abon protejat: 2026-05-25 → 2026-05-25 00:00:00
+[2026-04-06 19:04:16] Data_Exp_Gprs protejat: 2026-08-17 → 2026-08-17 00:00:00
+[2026-04-06 19:04:16] Actualizat sediu Serie_Amef=DB4200043421 client CUI=RO11879321: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:16] Data_Exp_Abon protejat: 2026-05-25 → 2026-05-25 00:00:00
+[2026-04-06 19:04:16] Data_Exp_Gprs protejat: 2050-08-25 → 2050-08-25 00:00:00
+[2026-04-06 19:04:16] Actualizat sediu Serie_Amef=VF10004957 client CUI=RO14000817: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:16] Data_Exp_Abon protejat: 2026-05-25 → 2026-05-25 00:00:00
+[2026-04-06 19:04:16] Data_Exp_Gprs protejat: 2050-08-25 → 2050-08-25 00:00:00
+[2026-04-06 19:04:16] Actualizat sediu Serie_Amef=DP10001994 client CUI=RO4376300: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:16] Data_Exp_Abon protejat: 2026-05-25 → 2026-05-25 00:00:00
+[2026-04-06 19:04:16] Data_Exp_Gprs protejat: 2026-11-03 → 2026-11-03 00:00:00
+[2026-04-06 19:04:16] Actualizat sediu Serie_Amef=ZEX014754 client CUI=30892025: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:16] Data_Exp_Abon protejat: 2026-05-25 → 2026-05-25 00:00:00
+[2026-04-06 19:04:16] Data_Exp_Gprs protejat: 2050-12-21 → 2050-12-21 00:00:00
+[2026-04-06 19:04:16] Actualizat sediu Serie_Amef=DB4090035044 client CUI=RO31292606: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:16] Data_Exp_Abon protejat: 2026-05-25 → 2026-05-25 00:00:00
+[2026-04-06 19:04:16] Data_Exp_Gprs protejat: 2026-11-03 → 2026-11-03 00:00:00
+[2026-04-06 19:04:16] Actualizat sediu Serie_Amef=DB4200030997 client CUI=RO21417214: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:16] Data_Exp_Abon protejat: 2026-05-25 → 2026-05-25 00:00:00
+[2026-04-06 19:04:16] Data_Exp_Gprs protejat: 2050-11-30 → 2050-11-30 00:00:00
+[2026-04-06 19:04:16] Actualizat sediu Serie_Amef=DP100040466 client CUI=10190930: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:16] Data_Exp_Abon protejat: 2026-05-24 → 2026-05-24 00:00:00
+[2026-04-06 19:04:16] Data_Exp_Gprs protejat: 2026-07-09 → 2026-07-09 00:00:00
+[2026-04-06 19:04:16] Actualizat sediu Serie_Amef=DB4700001078 client CUI=RO16743338: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:16] Data_Exp_Abon protejat: 2026-05-24 → 2026-05-24 00:00:00
+[2026-04-06 19:04:16] Data_Exp_Gprs protejat: 2026-07-09 → 2026-07-09 00:00:00
+[2026-04-06 19:04:16] Actualizat sediu Serie_Amef=DB4700004188 client CUI=RO16743338: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:16] Data_Exp_Abon protejat: 2026-05-24 → 2026-05-24 00:00:00
+[2026-04-06 19:04:16] Data_Exp_Gprs protejat: 2050-05-20 → 2050-05-20 00:00:00
+[2026-04-06 19:04:16] Actualizat sediu Serie_Amef=CPE8051718290335 client CUI=RO14190479: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:16] Data_Exp_Abon protejat: 2026-05-24 → 2026-05-24 00:00:00
+[2026-04-06 19:04:16] Data_Exp_Gprs protejat: 2026-10-11 → 2026-10-11 00:00:00
+[2026-04-06 19:04:16] Actualizat sediu Serie_Amef=DB4200017553 client CUI=6949153: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:16] Data_Exp_Abon protejat: 2026-05-24 → 2026-05-24 00:00:00
+[2026-04-06 19:04:16] Data_Exp_Gprs protejat: 2026-10-11 → 2026-10-11 00:00:00
+[2026-04-06 19:04:16] Actualizat sediu Serie_Amef=ZEX002525 client CUI=6949153: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:16] Data_Exp_Abon protejat: 2026-05-24 → 2026-05-24 00:00:00
+[2026-04-06 19:04:16] Data_Exp_Gprs protejat: 2026-06-15 → 2026-06-15 00:00:00
+[2026-04-06 19:04:16] Actualizat sediu Serie_Amef=DB4200043591 client CUI=RO15376500: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:16] Data_Exp_Abon protejat: 2026-02-28 → 2026-02-28 00:00:00
+[2026-04-06 19:04:16] Data_Exp_Gprs protejat: 2026-11-05 → 2026-11-05 00:00:00
+[2026-04-06 19:04:16] Actualizat sediu Serie_Amef=VF10005746 client CUI=RO668981: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:16] Data_Exp_Abon protejat: 2026-05-24 → 2026-05-24 00:00:00
+[2026-04-06 19:04:16] Data_Exp_Gprs protejat: 2050-11-05 → 2050-11-05 00:00:00
+[2026-04-06 19:04:16] Actualizat sediu Serie_Amef=M7MLTAA9254 client CUI=8707989: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:16] Data_Exp_Abon protejat: 2025-11-25 → 2025-11-25 00:00:00
+[2026-04-06 19:04:16] Data_Exp_Gprs protejat: 2050-11-05 → 2050-11-05 00:00:00
+[2026-04-06 19:04:16] Actualizat sediu Serie_Amef=M7MLTAB4227 client CUI=41698815: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:16] Data_Exp_Abon protejat: 2026-05-24 → 2026-05-24 00:00:00
+[2026-04-06 19:04:16] Data_Exp_Gprs protejat: 2050-02-23 → 2050-02-23 00:00:00
+[2026-04-06 19:04:16] Actualizat sediu Serie_Amef=DB4090032198 client CUI=RO20329912: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:16] Data_Exp_Abon protejat: 2026-05-28 → 2026-05-28 00:00:00
+[2026-04-06 19:04:16] Data_Exp_Gprs protejat: 2026-11-01 → 2026-11-01 00:00:00
+[2026-04-06 19:04:16] Actualizat sediu Serie_Amef=ZCM010469 client CUI=40831912: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:16] Data_Exp_Abon protejat: 2026-05-24 → 2026-05-24 00:00:00
+[2026-04-06 19:04:16] Data_Exp_Gprs protejat: 2050-02-25 → 2050-02-25 00:00:00
+[2026-04-06 19:04:16] Actualizat sediu Serie_Amef=VF10005868 client CUI=10658535: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:16] Data_Exp_Abon protejat: 2026-05-19 → 2026-05-19 00:00:00
+[2026-04-06 19:04:16] Data_Exp_Gprs protejat: 2026-08-10 → 2026-08-10 00:00:00
+[2026-04-06 19:04:16] Actualizat sediu Serie_Amef=DB4090005261 client CUI=RO46440697: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:16] Data_Exp_Abon protejat: 2026-06-18 → 2026-06-18 00:00:00
+[2026-04-06 19:04:16] Data_Exp_Gprs protejat: 2050-03-01 → 2050-03-01 00:00:00
+[2026-04-06 19:04:16] Actualizat sediu Serie_Amef=M7MLTAA2617 client CUI=RO16174780: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:16] Data_Exp_Abon protejat: 2026-06-23 → 2026-06-23 00:00:00
+[2026-04-06 19:04:16] Data_Exp_Gprs protejat: 2026-06-04 → 2026-06-04 00:00:00
+[2026-04-06 19:04:16] Actualizat sediu Serie_Amef=DB4090034486 client CUI=44317079: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:16] Data_Exp_Abon protejat: 2027-03-04 → 2027-03-04 00:00:00
+[2026-04-06 19:04:16] Data_Exp_Gprs protejat: 2027-03-04 → 2027-03-04 00:00:00
+[2026-04-06 19:04:16] Actualizat sediu Serie_Amef=DB4500020117 client CUI=RO45509021: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:16] Data_Exp_Abon protejat: 2026-06-18 → 2026-06-18 00:00:00
+[2026-04-06 19:04:16] Data_Exp_Gprs protejat: 2026-07-15 → 2026-07-15 00:00:00
+[2026-04-06 19:04:16] Actualizat sediu Serie_Amef=DB4200004987 client CUI=RO16259789: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:16] Data_Exp_Abon protejat: 2026-06-12 → 2026-06-12 00:00:00
+[2026-04-06 19:04:16] Data_Exp_Gprs protejat: 2026-06-12 → 2026-06-12 00:00:00
+[2026-04-06 19:04:16] Actualizat sediu Serie_Amef=4090003477 client CUI=RO30910555: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:16] Data_Exp_Abon protejat: 2026-06-25 → 2026-06-25 00:00:00
+[2026-04-06 19:04:16] Data_Exp_Gprs protejat: 2026-06-07 → 2026-06-07 00:00:00
+[2026-04-06 19:04:16] Actualizat sediu Serie_Amef=DB4200043378 client CUI=RO14512582: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:16] Data_Exp_Abon protejat: 2026-05-25 → 2026-05-25 00:00:00
+[2026-04-06 19:04:16] Data_Exp_Gprs protejat: 2026-06-08 → 2026-06-08 00:00:00
+[2026-04-06 19:04:16] Actualizat sediu Serie_Amef=DB4200075087 client CUI=RO15380021: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:16] Data_Exp_Abon protejat: 2026-06-25 → 2026-06-25 00:00:00
+[2026-04-06 19:04:16] Data_Exp_Gprs protejat: 2026-06-08 → 2026-06-08 00:00:00
+[2026-04-06 19:04:16] Actualizat sediu Serie_Amef=DB4200052888 client CUI=R10878344: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:16] Data_Exp_Abon protejat: 2026-06-25 → 2026-06-25 00:00:00
+[2026-04-06 19:04:16] Data_Exp_Gprs protejat: 2026-09-24 → 2026-09-24 00:00:00
+[2026-04-06 19:04:16] Actualizat sediu Serie_Amef=DB4200043575 client CUI=R10878344: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:16] Data_Exp_Abon protejat: 2026-06-25 → 2026-06-25 00:00:00
+[2026-04-06 19:04:16] Data_Exp_Gprs protejat: 2026-08-10 → 2026-08-10 00:00:00
+[2026-04-06 19:04:16] Actualizat sediu Serie_Amef=DB4200052890 client CUI=R10878344: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:16] Data_Exp_Abon protejat: 2026-06-25 → 2026-06-25 00:00:00
+[2026-04-06 19:04:16] Data_Exp_Gprs protejat: 2026-08-10 → 2026-08-10 00:00:00
+[2026-04-06 19:04:16] Actualizat sediu Serie_Amef=DB4200052889 client CUI=R10878344: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:16] Data_Exp_Abon protejat: 2026-06-25 → 2026-06-25 00:00:00
+[2026-04-06 19:04:16] Data_Exp_Gprs protejat: 2026-08-10 → 2026-08-10 00:00:00
+[2026-04-06 19:04:16] Actualizat sediu Serie_Amef=DB4200052891 client CUI=R10878344: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:16] Data_Exp_Abon protejat: 2026-06-25 → 2026-06-25 00:00:00
+[2026-04-06 19:04:16] Data_Exp_Gprs protejat: 2026-06-28 → 2026-06-28 00:00:00
+[2026-04-06 19:04:16] Actualizat sediu Serie_Amef=DB4700011841 client CUI=RO18560000: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:16] Data_Exp_Abon protejat: 2026-06-25 → 2026-06-25 00:00:00
+[2026-04-06 19:04:16] Data_Exp_Gprs protejat: 2026-06-28 → 2026-06-28 00:00:00
+[2026-04-06 19:04:16] Actualizat sediu Serie_Amef=DB4700011276 client CUI=RO18560000: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:16] Data_Exp_Abon protejat: 2026-06-18 → 2026-06-18 00:00:00
+[2026-04-06 19:04:16] Data_Exp_Gprs protejat: 2026-07-06 → 2026-07-06 00:00:00
+[2026-04-06 19:04:16] Actualizat sediu Serie_Amef=DB4200036480 client CUI=RO17545010: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:16] Data_Exp_Abon protejat: 2026-06-25 → 2026-06-25 00:00:00
+[2026-04-06 19:04:16] Data_Exp_Gprs protejat: 2026-07-20 → 2026-07-20 00:00:00
+[2026-04-06 19:04:16] Actualizat sediu Serie_Amef=DB4700001082 client CUI=R14112292: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:16] Data_Exp_Abon protejat: 2026-06-25 → 2026-06-25 00:00:00
+[2026-04-06 19:04:16] Data_Exp_Gprs protejat: 2026-07-20 → 2026-07-20 00:00:00
+[2026-04-06 19:04:16] Actualizat sediu Serie_Amef=ZEX054663 client CUI=R14112292: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:16] Data_Exp_Abon protejat: 2026-06-25 → 2026-06-25 00:00:00
+[2026-04-06 19:04:16] Data_Exp_Gprs protejat: 2026-07-20 → 2026-07-20 00:00:00
+[2026-04-06 19:04:16] Actualizat sediu Serie_Amef=DB4200030686 client CUI=RO38284228: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:16] Data_Exp_Abon protejat: 2026-06-25 → 2026-06-25 00:00:00
+[2026-04-06 19:04:16] Data_Exp_Gprs protejat: 2026-08-23 → 2026-08-23 00:00:00
+[2026-04-06 19:04:16] Actualizat sediu Serie_Amef=DB4200066002 client CUI=RO38281132: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:16] Data_Exp_Abon protejat: 2026-06-18 → 2026-06-18 00:00:00
+[2026-04-06 19:04:16] Data_Exp_Gprs protejat: 2026-08-05 → 2026-08-05 00:00:00
+[2026-04-06 19:04:16] Actualizat sediu Serie_Amef=DB4200026305 client CUI=RO29473635: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:16] Data_Exp_Abon protejat: 2026-06-25 → 2026-06-25 00:00:00
+[2026-04-06 19:04:16] Data_Exp_Gprs protejat: 2026-08-11 → 2026-08-11 00:00:00
+[2026-04-06 19:04:16] Actualizat sediu Serie_Amef=DB4200043416 client CUI=RO10990657: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:16] Data_Exp_Abon protejat: 2026-06-25 → 2026-06-25 00:00:00
+[2026-04-06 19:04:16] Data_Exp_Gprs protejat: 2026-08-16 → 2026-08-16 00:00:00
+[2026-04-06 19:04:16] Actualizat sediu Serie_Amef=DB4200043584 client CUI=RO662946: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:16] Data_Exp_Abon protejat: 2026-06-20 → 2026-06-20 00:00:00
+[2026-04-06 19:04:16] Data_Exp_Gprs protejat: 2026-06-20 → 2026-06-20 00:00:00
+[2026-04-06 19:04:16] Actualizat sediu Serie_Amef=DB4100001175 client CUI=R13449606: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:16] Data_Exp_Abon protejat: 2027-03-15 → 2027-03-15 00:00:00
+[2026-04-06 19:04:16] Data_Exp_Gprs protejat: 2027-03-15 → 2027-03-15 00:00:00
+[2026-04-06 19:04:16] Actualizat sediu Serie_Amef=AC20003341 client CUI=3357165: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:16] Data_Exp_Abon protejat: 2026-10-21 → 2026-10-21 00:00:00
+[2026-04-06 19:04:16] Data_Exp_Gprs protejat: 2026-10-21 → 2026-10-21 00:00:00
+[2026-04-06 19:04:16] Actualizat sediu Serie_Amef=ZCS024481 client CUI=3357165: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:16] Data_Exp_Abon protejat: 2026-10-21 → 2026-10-21 00:00:00
+[2026-04-06 19:04:16] Data_Exp_Gprs protejat: 2026-10-21 → 2026-10-21 00:00:00
+[2026-04-06 19:04:16] Actualizat sediu Serie_Amef=ZCS026688 client CUI=3357165: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:16] Data_Exp_Abon protejat: 2026-10-21 → 2026-10-21 00:00:00
+[2026-04-06 19:04:16] Data_Exp_Gprs protejat: 2026-10-21 → 2026-10-21 00:00:00
+[2026-04-06 19:04:16] Actualizat sediu Serie_Amef=ZCS024482 client CUI=3357165: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:17] Data_Exp_Abon protejat: 2026-06-23 → 2026-06-23 00:00:00
+[2026-04-06 19:04:17] Data_Exp_Gprs protejat: 2026-06-23 → 2026-06-23 00:00:00
+[2026-04-06 19:04:17] Actualizat sediu Serie_Amef=ZEX017269 client CUI=39886477: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:17] Data_Exp_Abon protejat: 2026-06-25 → 2026-06-25 00:00:00
+[2026-04-06 19:04:17] Data_Exp_Gprs protejat: 2026-08-17 → 2026-08-17 00:00:00
+[2026-04-06 19:04:17] Actualizat sediu Serie_Amef=DB4200037827 client CUI=RO32966943: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:17] Data_Exp_Abon protejat: 2026-06-25 → 2026-06-25 00:00:00
+[2026-04-06 19:04:17] Data_Exp_Gprs protejat: 2026-08-17 → 2026-08-17 00:00:00
+[2026-04-06 19:04:17] Actualizat sediu Serie_Amef=DB4200037829 client CUI=RO32966943: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:17] Data_Exp_Abon protejat: 2026-06-18 → 2026-06-18 00:00:00
+[2026-04-06 19:04:17] Data_Exp_Gprs protejat: 2026-08-16 → 2026-08-16 00:00:00
+[2026-04-06 19:04:17] Actualizat sediu Serie_Amef=DB4200019655 client CUI=RO10499030: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:17] Data_Exp_Abon protejat: 2027-03-25 → 2027-03-25 00:00:00
+[2026-04-06 19:04:17] Data_Exp_Gprs protejat: 2027-08-16 → 2027-08-16 00:00:00
+[2026-04-06 19:04:17] Actualizat sediu Serie_Amef=DB4200097020 client CUI=RO42109314: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:17] Data_Exp_Abon protejat: 2026-08-25 → 2026-08-25 00:00:00
+[2026-04-06 19:04:17] Data_Exp_Gprs protejat: 2026-08-16 → 2026-08-16 00:00:00
+[2026-04-06 19:04:17] Actualizat sediu Serie_Amef=DB4400002482 client CUI=RO28208452: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:17] Data_Exp_Abon protejat: 2026-05-25 → 2026-05-25 00:00:00
+[2026-04-06 19:04:17] Data_Exp_Gprs protejat: 2050-08-16 → 2050-08-16 00:00:00
+[2026-04-06 19:04:17] Actualizat sediu Serie_Amef=DB4200065438 client CUI=RO6851308: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:17] Data_Exp_Abon protejat: 2026-05-25 → 2026-05-25 00:00:00
+[2026-04-06 19:04:17] Data_Exp_Gprs protejat: 2026-08-25 → 2026-08-25 00:00:00
+[2026-04-06 19:04:17] Actualizat sediu Serie_Amef=DB4200065439 client CUI=RO6851308: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:17] Data_Exp_Abon protejat: 2027-02-15 → 2027-02-15 00:00:00
+[2026-04-06 19:04:17] Data_Exp_Gprs protejat: 2027-02-15 → 2027-02-15 00:00:00
+[2026-04-06 19:04:17] Actualizat sediu Serie_Amef=DB4200097151 client CUI=RO40840449: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:17] Data_Exp_Abon protejat: 2026-05-25 → 2026-05-25 00:00:00
+[2026-04-06 19:04:17] Data_Exp_Gprs protejat: 2050-08-25 → 2050-08-25 00:00:00
+[2026-04-06 19:04:17] Actualizat sediu Serie_Amef=DB4200126847 client CUI=RO6851308: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:17] Data_Exp_Abon protejat: 2026-06-18 → 2026-06-18 00:00:00
+[2026-04-06 19:04:17] Data_Exp_Gprs protejat: 2026-08-24 → 2026-08-24 00:00:00
+[2026-04-06 19:04:17] Actualizat sediu Serie_Amef=DB4200043593 client CUI=RO22574322: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:17] Data_Exp_Abon protejat: 2027-02-25 → 2027-02-25 00:00:00
+[2026-04-06 19:04:17] Data_Exp_Gprs protejat: 2026-08-25 → 2026-08-25 00:00:00
+[2026-04-06 19:04:17] Actualizat sediu Serie_Amef=ZEX056248 client CUI=43579900: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:17] Data_Exp_Abon protejat: 2026-06-25 → 2026-06-25 00:00:00
+[2026-04-06 19:04:17] Data_Exp_Gprs protejat: 2026-08-30 → 2026-08-30 00:00:00
+[2026-04-06 19:04:17] Actualizat sediu Serie_Amef=DB4700004202 client CUI=RO7377238: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:17] Data_Exp_Abon protejat: 2026-06-25 → 2026-06-25 00:00:00
+[2026-04-06 19:04:17] Data_Exp_Gprs protejat: 2026-08-30 → 2026-08-30 00:00:00
+[2026-04-06 19:04:17] Actualizat sediu Serie_Amef=DB4700004203 client CUI=RO7377238: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:17] Data_Exp_Abon protejat: 2026-06-25 → 2026-06-25 00:00:00
+[2026-04-06 19:04:17] Data_Exp_Gprs protejat: 2026-12-25 → 2026-12-25 00:00:00
+[2026-04-06 19:04:17] Actualizat sediu Serie_Amef=DB4090040536 client CUI=RO48937227: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:17] Data_Exp_Abon protejat: 2026-06-25 → 2026-06-25 00:00:00
+[2026-04-06 19:04:17] Data_Exp_Gprs protejat: 2026-10-13 → 2026-10-13 00:00:00
+[2026-04-06 19:04:17] Actualizat sediu Serie_Amef=DB4200065434 client CUI=RO18852536: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:17] Data_Exp_Abon protejat: 2026-06-15 → 2026-06-15 00:00:00
+[2026-04-06 19:04:17] Data_Exp_Gprs protejat: 2026-06-15 → 2026-06-15 00:00:00
+[2026-04-06 19:04:17] Actualizat sediu Serie_Amef=DB4500020882 client CUI=RO44134411: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:17] Data_Exp_Abon protejat: 2026-06-25 → 2026-06-25 00:00:00
+[2026-04-06 19:04:17] Data_Exp_Gprs protejat: 2026-10-16 → 2026-10-16 00:00:00
+[2026-04-06 19:04:17] Actualizat sediu Serie_Amef=DB4200043381 client CUI=RO6971355: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:17] Data_Exp_Abon protejat: 2027-02-28 → 2027-02-28 00:00:00
+[2026-04-06 19:04:17] Data_Exp_Gprs protejat: 2027-02-28 → 2027-02-28 00:00:00
+[2026-04-06 19:04:17] Actualizat sediu Serie_Amef=ZEX063761 client CUI=RO48532835: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:17] Data_Exp_Abon protejat: 2026-06-25 → 2026-06-25 00:00:00
+[2026-04-06 19:04:17] Data_Exp_Gprs protejat: 2050-02-28 → 2050-02-28 00:00:00
+[2026-04-06 19:04:17] Actualizat sediu Serie_Amef=M7MLTAA2616 client CUI=RO33077647: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:17] Data_Exp_Abon protejat: 2026-06-25 → 2026-06-25 00:00:00
+[2026-04-06 19:04:17] Data_Exp_Gprs protejat: 2050-02-28 → 2050-02-28 00:00:00
+[2026-04-06 19:04:17] Actualizat sediu Serie_Amef=M7MLTAA6037 client CUI=RO25860000: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:17] Data_Exp_Abon protejat: 2026-06-25 → 2026-06-25 00:00:00
+[2026-04-06 19:04:17] Data_Exp_Gprs protejat: 2050-02-28 → 2050-02-28 00:00:00
+[2026-04-06 19:04:17] Actualizat sediu Serie_Amef=VF50001751 client CUI=RO43082624: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:17] Data_Exp_Abon protejat: 2027-03-07 → 2027-03-07 00:00:00
+[2026-04-06 19:04:17] Data_Exp_Gprs protejat: 2027-03-07 → 2027-03-07 00:00:00
+[2026-04-06 19:04:17] Actualizat sediu Serie_Amef=DB4090009399 client CUI=47697363: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:17] Data_Exp_Abon protejat: 2027-03-22 → 2027-03-22 00:00:00
+[2026-04-06 19:04:17] Data_Exp_Gprs protejat: 2027-03-22 → 2027-03-22 00:00:00
+[2026-04-06 19:04:17] Actualizat sediu Serie_Amef=DB4090021420 client CUI=44301889: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:17] Data_Exp_Abon protejat: 2027-03-10 → 2027-03-10 00:00:00
+[2026-04-06 19:04:17] Data_Exp_Gprs protejat: 2027-05-29 → 2027-05-29 00:00:00
+[2026-04-06 19:04:17] Actualizat sediu Serie_Amef=DB4090029962 client CUI=RO34235125: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:17] Data_Exp_Abon protejat: 2026-06-25 → 2026-06-25 00:00:00
+[2026-04-06 19:04:17] Data_Exp_Gprs protejat: 2026-10-01 → 2026-10-01 00:00:00
+[2026-04-06 19:04:17] Actualizat sediu Serie_Amef=DB4200033022 client CUI=RO14617406: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:17] Data_Exp_Abon protejat: 2026-10-25 → 2026-10-25 00:00:00
+[2026-04-06 19:04:17] Data_Exp_Gprs protejat: 2050-10-01 → 2050-10-01 00:00:00
+[2026-04-06 19:04:17] Actualizat sediu Serie_Amef=M7MLTAA6714 client CUI=28798728: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:17] Data_Exp_Abon protejat: 2026-10-20 → 2026-10-20 00:00:00
+[2026-04-06 19:04:17] Data_Exp_Gprs protejat: 2027-03-25 → 2027-03-25 00:00:00
+[2026-04-06 19:04:17] Actualizat sediu Serie_Amef=DB4120005642 client CUI=28449612: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:17] Data_Exp_Abon protejat: 2027-02-10 → 2027-02-10 00:00:00
+[2026-04-06 19:04:17] Data_Exp_Gprs protejat: 2026-10-25 → 2026-10-25 00:00:00
+[2026-04-06 19:04:17] Actualizat sediu Serie_Amef=DB4200043589 client CUI=42289665: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:17] Data_Exp_Abon protejat: 2027-02-11 → 2027-02-11 00:00:00
+[2026-04-06 19:04:17] Data_Exp_Gprs protejat: 2027-02-11 → 2027-02-11 00:00:00
+[2026-04-06 19:04:17] Actualizat sediu Serie_Amef=DB4120005944 client CUI=51247235: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:17] Data_Exp_Abon protejat: 2027-02-24 → 2027-02-24 00:00:00
+[2026-04-06 19:04:17] Data_Exp_Gprs protejat: 2027-02-24 → 2027-02-24 00:00:00
+[2026-04-06 19:04:17] Actualizat sediu Serie_Amef=DB4120005129 client CUI=51256071: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:17] Data_Exp_Abon protejat: 2027-04-08 → 2027-04-08 00:00:00
+[2026-04-06 19:04:17] Data_Exp_Gprs protejat: 2050-08-04 → 2050-08-04 00:00:00
+[2026-04-06 19:04:17] Actualizat sediu Serie_Amef=CPE8091218470087 client CUI=50780522: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:17] Data_Exp_Abon protejat: 2027-03-25 → 2027-03-25 00:00:00
+[2026-04-06 19:04:17] Data_Exp_Gprs protejat: 2027-03-25 → 2027-03-25 00:00:00
+[2026-04-06 19:04:17] Actualizat sediu Serie_Amef=ZEX062385 client CUI=RO44686580: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:17] Data_Exp_Abon protejat: 2027-02-02 → 2027-02-02 00:00:00
+[2026-04-06 19:04:17] Data_Exp_Gprs protejat: 2027-02-02 → 2027-02-02 00:00:00
+[2026-04-06 19:04:17] Actualizat sediu Serie_Amef=ZCS026739 client CUI=41816392: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:17] Data_Exp_Abon protejat: 2026-01-21 → 2026-01-21 00:00:00
+[2026-04-06 19:04:17] Data_Exp_Gprs protejat: 2050-02-02 → 2050-02-02 00:00:00
+[2026-04-06 19:04:17] Actualizat sediu Serie_Amef=M7MLTAA8526 client CUI=RO42117333: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:17] Data_Exp_Abon protejat: 2027-01-22 → 2027-01-22 00:00:00
+[2026-04-06 19:04:17] Data_Exp_Gprs protejat: 2050-01-22 → 2050-01-22 00:00:00
+[2026-04-06 19:04:17] Actualizat sediu Serie_Amef=CPE8051718290339 client CUI=49752375: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:17] Data_Exp_Abon protejat: 2027-03-05 → 2027-03-05 00:00:00
+[2026-04-06 19:04:17] Data_Exp_Gprs protejat: 2027-03-05 → 2027-03-05 00:00:00
+[2026-04-06 19:04:17] Actualizat sediu Serie_Amef=AC20002558 client CUI=45506173: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:17] Data_Exp_Abon protejat: 2027-03-18 → 2027-03-18 00:00:00
+[2026-04-06 19:04:17] Data_Exp_Gprs protejat: 2026-09-17 → 2026-09-17 00:00:00
+[2026-04-06 19:04:17] Actualizat sediu Serie_Amef=ZEX054595 client CUI=42453333: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:17] Data_Exp_Abon protejat: 2027-03-20 → 2027-03-20 00:00:00
+[2026-04-06 19:04:17] Data_Exp_Gprs protejat: 2027-08-23 → 2027-08-23 00:00:00
+[2026-04-06 19:04:17] Actualizat sediu Serie_Amef=DB4200119124 client CUI=43181792: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:17] Data_Exp_Abon protejat: 2027-03-15 → 2027-03-15 00:00:00
+[2026-04-06 19:04:17] Data_Exp_Gprs protejat: 2050-03-13 → 2050-03-13 00:00:00
+[2026-04-06 19:04:17] Actualizat sediu Serie_Amef=DP10003769 client CUI=RO36803442: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:17] Data_Exp_Abon protejat: 2027-02-13 → 2027-02-13 00:00:00
+[2026-04-06 19:04:17] Data_Exp_Gprs protejat: 2027-02-13 → 2027-02-13 00:00:00
+[2026-04-06 19:04:17] Actualizat sediu Serie_Amef=DB4120005344 client CUI=43266791: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:17] Data_Exp_Abon protejat: 2027-04-05 → 2027-04-05 00:00:00
+[2026-04-06 19:04:17] Data_Exp_Gprs protejat: 2027-04-05 → 2027-04-05 00:00:00
+[2026-04-06 19:04:17] Actualizat sediu Serie_Amef=DB4200122106 client CUI=RO43567387: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:17] Data_Exp_Abon protejat: 2027-03-20 → 2027-03-20 00:00:00
+[2026-04-06 19:04:17] Data_Exp_Gprs protejat: 2027-08-23 → 2027-08-23 00:00:00
+[2026-04-06 19:04:17] Actualizat sediu Serie_Amef=DB4200043531 client CUI=RO37660537: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:17] Data_Exp_Abon protejat: 2026-03-30 → 2026-03-30 00:00:00
+[2026-04-06 19:04:17] Data_Exp_Gprs protejat: 2026-03-30 → 2026-03-30 00:00:00
+[2026-04-06 19:04:17] Actualizat sediu Serie_Amef=AC20002560 client CUI=RO45214969: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:17] Data_Exp_Abon protejat: 2027-03-21 → 2027-03-21 00:00:00
+[2026-04-06 19:04:17] Data_Exp_Gprs protejat: 2027-05-30 → 2027-05-30 00:00:00
+[2026-04-06 19:04:17] Actualizat sediu Serie_Amef=DB4090002868 client CUI=45982487: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:17] Data_Exp_Abon protejat: 2027-01-17 → 2027-01-17 00:00:00
+[2026-04-06 19:04:17] Data_Exp_Gprs protejat: 2027-01-17 → 2027-01-17 00:00:00
+[2026-04-06 19:04:17] Actualizat sediu Serie_Amef=ZEX031698 client CUI=RO30803567: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:17] Data_Exp_Abon protejat: 2027-02-19 → 2027-02-19 00:00:00
+[2026-04-06 19:04:17] Data_Exp_Gprs protejat: 2026-10-15 → 2026-10-15 00:00:00
+[2026-04-06 19:04:17] Actualizat sediu Serie_Amef=ZEX054917 client CUI=42555651: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:17] Data_Exp_Abon protejat: 2026-04-14 → 2026-04-14 00:00:00
+[2026-04-06 19:04:17] Data_Exp_Gprs protejat: 2026-04-14 → 2026-04-14 00:00:00
+[2026-04-06 19:04:17] Actualizat sediu Serie_Amef=ZCM033974 client CUI=17557007: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:17] Data_Exp_Abon protejat: 2026-04-15 → 2026-04-15 00:00:00
+[2026-04-06 19:04:17] Data_Exp_Gprs protejat: 2050-04-14 → 2050-04-14 00:00:00
+[2026-04-06 19:04:17] Actualizat sediu Serie_Amef=M7MLTAA2407 client CUI=RO5776011: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:17] Data_Exp_Abon protejat: 2026-11-25 → 2026-11-25 00:00:00
+[2026-04-06 19:04:17] Data_Exp_Gprs protejat: 2050-04-14 → 2050-04-14 00:00:00
+[2026-04-06 19:04:17] Actualizat sediu Serie_Amef=DB4100028882 client CUI=RO33327379: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:17] Data_Exp_Abon protejat: 2027-02-10 → 2027-02-10 00:00:00
+[2026-04-06 19:04:17] Data_Exp_Gprs protejat: 2027-09-30 → 2027-09-30 00:00:00
+[2026-04-06 19:04:17] Actualizat sediu Serie_Amef=DB4200043147 client CUI=42289665: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:17] Data_Exp_Abon protejat: 2027-04-01 → 2027-04-01 00:00:00
+[2026-04-06 19:04:17] Data_Exp_Gprs protejat: 2050-03-17 → 2050-03-17 00:00:00
+[2026-04-06 19:04:17] Actualizat sediu Serie_Amef=CPE8091018460473 client CUI=41951224: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:17] Data_Exp_Abon protejat: 2027-04-01 → 2027-04-01 00:00:00
+[2026-04-06 19:04:17] Data_Exp_Gprs protejat: 2050-03-17 → 2050-03-17 00:00:00
+[2026-04-06 19:04:17] Actualizat sediu Serie_Amef=CPE8091018460460 client CUI=41951224: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:17] Data_Exp_Abon protejat: 2027-04-01 → 2027-04-01 00:00:00
+[2026-04-06 19:04:17] Data_Exp_Gprs protejat: 2050-03-17 → 2050-03-17 00:00:00
+[2026-04-06 19:04:17] Actualizat sediu Serie_Amef=CPE8091018460131 client CUI=41951224: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:17] Data_Exp_Abon protejat: 2026-04-11 → 2026-04-11 00:00:00
+[2026-04-06 19:04:17] Data_Exp_Gprs protejat: 2026-04-11 → 2026-04-11 00:00:00
+[2026-04-06 19:04:17] Actualizat sediu Serie_Amef=AC80002896 client CUI=RO21098689: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:17] Data_Exp_Abon protejat: 2026-04-11 → 2026-04-11 00:00:00
+[2026-04-06 19:04:17] Data_Exp_Gprs protejat: 2026-04-11 → 2026-04-11 00:00:00
+[2026-04-06 19:04:17] Actualizat sediu Serie_Amef=AC80002893 client CUI=RO21098689: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:17] Data_Exp_Abon protejat: 2026-04-11 → 2026-04-11 00:00:00
+[2026-04-06 19:04:17] Data_Exp_Gprs protejat: 2026-04-11 → 2026-04-11 00:00:00
+[2026-04-06 19:04:17] Actualizat sediu Serie_Amef=AC80002895 client CUI=RO21098689: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:17] Data_Exp_Abon protejat: 2026-04-11 → 2026-04-11 00:00:00
+[2026-04-06 19:04:17] Data_Exp_Gprs protejat: 2026-04-11 → 2026-04-11 00:00:00
+[2026-04-06 19:04:17] Actualizat sediu Serie_Amef=AC80002894 client CUI=RO21098689: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:17] Data_Exp_Abon protejat: 2027-03-15 → 2027-03-15 00:00:00
+[2026-04-06 19:04:17] Data_Exp_Gprs protejat: 2050-03-13 → 2050-03-13 00:00:00
+[2026-04-06 19:04:17] Actualizat sediu Serie_Amef=DP10005164 client CUI=RO23919632: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:17] Data_Exp_Abon protejat: 2026-06-18 → 2026-06-18 00:00:00
+[2026-04-06 19:04:17] Data_Exp_Gprs protejat: 2026-10-14 → 2026-10-14 00:00:00
+[2026-04-06 19:04:17] Actualizat sediu Serie_Amef=DB4200026304 client CUI=RO5490132: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:17] Data_Exp_Abon protejat: 2026-06-18 → 2026-06-18 00:00:00
+[2026-04-06 19:04:17] Data_Exp_Gprs protejat: 2026-09-17 → 2026-09-17 00:00:00
+[2026-04-06 19:04:17] Actualizat sediu Serie_Amef=DB4200019661 client CUI=RO7484994: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:17] Data_Exp_Abon protejat: 2026-10-08 → 2026-10-08 00:00:00
+[2026-04-06 19:04:17] Data_Exp_Gprs protejat: 2026-10-08 → 2026-10-08 00:00:00
+[2026-04-06 19:04:17] Actualizat sediu Serie_Amef=ZCM010459 client CUI=38635833: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:17] Data_Exp_Abon protejat: 2026-06-25 → 2026-06-25 00:00:00
+[2026-04-06 19:04:17] Data_Exp_Gprs protejat: 2026-10-29 → 2026-10-29 00:00:00
+[2026-04-06 19:04:17] Actualizat sediu Serie_Amef=ZCM021561 client CUI=R14929360: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:17] Data_Exp_Abon protejat: 2026-06-25 → 2026-06-25 00:00:00
+[2026-04-06 19:04:17] Data_Exp_Gprs protejat: 2026-10-14 → 2026-10-14 00:00:00
+[2026-04-06 19:04:17] Actualizat sediu Serie_Amef=DB4200019658 client CUI=RO669251: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:17] Data_Exp_Abon protejat: 2026-06-25 → 2026-06-25 00:00:00
+[2026-04-06 19:04:17] Data_Exp_Gprs protejat: 2026-10-14 → 2026-10-14 00:00:00
+[2026-04-06 19:04:17] Actualizat sediu Serie_Amef=DB4200019660 client CUI=RO669251: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:17] Data_Exp_Abon protejat: 2026-06-25 → 2026-06-25 00:00:00
+[2026-04-06 19:04:17] Data_Exp_Gprs protejat: 2026-10-14 → 2026-10-14 00:00:00
+[2026-04-06 19:04:17] Actualizat sediu Serie_Amef=DB4200019657 client CUI=RO669251: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:17] Data_Exp_Abon protejat: 2027-03-25 → 2027-03-25 00:00:00
+[2026-04-06 19:04:17] Data_Exp_Gprs protejat: 2027-10-14 → 2027-10-14 00:00:00
+[2026-04-06 19:04:17] Actualizat sediu Serie_Amef=DB4200019659 client CUI=RO669251: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:17] Data_Exp_Abon protejat: 2026-06-25 → 2026-06-25 00:00:00
+[2026-04-06 19:04:17] Data_Exp_Gprs protejat: 2050-10-14 → 2050-10-14 00:00:00
+[2026-04-06 19:04:17] Actualizat sediu Serie_Amef=M7MLTAA3202 client CUI=RO25264547: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:17] Data_Exp_Abon protejat: 2026-06-25 → 2026-06-25 00:00:00
+[2026-04-06 19:04:17] Data_Exp_Gprs protejat: 2026-10-14 → 2026-10-14 00:00:00
+[2026-04-06 19:04:17] Actualizat sediu Serie_Amef=DB4200032713 client CUI=RO664033: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:17] Data_Exp_Abon protejat: 2026-06-24 → 2026-06-24 00:00:00
+[2026-04-06 19:04:17] Data_Exp_Gprs protejat: 2050-10-18 → 2050-10-18 00:00:00
+[2026-04-06 19:04:17] Actualizat sediu Serie_Amef=DP10000978 client CUI=RO646533: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:17] Data_Exp_Abon protejat: 2026-06-25 → 2026-06-25 00:00:00
+[2026-04-06 19:04:17] Data_Exp_Gprs protejat: 2026-10-19 → 2026-10-19 00:00:00
+[2026-04-06 19:04:17] Actualizat sediu Serie_Amef=DB4200031001 client CUI=RO663941: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:17] Data_Exp_Abon protejat: 2026-06-24 → 2026-06-24 00:00:00
+[2026-04-06 19:04:17] Data_Exp_Gprs protejat: 2026-10-22 → 2026-10-22 00:00:00
+[2026-04-06 19:04:17] Actualizat sediu Serie_Amef=DB4100001179 client CUI=18171186: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:17] Data_Exp_Abon protejat: 2026-05-11 → 2026-05-11 00:00:00
+[2026-04-06 19:04:17] Data_Exp_Gprs protejat: 2026-10-15 → 2026-10-15 00:00:00
+[2026-04-06 19:04:17] Actualizat sediu Serie_Amef=ZEX014719 client CUI=26327295: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:17] Data_Exp_Abon protejat: 2026-06-25 → 2026-06-25 00:00:00
+[2026-04-06 19:04:17] Data_Exp_Gprs protejat: 2026-10-28 → 2026-10-28 00:00:00
+[2026-04-06 19:04:17] Actualizat sediu Serie_Amef=DB4200033530 client CUI=RO31223622: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:17] Data_Exp_Abon protejat: 2026-06-25 → 2026-06-25 00:00:00
+[2026-04-06 19:04:17] Data_Exp_Gprs protejat: 2050-10-28 → 2050-10-28 00:00:00
+[2026-04-06 19:04:17] Actualizat sediu Serie_Amef=EC00001935 client CUI=RO5320103: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:17] Data_Exp_Abon protejat: 2026-11-07 → 2026-11-07 00:00:00
+[2026-04-06 19:04:17] Data_Exp_Gprs protejat: 2050-11-16 → 2050-11-16 00:00:00
+[2026-04-06 19:04:17] Actualizat sediu Serie_Amef=PI2000021556 client CUI=RO21098689: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:17] Data_Exp_Abon protejat: 2026-11-07 → 2026-11-07 00:00:00
+[2026-04-06 19:04:17] Data_Exp_Gprs protejat: 2050-11-16 → 2050-11-16 00:00:00
+[2026-04-06 19:04:17] Actualizat sediu Serie_Amef=PI2000021594 client CUI=RO21098689: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:17] Data_Exp_Abon protejat: 2026-11-07 → 2026-11-07 00:00:00
+[2026-04-06 19:04:17] Data_Exp_Gprs protejat: 2050-11-16 → 2050-11-16 00:00:00
+[2026-04-06 19:04:17] Actualizat sediu Serie_Amef=PI2000021949 client CUI=RO21098689: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:17] Data_Exp_Abon protejat: 2026-11-07 → 2026-11-07 00:00:00
+[2026-04-06 19:04:17] Data_Exp_Gprs protejat: 2050-11-16 → 2050-11-16 00:00:00
+[2026-04-06 19:04:17] Actualizat sediu Serie_Amef=PI2000021967 client CUI=RO21098689: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:17] Data_Exp_Abon protejat: 2027-03-18 → 2027-03-18 00:00:00
+[2026-04-06 19:04:17] Data_Exp_Gprs protejat: 2026-10-04 → 2026-10-04 00:00:00
+[2026-04-06 19:04:17] Actualizat sediu Serie_Amef=ZCM033975 client CUI=19695197: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:17] Data_Exp_Abon protejat: 2026-10-15 → 2026-10-15 00:00:00
+[2026-04-06 19:04:17] Data_Exp_Gprs protejat: 2026-08-21 → 2026-08-21 00:00:00
+[2026-04-06 19:04:17] Actualizat sediu Serie_Amef=DB4200066868 client CUI=RO23489004: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:17] Data_Exp_Abon protejat: 2026-10-15 → 2026-10-15 00:00:00
+[2026-04-06 19:04:17] Data_Exp_Gprs protejat: 2026-08-21 → 2026-08-21 00:00:00
+[2026-04-06 19:04:17] Actualizat sediu Serie_Amef=DB4200066867 client CUI=RO23489004: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:17] Data_Exp_Abon protejat: 2026-10-15 → 2026-10-15 00:00:00
+[2026-04-06 19:04:17] Data_Exp_Gprs protejat: 2026-08-21 → 2026-08-21 00:00:00
+[2026-04-06 19:04:17] Actualizat sediu Serie_Amef=DB4200066866 client CUI=RO23489004: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:17] Data_Exp_Abon protejat: 2027-02-24 → 2027-02-24 00:00:00
+[2026-04-06 19:04:17] Data_Exp_Gprs protejat: 2027-02-24 → 2027-02-24 00:00:00
+[2026-04-06 19:04:17] Actualizat sediu Serie_Amef=AC90020357 client CUI=33381157: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:17] Data_Exp_Abon protejat: 2026-10-23 → 2026-10-23 00:00:00
+[2026-04-06 19:04:17] Data_Exp_Gprs protejat: 2026-10-23 → 2026-10-23 00:00:00
+[2026-04-06 19:04:17] Actualizat sediu Serie_Amef=ZEX031666 client CUI=RO23175486: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:17] Data_Exp_Abon protejat: 2026-10-23 → 2026-10-23 00:00:00
+[2026-04-06 19:04:17] Data_Exp_Gprs protejat: 2026-10-23 → 2026-10-23 00:00:00
+[2026-04-06 19:04:17] Actualizat sediu Serie_Amef=ZEX031671 client CUI=RO23175486: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:17] Data_Exp_Abon protejat: 2026-10-23 → 2026-10-23 00:00:00
+[2026-04-06 19:04:17] Data_Exp_Gprs protejat: 2026-10-23 → 2026-10-23 00:00:00
+[2026-04-06 19:04:17] Actualizat sediu Serie_Amef=ZEX031672 client CUI=RO23175486: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:17] Data_Exp_Abon protejat: 2026-10-23 → 2026-10-23 00:00:00
+[2026-04-06 19:04:17] Data_Exp_Gprs protejat: 2026-10-23 → 2026-10-23 00:00:00
+[2026-04-06 19:04:17] Actualizat sediu Serie_Amef=ZEX031673 client CUI=RO23175486: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:17] Data_Exp_Abon protejat: 2026-05-11 → 2026-05-11 00:00:00
+[2026-04-06 19:04:17] Data_Exp_Gprs protejat: 2027-03-25 → 2027-03-25 00:00:00
+[2026-04-06 19:04:17] Actualizat sediu Serie_Amef=DP10005285 client CUI=RO41709558: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:17] Data_Exp_Abon protejat: 2026-06-25 → 2026-06-25 00:00:00
+[2026-04-06 19:04:17] Data_Exp_Gprs protejat: 2050-03-25 → 2050-03-25 00:00:00
+[2026-04-06 19:04:17] Actualizat sediu Serie_Amef=DB4090005480 client CUI=RO41194249: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:17] Data_Exp_Abon protejat: 2026-06-25 → 2026-06-25 00:00:00
+[2026-04-06 19:04:17] Data_Exp_Gprs protejat: 2050-03-25 → 2050-03-25 00:00:00
+[2026-04-06 19:04:17] Actualizat sediu Serie_Amef=DB4700015900 client CUI=RO41194249: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:17] Data_Exp_Abon protejat: 2026-05-11 → 2026-05-11 00:00:00
+[2026-04-06 19:04:17] Data_Exp_Gprs protejat: 2050-03-25 → 2050-03-25 00:00:00
+[2026-04-06 19:04:17] Actualizat sediu Serie_Amef=DB4090018695 client CUI=RO41709558: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:17] Data_Exp_Abon protejat: 2026-06-25 → 2026-06-25 00:00:00
+[2026-04-06 19:04:17] Data_Exp_Gprs protejat: 2050-11-20 → 2050-11-20 00:00:00
+[2026-04-06 19:04:17] Actualizat sediu Serie_Amef=DB090018690 client CUI=RO32853260: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:17] Data_Exp_Abon protejat: 2026-06-25 → 2026-06-25 00:00:00
+[2026-04-06 19:04:17] Data_Exp_Gprs protejat: 2050-10-14 → 2050-10-14 00:00:00
+[2026-04-06 19:04:17] Actualizat sediu Serie_Amef=DB4090022444 client CUI=RO669251: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:17] Data_Exp_Abon protejat: 2026-06-25 → 2026-06-25 00:00:00
+[2026-04-06 19:04:17] Data_Exp_Gprs protejat: 2026-12-20 → 2026-12-20 00:00:00
+[2026-04-06 19:04:17] Actualizat sediu Serie_Amef=DB4090029419 client CUI=RO6043531: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:17] Data_Exp_Abon protejat: 2026-04-10 → 2026-04-10 00:00:00
+[2026-04-06 19:04:17] Data_Exp_Gprs protejat: 2026-04-10 → 2026-04-10 00:00:00
+[2026-04-06 19:04:17] Actualizat sediu Serie_Amef=DB4090032203 client CUI=RO46103845: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:17] Data_Exp_Abon protejat: 2026-04-29 → 2026-04-29 00:00:00
+[2026-04-06 19:04:17] Data_Exp_Gprs protejat: 2026-04-29 → 2026-04-29 00:00:00
+[2026-04-06 19:04:17] Actualizat sediu Serie_Amef=DB4120005650 client CUI=42060580: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:17] Data_Exp_Abon protejat: 2026-12-03 → 2026-12-03 00:00:00
+[2026-04-06 19:04:17] Data_Exp_Gprs protejat: 2026-12-03 → 2026-12-03 00:00:00
+[2026-04-06 19:04:17] Actualizat sediu Serie_Amef=DB4090040547 client CUI=RO32980956: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:17] Data_Exp_Abon protejat: 2026-05-14 → 2026-05-14 00:00:00
+[2026-04-06 19:04:17] Data_Exp_Gprs protejat: 2026-05-14 → 2026-05-14 00:00:00
+[2026-04-06 19:04:17] Actualizat sediu Serie_Amef=DB4090033386 client CUI=RO17249520: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:17] Data_Exp_Abon protejat: 2026-01-30 → 2026-01-30 00:00:00
+[2026-04-06 19:04:17] Data_Exp_Gprs protejat: 2026-01-30 → 2026-01-30 00:00:00
+[2026-04-06 19:04:17] Actualizat sediu Serie_Amef=DB4500021829 client CUI=47042274: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:17] Data_Exp_Abon protejat: 2026-08-30 → 2026-08-30 00:00:00
+[2026-04-06 19:04:17] Data_Exp_Gprs protejat: 2026-08-30 → 2026-08-30 00:00:00
+[2026-04-06 19:04:17] Actualizat sediu Serie_Amef=ZEX065192 client CUI=RO15268789: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:17] Data_Exp_Abon protejat: 2026-06-30 → 2026-06-30 00:00:00
+[2026-04-06 19:04:17] Data_Exp_Gprs protejat: 2026-06-30 → 2026-06-30 00:00:00
+[2026-04-06 19:04:17] Actualizat sediu Serie_Amef=DB4700032855 client CUI=RO2830183: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:17] Data_Exp_Abon protejat: 2026-06-04 → 2026-06-04 00:00:00
+[2026-04-06 19:04:17] Data_Exp_Gprs protejat: 2050-06-30 → 2050-06-30 00:00:00
+[2026-04-06 19:04:17] Actualizat sediu Serie_Amef=CPE8091018460408 client CUI=RO23669528: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:17] Data_Exp_Abon protejat: 2026-06-25 → 2026-06-25 00:00:00
+[2026-04-06 19:04:17] Data_Exp_Gprs protejat: 2026-06-27 → 2026-06-27 00:00:00
+[2026-04-06 19:04:17] Actualizat sediu Serie_Amef=DB4090024564 client CUI=37173167: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:17] Data_Exp_Abon protejat: 2027-01-16 → 2027-01-16 00:00:00
+[2026-04-06 19:04:17] Data_Exp_Gprs protejat: 2027-01-16 → 2027-01-16 00:00:00
+[2026-04-06 19:04:17] Actualizat sediu Serie_Amef=DB4090029417 client CUI=RO10340271: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:17] Data_Exp_Abon protejat: 2026-07-02 → 2026-07-02 00:00:00
+[2026-04-06 19:04:17] Data_Exp_Gprs protejat: 2050-12-03 → 2050-12-03 00:00:00
+[2026-04-06 19:04:17] Actualizat sediu Serie_Amef=DB4200095972 client CUI=RO32980956: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:17] Data_Exp_Abon protejat: 2026-08-04 → 2026-08-04 00:00:00
+[2026-04-06 19:04:17] Data_Exp_Gprs protejat: 2027-03-31 → 2027-03-31 00:00:00
+[2026-04-06 19:04:17] Actualizat sediu Serie_Amef=DB4500020104 client CUI=35734182: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:17] Data_Exp_Abon protejat: 2026-05-19 → 2026-05-19 00:00:00
+[2026-04-06 19:04:17] Data_Exp_Gprs protejat: 2026-05-19 → 2026-05-19 00:00:00
+[2026-04-06 19:04:17] Actualizat sediu Serie_Amef=DB4090034973 client CUI=RO46440697: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:17] Data_Exp_Abon protejat: 2026-05-30 → 2026-05-30 00:00:00
+[2026-04-06 19:04:17] Data_Exp_Gprs protejat: 2050-06-30 → 2050-06-30 00:00:00
+[2026-04-06 19:04:17] Actualizat sediu Serie_Amef=CPE8091018460470 client CUI=49984413: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:17] Data_Exp_Abon protejat: 2026-06-11 → 2026-06-11 00:00:00
+[2026-04-06 19:04:17] Data_Exp_Gprs protejat: 2026-06-11 → 2026-06-11 00:00:00
+[2026-04-06 19:04:17] Actualizat sediu Serie_Amef=DB4500021663 client CUI=RO15004787: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:17] Data_Exp_Abon protejat: 2026-06-07 → 2026-06-07 00:00:00
+[2026-04-06 19:04:17] Data_Exp_Gprs protejat: 2026-06-07 → 2026-06-07 00:00:00
+[2026-04-06 19:04:17] Actualizat sediu Serie_Amef=DB4090024068 client CUI=RO10340271: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:17] Data_Exp_Abon protejat: 2026-05-24 → 2026-05-24 00:00:00
+[2026-04-06 19:04:17] Data_Exp_Gprs protejat: 2026-05-24 → 2026-05-24 00:00:00
+[2026-04-06 19:04:17] Actualizat sediu Serie_Amef=DB4500021044 client CUI=48944739: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:17] Data_Exp_Abon protejat: 2026-05-29 → 2026-05-29 00:00:00
+[2026-04-06 19:04:17] Data_Exp_Gprs protejat: 2027-03-31 → 2027-03-31 00:00:00
+[2026-04-06 19:04:17] Actualizat sediu Serie_Amef=DB4090024069 client CUI=34109984: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:17] Data_Exp_Abon protejat: 2026-04-24 → 2026-04-24 00:00:00
+[2026-04-06 19:04:17] Data_Exp_Gprs protejat: 2026-04-24 → 2026-04-24 00:00:00
+[2026-04-06 19:04:17] Actualizat sediu Serie_Amef=ZEX064593 client CUI=37316992: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:17] Data_Exp_Abon protejat: 2026-04-24 → 2026-04-24 00:00:00
+[2026-04-06 19:04:17] Data_Exp_Gprs protejat: 2026-04-24 → 2026-04-24 00:00:00
+[2026-04-06 19:04:17] Actualizat sediu Serie_Amef=DB4500020709 client CUI=49611864: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:17] Data_Exp_Abon protejat: 2027-03-31 → 2027-03-31 00:00:00
+[2026-04-06 19:04:17] Data_Exp_Gprs protejat: 2027-03-31 → 2027-03-31 00:00:00
+[2026-04-06 19:04:17] Actualizat sediu Serie_Amef=ZEX064501 client CUI=30177200: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:17] Data_Exp_Abon protejat: 2026-11-20 → 2026-11-20 00:00:00
+[2026-04-06 19:04:17] Data_Exp_Gprs protejat: 2026-11-20 → 2026-11-20 00:00:00
+[2026-04-06 19:04:17] Actualizat sediu Serie_Amef=ZEX063760 client CUI=47102449: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:17] Data_Exp_Abon protejat: 2026-03-31 → 2026-03-31 00:00:00
+[2026-04-06 19:04:17] Data_Exp_Gprs protejat: 2050-10-14 → 2050-10-14 00:00:00
+[2026-04-06 19:04:17] Actualizat sediu Serie_Amef=CPE8091018460466 client CUI=38059951: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:17] Data_Exp_Abon protejat: 2026-09-17 → 2026-09-17 00:00:00
+[2026-04-06 19:04:17] Data_Exp_Gprs protejat: 2027-03-31 → 2027-03-31 00:00:00
+[2026-04-06 19:04:17] Actualizat sediu Serie_Amef=ZEX063218 client CUI=48753631: Data_Exp_Abon=?, Data_Exp_Gprs=?
+[2026-04-06 19:04:17] Adăugat sediu nou Serie_Amef=DB4090034793 client CUI=RO46440697
+[2026-04-06 19:04:17] Adăugat sediu nou Serie_Amef=DB4110009589 client CUI=10580150
+[2026-04-06 19:04:17] Adăugat sediu nou Serie_Amef=DB4090035367 client CUI=26454191
+[2026-04-06 19:04:17] Adăugat sediu nou Serie_Amef=CPE8091018460174 client CUI=43063827
+[2026-04-06 19:04:17] Adăugat sediu nou Serie_Amef=ZEX017270 client CUI=32594475
+[2026-04-06 19:04:17] Adăugat sediu nou Serie_Amef=DP10004048 client CUI=21708116
+[2026-04-06 19:04:17] Adăugat sediu nou Serie_Amef=DB4200122105 client CUI=42669613
+[2026-04-06 19:04:17] Adăugat sediu nou Serie_Amef=ZEX067915 client CUI=54285624
+[2026-04-06 19:04:17] Adăugat sediu nou Serie_Amef=DB4090041985 client CUI=21167592
+[2026-04-06 19:04:17] Adăugat sediu nou Serie_Amef=DB4200037824 client CUI=11359108
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=DB4090017015 client CUI=18171186 deja existent, fără modificări
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=DB4090017015 client CUI=18171186 deja existent, fără modificări
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=DB4400019147 client CUI=RO12290706 deja existent, fără modificări
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=DB4400019147 client CUI=RO12290706 deja existent, fără modificări
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=DB4200120823 client CUI=RO32069000 deja existent, fără modificări
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=DB4200037828 client CUI=18205718 deja existent, fără modificări
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=DB4700004200 client CUI=RO7377238 deja existent, fără modificări
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=ZEX067913 client CUI=RO46769127 deja existent, fără modificări
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=ZEX067913 client CUI=RO46769127 deja existent, fără modificări
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=DB4090017015 client CUI=18171186 deja existent, fără modificări
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=DB4090016893 client CUI=18171186 deja existent, fără modificări
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=CPE8051718290335 client CUI=RO14190479 deja existent, fără modificări
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=DB4200017553 client CUI=6949153 deja existent, fără modificări
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=ZEX002525 client CUI=6949153 deja existent, fără modificări
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=DB4200043591 client CUI=RO15376500 deja existent, fără modificări
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=M7MLTAA9254 client CUI=8707989 deja existent, fără modificări
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=DB4090032198 client CUI=RO20329912 deja existent, fără modificări
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=DB4700001078 client CUI=RO16743338 deja existent, fără modificări
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=DB4700004188 client CUI=RO16743338 deja existent, fără modificări
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=DB4090016893 client CUI=18171186 deja existent, fără modificări
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=DB4090016892 client CUI=18171186 deja existent, fără modificări
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=DB4090016891 client CUI=18171186 deja existent, fără modificări
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=DB4090016890 client CUI=18171186 deja existent, fără modificări
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=DB4090016889 client CUI=18171186 deja existent, fără modificări
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=VF10005868 client CUI=10658535 deja existent, fără modificări
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=VF10005868 client CUI=10658535 deja existent, fără modificări
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=ZCM010469 client CUI=40831912 deja existent, fără modificări
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=M7MLTAA2617 client CUI=RO16174780 deja existent, fără modificări
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=DB4090005261 client CUI=RO46440697 deja existent, fără modificări
+[2026-04-06 19:04:17] Adăugat istoric abonament Serie_Amef=DB4090034793 client CUI=RO46440697
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=DB4090005261 client CUI=RO46440697 deja existent, fără modificări
+[2026-04-06 19:04:17] Adăugat istoric abonament Serie_Amef=DB4090034793 client CUI=RO46440697
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=DB4090034486 client CUI=44317079 deja existent, fără modificări
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=DB4500020117 client CUI=RO45509021 deja existent, fără modificări
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=DB4500020117 client CUI=RO45509021 deja existent, fără modificări
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=AC20003341 client CUI=3357165 deja existent, fără modificări
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=AC20003341 client CUI=3357165 deja existent, fără modificări
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=DB4200097151 client CUI=RO40840449 deja existent, fără modificări
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=DB4200097151 client CUI=RO40840449 deja existent, fără modificări
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=ZEX056248 client CUI=43579900 deja existent, fără modificări
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=DB4090040536 client CUI=RO48937227 deja existent, fără modificări
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=DB4200065434 client CUI=RO18852536 deja existent, fără modificări
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=DB4200043381 client CUI=RO6971355 deja existent, fără modificări
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=ZEX063761 client CUI=RO48532835 deja existent, fără modificări
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=ZEX063761 client CUI=RO48532835 deja existent, fără modificări
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=M7MLTAA2616 client CUI=RO33077647 deja existent, fără modificări
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=M7MLTAA6037 client CUI=RO25860000 deja existent, fără modificări
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=VF50001751 client CUI=RO43082624 deja existent, fără modificări
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=DB4090009399 client CUI=47697363 deja existent, fără modificări
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=DB4090009399 client CUI=47697363 deja existent, fără modificări
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=DB4090021420 client CUI=44301889 deja existent, fără modificări
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=DB4090021420 client CUI=44301889 deja existent, fără modificări
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=DB4200033022 client CUI=RO14617406 deja existent, fără modificări
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=CPE8091218470087 client CUI=50780522 deja existent, fără modificări
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=ZCS026739 client CUI=41816392 deja existent, fără modificări
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=ZCS026739 client CUI=41816392 deja existent, fără modificări
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=CPE8051718290339 client CUI=49752375 deja existent, fără modificări
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=AC20002558 client CUI=45506173 deja existent, fără modificări
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=AC20002558 client CUI=45506173 deja existent, fără modificări
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=DP10003769 client CUI=RO36803442 deja existent, fără modificări
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=DB4120005344 client CUI=43266791 deja existent, fără modificări
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=DB4120005344 client CUI=43266791 deja existent, fără modificări
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=DB4120005129 client CUI=51256071 deja existent, fără modificări
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=DB4120005129 client CUI=51256071 deja existent, fără modificări
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=DB4200043589 client CUI=42289665 deja existent, fără modificări
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=DB4200043589 client CUI=42289665 deja existent, fără modificări
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=DB4200043147 client CUI=42289665 deja existent, fără modificări
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=DB4200043147 client CUI=42289665 deja existent, fără modificări
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=ZEX054917 client CUI=42555651 deja existent, fără modificări
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=CPE8091018460473 client CUI=41951224 deja existent, fără modificări
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=DP10005164 client CUI=RO23919632 deja existent, fără modificări
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=ZEX054917 client CUI=42555651 deja existent, fără modificări
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=DB4200043589 client CUI=42289665 deja existent, fără modificări
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=DB4200097020 client CUI=RO42109314 deja existent, fără modificări
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=DB4200097020 client CUI=RO42109314 deja existent, fără modificări
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=DB4200019655 client CUI=RO10499030 deja existent, fără modificări
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=DB4200004987 client CUI=RO16259789 deja existent, fără modificări
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=DB4200120823 client CUI=RO32069000 deja existent, fără modificări
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=DB4200043593 client CUI=RO22574322 deja existent, fără modificări
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=M7MLTAA2617 client CUI=RO16174780 deja existent, fără modificări
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=DB4200036480 client CUI=RO17545010 deja existent, fără modificări
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=DB4200026304 client CUI=RO5490132 deja existent, fără modificări
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=DB4200019661 client CUI=RO7484994 deja existent, fără modificări
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=DB4200026305 client CUI=RO29473635 deja existent, fără modificări
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=ZEX054595 client CUI=42453333 deja existent, fără modificări
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=ZCM033975 client CUI=19695197 deja existent, fără modificări
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=AC90020357 client CUI=33381157 deja existent, fără modificări
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=AC90020357 client CUI=33381157 deja existent, fără modificări
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=DP10005285 client CUI=RO41709558 deja existent, fără modificări
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=DB4090018695 client CUI=RO41709558 deja existent, fără modificări
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=DB4200043531 client CUI=RO37660537 deja existent, fără modificări
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=DB4200043531 client CUI=RO37660537 deja existent, fără modificări
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=DB4200119124 client CUI=43181792 deja existent, fără modificări
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=DB4200119124 client CUI=43181792 deja existent, fără modificări
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=DB4120005642 client CUI=28449612 deja existent, fără modificări
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=CPE8091018460131 client CUI=41951224 deja existent, fără modificări
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=CPE8091018460460 client CUI=41951224 deja existent, fără modificări
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=DB4090029962 client CUI=RO34235125 deja existent, fără modificări
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=DB4090029962 client CUI=RO34235125 deja existent, fără modificări
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=DB4120005944 client CUI=51247235 deja existent, fără modificări
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=DB4120005944 client CUI=51247235 deja existent, fără modificări
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=DB4090029417 client CUI=RO10340271 deja existent, fără modificări
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=DB4090029417 client CUI=RO10340271 deja existent, fără modificări
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=DB4200052890 client CUI=R10878344 deja existent, fără modificări
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=DB4200052891 client CUI=R10878344 deja existent, fără modificări
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=DB4200052888 client CUI=R10878344 deja existent, fără modificări
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=DB4200043575 client CUI=R10878344 deja existent, fără modificări
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=DB4200052889 client CUI=R10878344 deja existent, fără modificări
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=DB4700004202 client CUI=RO7377238 deja existent, fără modificări
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=DB4700004203 client CUI=RO7377238 deja existent, fără modificări
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=DB4700004200 client CUI=RO7377238 deja existent, fără modificări
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=DB4200066002 client CUI=RO38281132 deja existent, fără modificări
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=DB090018690 client CUI=RO32853260 deja existent, fără modificări
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=ZEX054663 client CUI=R14112292 deja existent, fără modificări
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=DB4700001082 client CUI=R14112292 deja existent, fără modificări
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=DB4700011276 client CUI=RO18560000 deja existent, fără modificări
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=DB4700011841 client CUI=RO18560000 deja existent, fără modificări
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=DB4200030686 client CUI=RO38284228 deja existent, fără modificări
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=ZCM021561 client CUI=R14929360 deja existent, fără modificări
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=DB4200043416 client CUI=RO10990657 deja existent, fără modificări
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=DB4200043378 client CUI=RO14512582 deja existent, fără modificări
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=DB4090016891 client CUI=18171186 deja existent, fără modificări
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=DB4090016890 client CUI=18171186 deja existent, fără modificări
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=DB4090016889 client CUI=18171186 deja existent, fără modificări
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=DB4090017015 client CUI=18171186 deja existent, fără modificări
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=DB4100001179 client CUI=18171186 deja existent, fără modificări
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=DB4090016893 client CUI=18171186 deja existent, fără modificări
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=DB4090016892 client CUI=18171186 deja existent, fără modificări
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=DB4090034486 client CUI=44317079 deja existent, fără modificări
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=DP10000978 client CUI=RO646533 deja existent, fără modificări
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=ZEX062385 client CUI=RO44686580 deja existent, fără modificări
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=ZEX062385 client CUI=RO44686580 deja existent, fără modificări
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=DB4200043584 client CUI=RO662946 deja existent, fără modificări
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=DB4200037827 client CUI=RO32966943 deja existent, fără modificări
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=DB4200037829 client CUI=RO32966943 deja existent, fără modificări
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=ZEX062385 client CUI=RO44686580 deja existent, fără modificări
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=DB4200019659 client CUI=RO669251 deja existent, fără modificări
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=DB4200019659 client CUI=RO669251 deja existent, fără modificări
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=DB4200019657 client CUI=RO669251 deja existent, fără modificări
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=DB4200019658 client CUI=RO669251 deja existent, fără modificări
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=DB4200019660 client CUI=RO669251 deja existent, fără modificări
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=DB4090022444 client CUI=RO669251 deja existent, fără modificări
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=M7MLTAA3202 client CUI=RO25264547 deja existent, fără modificări
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=DB4200032713 client CUI=RO664033 deja existent, fără modificări
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=DB4200031001 client CUI=RO663941 deja existent, fără modificări
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=DB4200033530 client CUI=RO31223622 deja existent, fără modificări
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=EC00001935 client CUI=RO5320103 deja existent, fără modificări
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=DB4090005480 client CUI=RO41194249 deja existent, fără modificări
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=DB4700015900 client CUI=RO41194249 deja existent, fără modificări
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=DB4090029419 client CUI=RO6043531 deja existent, fără modificări
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=DB4090024564 client CUI=37173167 deja existent, fără modificări
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=ZEX064501 client CUI=30177200 deja existent, fără modificări
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=ZEX064501 client CUI=30177200 deja existent, fără modificări
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=DB4090024069 client CUI=34109984 deja existent, fără modificări
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=DB4090002868 client CUI=45982487 deja existent, fără modificări
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=DB4090002868 client CUI=45982487 deja existent, fără modificări
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=DB4200122106 client CUI=RO43567387 deja existent, fără modificări
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=DB4200122106 client CUI=RO43567387 deja existent, fără modificări
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=DP10005285 client CUI=RO41709558 deja existent, fără modificări
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=ZEX063218 client CUI=48753631 deja existent, fără modificări
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=DB4090034793 client CUI=RO46440697 deja existent, fără modificări
+[2026-04-06 19:04:17] Istoric abonament Serie_Amef=DB4090034793 client CUI=RO46440697 deja existent, fără modificări
+[2026-04-06 19:04:17] Adăugat istoric abonament Serie_Amef=DB4090029962 client CUI=RO34235125
+[2026-04-06 19:04:17] Adăugat istoric abonament Serie_Amef=DB4110009589 client CUI=10580150
+[2026-04-06 19:04:17] Adăugat istoric abonament Serie_Amef=DB4110009589 client CUI=10580150
+[2026-04-06 19:04:17] Adăugat istoric abonament Serie_Amef=DB4090035367 client CUI=26454191
+[2026-04-06 19:04:17] Adăugat istoric abonament Serie_Amef=DB4090041985 client CUI=21167592
+[2026-04-06 19:04:17] Adăugat istoric abonament Serie_Amef=DB4090041985 client CUI=21167592
+[2026-04-06 19:04:17] Adăugat istoric abonament Serie_Amef=DB4200037824 client CUI=11359108
+[2026-04-06 19:04:17] === MERGE COMPLET FINALIZAT ===

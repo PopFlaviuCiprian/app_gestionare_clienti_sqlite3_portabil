@@ -176,7 +176,6 @@ Functie pentru a uni 2 baze de date sqlite3 cu verificare si actualizare clienti
 si cu creare fisier log cu actualizari
 """
 
-
 def merge_sqlite_with_file_log(db_source_path, db_target_path, log_file_path="merge_log.txt"):
     # funcție simplă de log în fișier
     def log(msg):
@@ -184,6 +183,22 @@ def merge_sqlite_with_file_log(db_source_path, db_target_path, log_file_path="me
         with open(log_file_path, "a", encoding="utf-8") as f:
             f.write(f"[{timestamp}] {msg}\n")
         print(msg)  # păstrează și print-ul pe consolă
+
+    def alege_data_mai_buna(data1, data2):
+        if not data1:
+            return data2
+        if not data2:
+            return data1
+
+        try:
+            if isinstance(data1, str):
+                data1 = datetime.fromisoformat(data1)
+            if isinstance(data2, str):
+                data2 = datetime.fromisoformat(data2)
+
+            return max(data1, data2)
+        except:
+            return data1
 
     # conectare baze
     src_conn = sqlite3.connect(db_source_path)
@@ -307,11 +322,24 @@ def merge_sqlite_with_file_log(db_source_path, db_target_path, log_file_path="me
             for field in ["Punct_Lucru", "Model_Amef", "Tip_Abonament", "Data_Conect_Anaf", "Tehnician",
                           "Data_Exp_Abon", "Val_Ctr", "Data_Exp_Gprs"]:
                 val = sediu[field]
+                existing_val = existing_sediu[field]
+
                 if isinstance(val, Decimal):
                     val = float(val)
-                if val != existing_sediu[field]:
-                    updated_fields.append(f"{field}=?")
-                    updated_values.append(val)
+                # Sectiune care protejeaza baza de date la suprascriere import date vechi penste cele mai noi
+                if field in ["Data_Exp_Abon", "Data_Exp_Gprs"]:
+                    val_final = alege_data_mai_buna(existing_val, val)
+
+                    if val_final != existing_val:
+                        updated_fields.append(f"{field}=?")
+                        updated_values.append(val_final)
+                        log(f"{field} protejat: {existing_val} → {val_final}")
+
+                else:
+                    if val != existing_sediu[field]:
+                        updated_fields.append(f"{field}=?")
+                        updated_values.append(val)
+
             if updated_fields:
                 updated_values.append(existing_sediu["Nr_Crt"])
                 tgt_cursor.execute(f"UPDATE tabela_sedii_secundare SET {', '.join(updated_fields)} WHERE Nr_Crt=?",
@@ -3531,11 +3559,12 @@ btn_params = [
     ("Afiseaza Abonam.", lambda: alerta_abonamente_combinate(), "#ffd966", "Afișează alerta cu expirarea abonamentelor"),
     ("Istoric Abonament", lambda: popup_istoric_abonamente(), "#008080", "Afișează istoricul abonamentelor Service și GPRS"),
     ("Resetare câmpuri", lambda: resetare_toate_campurile(), "#cfe2f3", "Resetează toate câmpurile din formular"),
-    ("Merge DB (admin)", lambda: update_baza_protejat(), "#f4b183", "Combină și actualizează 2 baze de date"),
+    ("Dosar Asistenta", lambda: genereaza_dosar_asistenta(), "#fce5cd", "Genereaza dosar asistenta tehnica in Pdf"),
     ("Genereaza DI", lambda: genereaza_declaratie(), "#d9ead3", "Generează declarație de instalare PDF"),
     ("Genereaza PV", lambda: genereaza_pv_defiscalizare(), "#d9ead3", "Generează PV defiscalizare in PDF"),
     ("Fisa Service", lambda: genereaza_fisa_reparatie(), "#d9ead3", "Generează fisa reparatie in PDF"),
-    ("Dosar Asistenta", lambda: genereaza_dosar_asistenta(), "#fce5cd", "Genereaza dosar asistenta tehnica in Pdf"),
+    ("Merge DB (admin)", lambda: update_baza_protejat(), "#f4b183", "Combină și actualizează 2 baze de date"),
+
     # ("Fișă intervenție", lambda: genereaza_document("fisa_interventie"), "#cfe2f3", "Generează fișă de service PDF"),
     # ("Contract service", lambda: genereaza_document("contract_service"), "#ead1dc", "Generează contract de service PDF"),
 ]
